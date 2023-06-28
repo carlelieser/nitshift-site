@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-fs.writeFileSync(path.join(__dirname, "build"), "(() => import('./index.js'))()", {
+fs.writeFileSync(path.join(__dirname, "build", "index.cjs"), "(() => import('./index.js'))()", {
 	encoding: "utf8",
 	flag: "w"
 });
