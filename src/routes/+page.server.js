@@ -20,7 +20,9 @@ const getLatestTag = () => {
 };
 
 const getSetupFileInfo = async (tag) => {
-	const response = await fetch(`https://github.com/carlelieser/glimmr-release/releases/expanded_assets/${tag}`);
+	const response = await fetch(
+		`https://github.com/carlelieser/glimmr-release/releases/expanded_assets/${tag}`
+	);
 	const html = await response.text();
 	const $ = cheerio.load(html);
 	const link = $(`a[href*='/carlelieser/glimmr-release/releases/download/${tag}/']`);

@@ -16,7 +16,8 @@
 		{
 			icon: "donut_large",
 			title: "Support for old monitors",
-			description: "With Shade Mode, you can adjust the brightness of any old or hub-connected monitor"
+			description:
+				"With Shade Mode, you can adjust the brightness of any old or hub-connected monitor"
 		},
 		{
 			icon: "event",
@@ -30,9 +31,10 @@
 	<div class="container mx-auto space-y-12 py-24">
 		<div class="relative z-10 py-24">
 			<Animate>
-				<div class="text-6xl font-display font-bold max-w-2xl mx-auto text-center px-8"><span
-					class="text-teal-300">Glimmr</span> gives you <span class="text-yellow-500">full control</span> over the <span
-					class="text-yellow-500">brightness</span> of your monitors.
+				<div class="text-6xl font-display font-bold max-w-2xl mx-auto text-center px-8">
+					<span class="text-teal-300">Glimmr</span> gives you
+					<span class="text-yellow-500">full control</span>
+					over the <span class="text-yellow-500">brightness</span> of your monitors.
 				</div>
 			</Animate>
 		</div>
@@ -46,9 +48,12 @@
 				{#each features as feature, i}
 					<Animate>
 						<div
-							class="p-6 bg-teal-900 bg-opacity-80 backdrop-blur-2xl text-white drop-shadow-lg rounded-xl space-y-2">
+							class="p-6 bg-teal-900 bg-opacity-80 backdrop-blur-2xl text-white drop-shadow-lg rounded-xl space-y-2"
+						>
 							<div class="w-full flex items-center justify-center">
-								<span class="material-symbols-outlined size-48 text-yellow-500 drop-shadow-2xl">{feature.icon}</span>
+								<span class="material-symbols-outlined size-48 text-yellow-500 drop-shadow-2xl"
+									>{feature.icon}</span
+								>
 							</div>
 							<div class="text-3xl font-display font-bold">{feature.title}</div>
 							<div class="text-2xl opacity-70">{feature.description}</div>
@@ -57,7 +62,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute left-0 bottom-0 z-0 -m-48"></div>
-		<div class="bg-teal-900 w-[48rem] h-[48rem] rounded-full absolute left-0 -top-1/3 z-0"></div>
+		<div class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute left-0 bottom-0 z-0 -m-48" />
+		<div class="bg-teal-900 w-[48rem] h-[48rem] rounded-full absolute left-0 -top-1/3 z-0" />
 	</div>
 </div>

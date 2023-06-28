@@ -13,6 +13,12 @@
 </script>
 
 <Animate>
-	<Button primary={primary} icon="download" label="Download for Windows"
-	        secondaryLabel={showFileSize ? $release?.size : false} size={size} on:click={handleStartDownload} />
+	<Button
+		{primary}
+		icon="download"
+		label="Download for Windows"
+		secondaryLabel={showFileSize ? $release?.size : false}
+		{size}
+		on:click={handleStartDownload}
+	/>
 </Animate>

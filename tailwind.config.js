@@ -5,8 +5,8 @@ export default {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	theme: {
 		fontFamily: {
-			"sans": ["\"roboto\""],
-			"display": ["\"sofia-pro\""]
+			sans: ['"roboto"'],
+			display: ['"sofia-pro"']
 		},
 
 		extend: {
@@ -20,7 +20,7 @@ export default {
 		}
 	},
 	plugins: [
-		plugin(function({ matchUtilities, theme }) {
+		plugin(function ({ matchUtilities, theme }) {
 			matchUtilities(
 				{
 					"text-shadow": (value) => ({
@@ -32,4 +32,3 @@ export default {
 		})
 	]
 };
-
