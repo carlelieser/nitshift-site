@@ -10,7 +10,7 @@
 			<div class="space-y-8 text-center lg:text-left">
 				<div class="space-y-4 text-shadow-2xl shadow-amber-100/20">
 					<Animate>
-						<div class="text-7xl md:text-8xl font-display font-bold">The Monitor Brightness Tool</div>
+						<div class="text-7xl md:text-8xl font-display font-bold">The Display Brightness Tool</div>
 					</Animate>
 					<Animate delay="0.1s">
 						<div class="text-4xl md:text-5xl font-display text-amber-500">Never fiddle with your monitors ever again.</div>
