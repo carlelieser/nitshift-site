@@ -29,7 +29,7 @@
 			<span class="material-symbols-outlined opacity-80">{icon}</span>
 		{/if}
 		<div class="flex items-center space-x-2">
-			<div class="font-medium">{label}</div>
+			<div class="font-medium whitespace-nowrap">{label}</div>
 			{#if secondaryLabel}
 				<div class="opacity-70">{secondaryLabel}</div>
 			{/if}

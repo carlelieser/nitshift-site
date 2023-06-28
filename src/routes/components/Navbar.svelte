@@ -14,7 +14,7 @@
 		: 'bg-white text-teal-950 bg-opacity-80'}  backdrop-blur-lg sticky top-0 z-50"
 >
 	<div class="container mx-auto">
-		<div class="flex items-center justify-between">
+		<div class="flex items-center justify-between flex-col md:flex-row space-y-4 md:space-y-0">
 			<Animate>
 				<div class="flex items-center space-x-2">
 					<img src={Icon} class="w-8 h-8" />

@@ -11,7 +11,7 @@
 				<div class="space-y-4 text-shadow-2xl shadow-amber-100/20">
 					<Animate>
 						<div class="text-7xl md:text-8xl font-display font-bold">
-							The Display Brightness Tool
+							Simplified Brightness Control
 						</div>
 					</Animate>
 					<Animate delay="0.1s">
@@ -30,6 +30,6 @@
 				</div>
 			</Animate>
 		</div>
-		<div class="bg-teal-300 absolute z-0 rounded-full bottom-0 right-0 w-[48rem] h-[48rem] -m-36" />
+		<div class="bg-teal-300 absolute z-0 rounded-full bottom-0 right-0 w-[48rem] h-[48rem] -m-36"></div>
 	</div>
 </div>

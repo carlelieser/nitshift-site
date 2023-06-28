@@ -6,23 +6,23 @@
 		{
 			icon: "public",
 			title: "Global Slider",
-			description: "Set the brightness for all displays with a single slider"
+			description: "Set the brightness for all displays with a single slider."
 		},
 		{
 			icon: "light_mode",
 			title: "Monitor Slider",
-			description: "Set different brightness levels for individual monitors"
+			description: "Set different brightness levels for individual monitors."
 		},
 		{
 			icon: "donut_large",
 			title: "Support for old monitors",
 			description:
-				"With Shade Mode, you can adjust the brightness of any old or hub-connected monitor"
+				"Adjust the brightness of any old or hub-connected monitors with Shade mode."
 		},
 		{
 			icon: "event",
 			title: "Schedule",
-			description: "Easily set your monitor's brightness according to the time of day"
+			description: "Easily set your monitor's brightness according to the time of day."
 		}
 	];
 </script>
@@ -55,14 +55,14 @@
 									>{feature.icon}</span
 								>
 							</div>
-							<div class="text-3xl font-display font-bold">{feature.title}</div>
+							<div class="text-3xl font-display font-bold capitalize">{feature.title}</div>
 							<div class="text-2xl opacity-70">{feature.description}</div>
 						</div>
 					</Animate>
 				{/each}
 			</div>
 		</div>
-		<div class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute left-0 bottom-0 z-0 -m-48" />
-		<div class="bg-teal-900 w-[48rem] h-[48rem] rounded-full absolute left-0 -top-1/3 z-0" />
+		<div class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute left-0 bottom-0 z-0 -m-48"></div>
+		<div class="bg-teal-900 w-[56rem] h-[56rem] rounded-full absolute left-0 -top-1/4 lg:-top-1/3 z-0"></div>
 	</div>
 </div>
