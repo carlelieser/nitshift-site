@@ -30,6 +30,6 @@
 				</div>
 			</Animate>
 		</div>
-		<div class="bg-teal-300 absolute z-0 rounded-full bottom-0 right-0 w-[48rem] h-[48rem] -m-36"></div>
+		<div class="bg-teal-300 absolute z-0 rounded-full bottom-0 right-0 w-[48rem] h-[48rem] -m-36" />
 	</div>
 </div>
