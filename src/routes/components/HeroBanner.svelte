@@ -4,7 +4,7 @@
 	import Animate from "./Animate.svelte";
 </script>
 
-<div class="w-full py-12 md:py-24 bg-amber-100 text-amber-900 overflow-hidden z-0">
+<div class="w-full py-12 md:py-24 bg-amber-100 text-teal-900 overflow-hidden z-0">
 	<div class="container mx-auto px-4 relative">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 z-20 relative items-center">
 			<div class="space-y-8 text-center lg:text-left">
@@ -15,7 +15,7 @@
 						</div>
 					</Animate>
 					<Animate delay="0.1s">
-						<div class="text-4xl md:text-5xl font-display text-amber-500">
+						<div class="text-4xl md:text-5xl font-display text-teal-700">
 							Never fiddle with your monitors ever again.
 						</div>
 					</Animate>
