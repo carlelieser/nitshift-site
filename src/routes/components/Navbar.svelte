@@ -17,7 +17,7 @@
 		<div class="flex items-center justify-between flex-col md:flex-row space-y-4 md:space-y-0">
 			<Animate>
 				<div class="flex items-center space-x-2">
-					<img src={Icon} class="w-8 h-8" />
+					<img src={Icon} class="w-8 h-8" alt="logo" />
 					<div class="font-bold text-3xl font-display">Glimmr</div>
 				</div>
 			</Animate>
