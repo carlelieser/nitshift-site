@@ -19,7 +19,7 @@
 	on:click
 	class="cursor-pointer transition {primary
 		? 'bg-teal-500 hover:bg-teal-800 text-white'
-		: 'bg-amber-300 hover:bg-amber-800 text-amber-800 hover:text-amber-100'} rounded-lg hover:drop-shadow-2xl text-[{size *
+		: 'bg-amber-300 hover:bg-amber-800 text-amber-950 hover:text-amber-100'} rounded-lg hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] inline-block"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
