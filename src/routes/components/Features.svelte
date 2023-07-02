@@ -12,7 +12,7 @@
 		{
 			icon: "🖥️",
 			title: "Excellent monitor support",
-			description: "Tweak brightness levels for all kinds of displays."
+			description: "Tweak brightness levels for all kinds of displays, even ones connected through an adapter or hub."
 		},
 		{
 			icon: "🕑",
@@ -36,7 +36,7 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 items-center z-10 relative">
 			<div>
 				<Animate>
-					<img src={Screenshot} />
+					<img src={Screenshot} alt="app screenshot" style="aspect-ratio: 68 / 75;" />
 				</Animate>
 			</div>
 			<div class="flex flex-col space-y-4 p-6">
