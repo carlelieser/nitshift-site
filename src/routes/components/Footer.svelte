@@ -7,6 +7,5 @@
 >
 	<div class="container mx-auto px-4 relative flex items-center space-y-12 flex-col text-center">
 		<DownloadButton size={4} showFileSize={true} />
-		<div class="font-medium opacity-80">Made with a 💻 and a 🧠 by Carlos Santos</div>
 	</div>
 </div>
