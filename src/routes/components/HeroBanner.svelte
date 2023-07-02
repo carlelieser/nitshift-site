@@ -26,7 +26,7 @@
 			</div>
 			<Animate>
 				<div>
-					<img src={Render} />
+					<img src={Render} alt="hero banner img" style="aspect-ratio: 1/1;"/>
 				</div>
 			</Animate>
 		</div>
