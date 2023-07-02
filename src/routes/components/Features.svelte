@@ -1,5 +1,5 @@
 <script>
-	import Screenshot from "$lib/assets/screenshot.svg";
+	import Screenshot from "$lib/assets/screenshot.png";
 	import Animate from "./Animate.svelte";
 
 	const features = [
