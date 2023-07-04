@@ -11,7 +11,7 @@
         <div class="space-y-8 text-shadow-2xl shadow-amber-100/20">
           <Animate>
             <div class="text-7xl md:text-8xl text-transparent font-display font-bold">
-              <span class="bg-clip-text bg-gradient-to-r from-indigo-300 to-pink-400 text-shadow-4xl shadow-pink-600">
+              <span class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 text-shadow-4xl shadow-pink-500">
                 Simplified Brightness Control
               </span>
             </div>
