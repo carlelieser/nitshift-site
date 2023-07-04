@@ -22,7 +22,7 @@
 	];
 </script>
 
-<div class="bg-teal-950 text-white relative overflow-hidden">
+<div class="bg-gray-950 text-white relative overflow-hidden">
 	<div class="container mx-auto space-y-12 py-24 px-12">
 		<div class="relative z-10 py-24">
 			<Animate>
@@ -59,7 +59,7 @@
 		</div>
 		<div class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute -right-40 -bottom-1/4 z-0" />
 		<div
-			class="bg-teal-900 w-[56rem] h-[56rem] rounded-full absolute -left-40 -top-1/4 lg:-top-1/3 z-0"
+			class="bg-gray-900 w-[56rem] h-[56rem] rounded-full absolute -left-40 -top-1/4 lg:-top-1/3 z-0"
 		/>
 	</div>
 </div>

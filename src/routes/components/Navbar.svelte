@@ -9,9 +9,7 @@
 <svelte:window bind:scrollY={scrollTop} />
 
 <div
-	class="w-full overflow-hidden transition p-5 {scrollTop === 0
-		? 'bg-teal-950 text-white'
-		: 'bg-white text-teal-950 bg-opacity-80'}  backdrop-blur-lg sticky top-0 z-50"
+	class="w-full overflow-hidden transition p-5 bg-black text-white bg-opacity-40 backdrop-blur-lg fixed top-0 z-50"
 >
 	<div class="container mx-auto">
 		<div class="flex items-center justify-between flex-col md:flex-row space-y-4 md:space-y-0">
@@ -21,7 +19,7 @@
 					<div class="font-bold text-3xl font-display">Glimmr</div>
 				</div>
 			</Animate>
-			<DownloadButton primary={scrollTop !== 0} />
+			<DownloadButton primary={scrollTop === 0} />
 		</div>
 	</div>
 </div>
