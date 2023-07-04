@@ -23,7 +23,7 @@
 </script>
 
 <div class="bg-teal-950 text-white relative overflow-hidden">
-	<div class="container mx-auto space-y-12 py-24">
+	<div class="container mx-auto space-y-12 py-24 px-12">
 		<div class="relative z-10 py-24">
 			<Animate>
 				<div class="text-6xl font-display font-bold max-w-2xl mx-auto text-center px-8">
@@ -34,9 +34,9 @@
 			</Animate>
 		</div>
 		<div class="grid grid-cols-1 lg:grid-cols-2 items-center z-10 relative">
-			<div>
+			<div class="flex items-center justify-center">
 				<Animate>
-					<img src={Screenshot} alt="app screenshot" style="aspect-ratio: 68 / 75;" />
+					<img src={Screenshot} class="max-w-[340px] sm:max-w-[500px]" alt="app screenshot" />
 				</Animate>
 			</div>
 			<div class="flex flex-col space-y-4 p-6">

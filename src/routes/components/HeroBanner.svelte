@@ -5,7 +5,7 @@
 </script>
 
 <div class="w-full py-12 md:py-24 bg-amber-100 text-teal-900 overflow-hidden z-0">
-	<div class="container mx-auto px-4 relative">
+	<div class="container mx-auto px-12 relative">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 z-20 relative items-center">
 			<div class="space-y-8 text-center lg:text-left">
 				<div class="space-y-4 text-shadow-2xl shadow-amber-100/20">
