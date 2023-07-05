@@ -18,8 +18,8 @@
 <div
 	on:click
 	class="cursor-pointer transition {primary
-		? 'bg-teal-500 hover:bg-teal-800 text-white'
-		: 'bg-amber-300 hover:bg-amber-800 text-amber-950 hover:text-amber-100'} rounded-lg hover:drop-shadow-2xl text-[{size *
+		? 'bg-teal-500 hover:bg-black text-white hover:text-teal-300'
+		: 'bg-amber-300 hover:bg-black text-amber-950 hover:text-amber-400'} bg-opacity-80 backdrop-blur-3xl rounded-lg hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] inline-block"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"

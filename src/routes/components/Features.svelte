@@ -33,13 +33,13 @@
 				</div>
 			</Animate>
 		</div>
-		<div class="grid grid-cols-1 lg:grid-cols-2 items-center z-10 relative">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center z-10 relative">
 			<div class="flex items-center justify-center">
 				<Animate>
 					<img src={Screenshot} class="max-w-[340px] sm:max-w-[500px]" alt="app screenshot" />
 				</Animate>
 			</div>
-			<div class="flex flex-col space-y-4 p-6">
+			<div class="flex flex-col space-y-4 sm:p-6">
 				{#each features as feature, i}
 					<Animate>
 						<div
