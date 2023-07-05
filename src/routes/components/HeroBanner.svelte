@@ -1,5 +1,5 @@
 <script>
-  import Render from "$lib/assets/bg-compressed.png";
+  import Render from "$lib/assets/bg.jpg";
   import DownloadButton from "./DownloadButton.svelte";
   import Animate from "./Animate.svelte";
 </script>

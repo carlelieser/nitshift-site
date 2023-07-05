@@ -5,8 +5,8 @@ export default {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	theme: {
 		fontFamily: {
-			sans: ['"roboto"'],
-			display: ['"sofia-pro"']
+			sans: ['"roboto"', "sans-serif"],
+			display: ['"sofia-pro"', "sans-serif"]
 		},
 
 		extend: {
