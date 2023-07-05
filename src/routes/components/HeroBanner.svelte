@@ -4,14 +4,14 @@
   import Animate from "./Animate.svelte";
 </script>
 
-<div class="w-full pb-15 pt-40 md:pb-28 md:pt-44 bg-amber-100 text-white overflow-hidden z-0 bg-center bg-no-repeat bg-fixed bg-cover" style="background-image: url('{Render}');">
-  <div class="container max-w-5xl px-12 mx-auto relative pb-20">
+<div class="w-full pb-15 pt-44 md:pb-28 md:pt-44 bg-amber-100 text-white overflow-hidden z-0 bg-center bg-no-repeat bg-fixed bg-cover" style="background-image: url('{Render}');">
+  <div class="container max-w-5xl px-5 md:px-12 mx-auto relative pb-20">
     <div class="text-center">
       <div class="space-y-12">
         <div class="space-y-8 text-shadow-2xl shadow-amber-100/20">
           <Animate>
-            <div class="text-7xl md:text-8xl text-transparent font-display font-bold">
-              <span class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 text-shadow-4xl shadow-pink-500">
+            <div class="text-6xl md:text-8xl text-transparent font-display font-bold flex md:block justify-center">
+              <span class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 text-shadow-xl shadow-indigo-500/40">
                 Simplified Brightness Control
               </span>
             </div>

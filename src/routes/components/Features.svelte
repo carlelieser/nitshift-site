@@ -23,7 +23,7 @@
 </script>
 
 <div class="bg-gray-950 text-white relative overflow-hidden">
-	<div class="container mx-auto space-y-12 py-24 px-12">
+	<div class="container mx-auto space-y-12 py-24 px-6 md:px-12">
 		<div class="relative z-10 py-24">
 			<Animate>
 				<div class="text-6xl font-display font-bold max-w-2xl mx-auto text-center px-8">
