@@ -4,7 +4,7 @@
   import Animate from "./Animate.svelte";
 </script>
 
-<div class="w-full pb-15 pt-44 md:pb-28 md:pt-44 bg-amber-100 text-white overflow-hidden z-0 bg-center bg-no-repeat bg-cover" style="background-image: url('{Render}');">
+<div class="w-full pb-15 pt-44 md:pb-28 md:pt-44 bg-indigo-950 text-white overflow-hidden z-0 bg-center bg-no-repeat bg-cover" style="background-image: url('{Render}');">
   <div class="container max-w-5xl px-5 md:px-12 mx-auto relative pb-20">
     <div class="text-center">
       <div class="space-y-12">
