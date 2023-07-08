@@ -18,9 +18,9 @@
 <div class="fade-in">
 	<Navbar />
 	<HeroBanner />
-	<TrustPilotBanner/>
+	<TrustPilotBanner />
 	<Features />
-	<FAQ/>
+	<FAQ />
 	<DownloadBanner />
 </div>
 

@@ -19,8 +19,14 @@
 <div
 	on:click
 	class="cursor-pointer transition {primary
-		? 'bg-teal-500 text-white ' + (background === 'dark' ? 'hover:bg-white hover:text-teal-950' : 'hover:bg-black hover:text-teal-300')
-		: 'bg-amber-300  text-amber-950 ' + (background === 'dark' ? 'hover:bg-amber-600 hover:text-amber-200' : 'hover:bg-black hover:text-amber-400')} bg-opacity-80 backdrop-blur-3xl rounded-full hover:drop-shadow-2xl text-[{size *
+		? 'bg-teal-500 text-white ' +
+		  (background === 'dark'
+				? 'hover:bg-white hover:text-teal-950'
+				: 'hover:bg-black hover:text-teal-300')
+		: 'bg-amber-300  text-amber-950 ' +
+		  (background === 'dark'
+				? 'hover:bg-amber-600 hover:text-amber-200'
+				: 'hover:bg-black hover:text-amber-400')} bg-opacity-80 backdrop-blur-3xl rounded-full hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] inline-block"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
