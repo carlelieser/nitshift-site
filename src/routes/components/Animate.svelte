@@ -38,6 +38,6 @@
 	}
 
 	.animate {
-		animation: from-bottom 1s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+		animation: from-bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
 	}
 </style>

@@ -27,7 +27,7 @@ const getSetupFileInfo = async (tag) => {
 	const $ = cheerio.load(html);
 	const link = $(`a[href*='/carlelieser/glimmr-release/releases/download/${tag}/']`);
 	const name = link.text().trim();
-	const url = `https://github.com${link.attr("href").trim()}`;
+	const url = `https://glimmr.app/releases/${name}`;
 	const size = link.parent().parent().children().last().children().first().text().trim();
 
 	return {

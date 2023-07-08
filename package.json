@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"cheerio": "^1.0.0-rc.12",
+		"svelte-collapse": "^0.1.2",
 		"svelte-inview": "^4.0.0"
 	}
 }

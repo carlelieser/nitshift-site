@@ -4,6 +4,8 @@
 	import Features from "./components/Features.svelte";
 	import DownloadBanner from "./components/Footer.svelte";
 	import { release } from "./stores.js";
+	import TrustPilotBanner from "./components/TrustPilotBanner.svelte";
+	import FAQ from "./components/FAQ.svelte";
 
 	/** @type {import("./$types").PageData} */
 	export let data;
@@ -16,7 +18,9 @@
 <div class="fade-in">
 	<Navbar />
 	<HeroBanner />
+	<TrustPilotBanner/>
 	<Features />
+	<FAQ/>
 	<DownloadBanner />
 </div>
 
@@ -32,7 +36,6 @@
 
 	.fade-in {
 		opacity: 0;
-		animation: fade-in 1s ease-in-out forwards;
-		animation-delay: 1s;
+		animation: fade-in 0.5s ease-in-out forwards;
 	}
 </style>
