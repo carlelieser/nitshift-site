@@ -4,7 +4,7 @@
 
 	const features = [
 		{
-			icon: "sliders",
+			icon: "light_mode",
 			title: "Brightness fine-tuning",
 			description:
 				"Whether setting the relative brightness of all displays, or adjusting the brightness of a specific one, we've got you covered."
