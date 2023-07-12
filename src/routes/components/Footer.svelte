@@ -7,9 +7,12 @@
 		<div
 			class="flex flex-col-reverse md:space-y-0 md:space-x-8 md:flex-row md:items-center"
 		>
-			<p class="font-display mt-8 md:mt-0 opacity-80">
-				© {new Date().getFullYear()} Glimmr LLC / All rights reserved.
-			</p>
+			<div>
+				<p class="font-display mt-8 md:mt-0 opacity-80">
+					© {new Date().getFullYear()} Glimmr LLC / All rights reserved.
+				</p>
+				<a href="/privacy" class="opacity-50 hover:opacity-100 cursor-pointer">Privacy Policy</a>
+			</div>
 			<DownloadButton size={4} background="light" showFileSize={true} />
 		</div>
 	</div>

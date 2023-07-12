@@ -22,7 +22,7 @@
 <Animate>
 	<Button
 		{primary}
-		icon="download"
+		icon="rocket"
 		label="Download for Windows"
 		{background}
 		secondaryLabel={showFileSize ? $release?.size : false}
