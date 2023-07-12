@@ -1,10 +1,17 @@
 <style>
-    h2 {
-        font-size: 2em;
-	    font-family: "sofia-pro";
+    h1, h2 {
+	    font-family: "sofia-pro", sans-serif;
 		margin-top: 1em;
     }
+
+    h1 {
+        font-size: 4em;
+    }
     
+    h2 {
+        font-size: 2em;
+    }
+
     ul {
 		list-style: unset;
 		margin-left: 2em;
@@ -16,7 +23,9 @@
     }
 </style>
 
-**Last updated: 07/12/2023**
+# Privacy Policy
+
+<span class="font-display opacity-70">**Last updated 07/12/2023**</span>
 
 ## 1. Introduction
 

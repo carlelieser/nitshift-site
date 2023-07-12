@@ -7,7 +7,7 @@
 
 <div class="fade-in bg-white">
 	<Navbar />
-	<div class="container max-w-screen-lg mx-auto py-28 px-12 space-y-12">
+	<div class="container max-w-screen-lg mx-auto py-28 px-12 space-y-4">
 		<a href="/">
 			<Button icon="arrow_back" label="Go home" />
 		</a>
