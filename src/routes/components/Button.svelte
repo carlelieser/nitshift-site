@@ -5,6 +5,7 @@
 	export let primary = true;
 	export let icon = false;
 	export let background = "dark";
+	export let className = "";
 
 	/**
 	 *
@@ -28,7 +29,7 @@
 				? 'hover:bg-amber-600 hover:text-amber-200'
 				: 'hover:bg-black hover:text-amber-400')} bg-opacity-80 backdrop-blur-3xl rounded-full hover:drop-shadow-2xl text-[{size *
 		4 +
-		18}px] inline-block"
+		18}px] inline-block {className}"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
 >
 	<div class="flex items-center space-x-2">

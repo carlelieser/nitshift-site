@@ -22,11 +22,12 @@
 <Animate>
 	<Button
 		{primary}
+		{background}
+		{size}
+		className="download-button"
 		icon="rocket"
 		label="Download for Windows"
-		{background}
 		secondaryLabel={showFileSize ? $release?.size : false}
-		{size}
 		on:click={handleStartDownload}
 	/>
 </Animate>
