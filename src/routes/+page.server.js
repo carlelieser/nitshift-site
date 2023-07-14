@@ -26,14 +26,13 @@ const getSetupFileInfo = async (tag) => {
 	const html = await response.text();
 	const $ = cheerio.load(html);
 	const link = $(`a[href*='/carlelieser/glimmr-release/releases/download/${tag}/']`);
-	const name = link.text().trim();
-	const url = `https://glimmr.app/releases/${name}`;
 	const size = link.parent().parent().children().last().children().first().text().trim();
 
 	return {
-		url,
-		size,
-		name
+		url: `https://glimmr.app/releases/${tag}/glimmr-setup.exe`,
+		name: "glimmr-setup.exe",
+		tag,
+		size
 	};
 };
 
