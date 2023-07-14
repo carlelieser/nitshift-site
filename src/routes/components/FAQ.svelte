@@ -45,7 +45,7 @@
 </script>
 
 <div>
-	<section class="w-full bg-teal-50 border-t border-b">
+	<section class="w-full bg-teal-50">
 		<div class="container max-w-screen-lg mx-auto py-12 text-center space-y-8 px-8">
 			<div class="space-y-4">
 				<h1 class="text-5xl font-display font-bold">FAQ</h1>

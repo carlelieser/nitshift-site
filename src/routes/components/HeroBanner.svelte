@@ -1,11 +1,36 @@
 <script>
+	import { onMount } from "svelte";
+
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
+	import Screenshot from "$lib/assets/screenshot.png";
+	import Background from "$lib/assets/bg.jpg";
+	import BackgroundHighQuality from "$lib/assets/@2x-bg.jpg";
+
+	let bg = Background;
+
+	const loadHighQualityBackground = () => {
+		const img = new Image();
+		img.onload = () => {
+			bg = BackgroundHighQuality;
+		};
+		img.src = BackgroundHighQuality;
+	};
+
+	onMount(() => {
+		loadHighQualityBackground();
+	});
 </script>
 
-<div class="w-full pb-15 pt-44 md:pb-28 md:pt-44 bg-gray-950 text-white overflow-hidden z-0">
-	<div class="container max-w-5xl px-5 md:px-12 mx-auto relative pb-20">
-		<div class="text-center">
+<svelte:head>
+	<link rel="preload" as="image" href={Background} />
+	<link rel="preload" as="image" href={Screenshot} />
+</svelte:head>
+
+<div class="w-full py-12 md:py-24 px-4 bg-gray-950 text-white overflow-hidden z-0 bg-cover bg-center"
+     style="background-image: url({bg})">
+	<div class="container max-w-7xl px-5 md:px-12 mx-auto relative z-10">
+		<div class="text-center lg:text-left grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<div class="space-y-12">
 				<div class="space-y-8 text-shadow-2xl shadow-amber-100/20">
 					<Animate>
@@ -27,6 +52,15 @@
 				</div>
 				<Animate delay="0.2s">
 					<DownloadButton primary={false} showFileSize={true} size={2} />
+				</Animate>
+			</div>
+			<div class="flex items-center justify-center">
+				<Animate>
+					<img
+						src={Screenshot}
+						class="max-w-[340px] sm:max-w-[500px]"
+						alt="app screenshot"
+					/>
 				</Animate>
 			</div>
 		</div>
