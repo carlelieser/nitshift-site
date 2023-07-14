@@ -6,6 +6,7 @@
 	import { release } from "./stores.js";
 	import TrustPilotBanner from "./components/TrustPilotBanner.svelte";
 	import FAQ from "./components/FAQ.svelte";
+	import Loading from "./components/Loading.svelte";
 
 	/** @type {import("./$types").PageData} */
 	export let data;
@@ -14,6 +15,8 @@
 		release.set(data);
 	}
 </script>
+
+<Loading/>
 
 <div class="fade-in">
 	<Navbar />

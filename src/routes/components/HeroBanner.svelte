@@ -6,6 +6,7 @@
 	import Screenshot from "$lib/assets/screenshot.png";
 	import Background from "$lib/assets/bg.jpg";
 	import BackgroundHighQuality from "$lib/assets/@2x-bg.jpg";
+	import { loading } from "../stores.js";
 
 	let bg = Background;
 
@@ -13,6 +14,7 @@
 		const img = new Image();
 		img.onload = () => {
 			bg = BackgroundHighQuality;
+			loading.set(false);
 		};
 		img.src = BackgroundHighQuality;
 	};
