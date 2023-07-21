@@ -47,13 +47,13 @@
 						</div>
 					</Animate>
 					<Animate delay="0.1s">
-						<div class="text-2xl md:text-5xl font-display text-white opacity-80">
-							Multi-monitor brightness adjustment done right.
+						<div class="text-2xl md:text-4xl font-display text-white opacity-80">
+							Easily manage brightness levels for multiple monitors right from your system tray.
 						</div>
 					</Animate>
 				</div>
 				<Animate delay="0.2s">
-					<DownloadButton primary={false} showFileSize={true} size={2} />
+					<DownloadButton primary={false} size={2} showFileSize={true} enableStoreDownload={true} />
 				</Animate>
 			</div>
 			<div class="flex items-center justify-center">

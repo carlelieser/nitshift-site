@@ -13,7 +13,7 @@
 				</p>
 				<a href="/privacy" class="opacity-50 hover:opacity-100 cursor-pointer">Privacy Policy</a>
 			</div>
-			<DownloadButton size={4} background="light" showFileSize={true} />
+			<DownloadButton size={4} background="light" showFileSize={true}/>
 		</div>
 	</div>
 </footer>

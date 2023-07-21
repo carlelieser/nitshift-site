@@ -1,26 +1,37 @@
 <script>
 	import Animate from "./Animate.svelte";
+	import DownloadButton from "./DownloadButton.svelte";
 
 	const features = [
 		{
 			icon: "light_mode",
 			title: "Precise Brightness Control",
-			description: "Take control of your display's luminosity. Whether synchronizing screens or individually tuning a particular display, Glimmr has you covered."
+			description: "Effortlessly adjust display brightness individually or in sync with other displays."
 		},
 		{
 			icon: "schedule",
 			title: "Personalized Brightness Schedules",
-			description: "Adapt your display brightness effortlessly with custom schedules. Tailor your brightness levels to change automatically based on the time of day."
+			description: "Easily modify brightness levels based on the time of day."
 		},
 		{
 			icon: "sync_saved_locally",
 			title: "Universal Monitor Compatibility",
-			description: "Adjust brightness levels seamlessly across diverse displays - including screens connected via adapters or hubs. Glimmr supports them all."
+			description: "Unlike other brightness control apps, Glimmr offers brightness adjustments for all display types, regardless of connection type."
 		},
 		{
 			icon: "model_training",
 			title: "Customizable Brightness Modes",
-			description: "Switch effortlessly between preferred brightness levels for various occasions with our predefined modes. Tailor your visual experience to your tasks with just a click."
+			description: "Switch between brightness levels for different lighting scenarios with predefined modes."
+		},
+		{
+			icon: "sentiment_very_satisfied",
+			title: "Reduced Eye Strain",
+			description: "More control over your brightness means less eye strain and a happier you."
+		},
+		{
+			icon: "rocket_launch",
+			title: "Auto Startup",
+			description: "Glimmr starts up with Windows so your brightness levels are ready to go when you are."
 		}
 	];
 
@@ -28,35 +39,36 @@
 
 <section class="bg-teal-50 text-teal-950 relative overflow-hidden shadow-2xl">
 	<div class="container mx-auto space-y-4 py-24 px-6 md:px-12">
-		<div class="relative z-10 py-24 pt-12">
+		<div class="relative z-10 py-12">
 			<Animate>
 				<div class="text-6xl font-display font-bold max-w-2xl lg:max-w-4xl mx-auto text-center px-8">
-					Gain
-					<span class="text-yellow-500">complete control</span> over your monitors'
-					<span class="text-yellow-500">brightness levels</span>.
+					You <span class="text-indigo-500">deserve this</span>.
 				</div>
 			</Animate>
 		</div>
 		<div class="grid grid-cols-1 gap-4 items-center z-10 relative">
-			<section class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:p-6">
+			<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:p-6">
 				{#each features as feature, i}
 					<Animate>
 						<section
-							class="p-6 bg-teal-950 bg-opacity-80 backdrop-blur-2xl text-white drop-shadow-lg rounded-xl space-y-2 h-full"
+							class="p-6 bg-teal-950 bg-opacity-80 backdrop-blur-2xl text-white drop-shadow-lg rounded-xl space-y-2 h-full text-center flex flex-col justify-center"
 						>
 							<span
-								class="text-yellow-500 drop-shadow-2xl size-48 p-3 rounded-2xl bg-gray-900 bg-opacity-80 inline-block material-symbols-outlined"
+								class="text-yellow-500 drop-shadow-2xl size-48 p-3 rounded-2xl bg-gray-900 bg-opacity-80 inline-block material-symbols-outlined mx-auto"
 							>
 								{feature.icon}
 							</span>
 							<h1 class="text-3xl font-display font-bold capitalize">
 								{feature.title}
 							</h1>
-							<p class="text-2xl opacity-70">{feature.description}</p>
+							<p class="text-xl opacity-80">{feature.description}</p>
 						</section>
 					</Animate>
 				{/each}
 			</section>
+			<div class="mx-auto">
+				<DownloadButton size={4}/>
+			</div>
 		</div>
 		<div
 			class="bg-amber-500 w-[48rem] h-[48rem] rounded-full absolute -right-40 -bottom-1/4 z-0"></div>

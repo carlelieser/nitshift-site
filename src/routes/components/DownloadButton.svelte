@@ -8,6 +8,8 @@
 	export let size = 0;
 	export let background = "dark";
 
+	export let enableStoreDownload = false;
+
 	const handleStartDownload = () => {
 		const link = document.createElement("a");
 		link.href = $release.url;
@@ -20,14 +22,28 @@
 </script>
 
 <Animate>
-	<Button
-		{primary}
-		{background}
-		{size}
-		className="download-button"
-		icon="rocket"
-		label="Download for Windows"
-		secondaryLabel={showFileSize ? $release?.size : false}
-		on:click={handleStartDownload}
-	/>
+	<div class="flex flex-col space-y-2 items-start">
+		<Button
+			{primary}
+			{background}
+			{size}
+			className="download-button"
+			icon="mdi:rocket"
+			label="Download for Windows"
+			secondaryLabel={showFileSize ? $release?.size : false}
+			on:click={handleStartDownload}
+		/>
+		{#if enableStoreDownload}
+			<a href="ms-windows-store://pdp/?productid=XP89FPP9MX5S91">
+				<Button
+					primary={false}
+					{background}
+					{size}
+					className="store-download-button"
+					icon="mdi:microsoft"
+					label="Get it from Microsoft"
+				/>
+			</a>
+		{/if}
+	</div>
 </Animate>

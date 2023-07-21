@@ -12,7 +12,7 @@
 <svelte:window bind:scrollY={scrollTop} bind:innerWidth />
 
 <div
-	class="w-full overflow-hidden transition p-5 bg-black text-white bg-opacity-40 backdrop-blur-2xl sticky top-0 z-50"
+	class="w-full overflow-hidden transition p-5 {scrollTop === 0 ? 'bg-black bg-opacity-40' : 'bg-teal-800 bg-opacity-80 shadow-2xl'} text-white backdrop-blur-2xl sticky top-0 z-50"
 >
 	<div class="container mx-auto">
 		<div class="flex items-center justify-between flex-col md:flex-row space-y-4 md:space-y-0">
