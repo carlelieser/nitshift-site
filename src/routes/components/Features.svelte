@@ -42,7 +42,7 @@
 		<div class="relative z-10 py-12">
 			<Animate>
 				<div class="text-6xl font-display font-bold max-w-2xl lg:max-w-4xl mx-auto text-center px-8">
-					You <span class="text-indigo-500">deserve this</span>.
+					You <span class="text-indigo-500">deserve</span> this.
 				</div>
 			</Animate>
 		</div>
