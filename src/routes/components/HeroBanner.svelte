@@ -1,31 +1,10 @@
 <script>
-	import { onMount } from "svelte";
-
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
 	import Screenshot from "$lib/assets/screenshot.png";
-	import Background from "$lib/assets/bg.jpg";
-	import BackgroundHighQuality from "$lib/assets/@2x-bg.jpg";
-	import { loading } from "../stores.js";
-
-	let bg = Background;
-
-	const loadHighQualityBackground = () => {
-		const img = new Image();
-		img.onload = () => {
-			bg = BackgroundHighQuality;
-			loading.set(false);
-		};
-		img.src = BackgroundHighQuality;
-	};
-
-	onMount(() => {
-		loadHighQualityBackground();
-	});
 </script>
 
 <svelte:head>
-	<link rel="preload" as="image" href={Background} />
 	<link rel="preload" as="image" href={Screenshot} />
 </svelte:head>
 
