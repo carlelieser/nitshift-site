@@ -1,7 +1,14 @@
 <script>
+	import { onMount } from "svelte";
+
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
 	import Screenshot from "$lib/assets/screenshot.png";
+	import { loading } from "../stores.js";
+
+	onMount(() => {
+		loading.set(false)
+	});
 </script>
 
 <svelte:head>
