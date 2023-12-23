@@ -41,20 +41,20 @@
 	<div class="container mx-auto space-y-4 py-24 px-6 md:px-12">
 		<div class="relative z-10 py-12">
 			<Animate>
-				<div class="text-6xl font-display font-bold max-w-2xl lg:max-w-4xl mx-auto text-center px-8">
-					You <span class="text-indigo-500">deserve</span> this.
+				<div class="text-4xl lg:text-6xl font-display font-bold max-w-2xl lg:max-w-4xl mx-auto text-center px-8">
+					Struggling with <span class="text-indigo-500">Multi-Monitor Brightness</span>? Windows Doesn't Help, <span class="text-indigo-500">But We Do</span>.
 				</div>
 			</Animate>
 		</div>
 		<div class="grid grid-cols-1 gap-4 items-center z-10 relative">
-			<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:p-6">
+			<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:p-6">
 				{#each features as feature, i}
 					<Animate>
 						<section
-							class="p-6 bg-teal-950 bg-opacity-80 backdrop-blur-2xl text-white drop-shadow-lg rounded-xl space-y-2 h-full text-center flex flex-col justify-center"
+							class="p-8 bg-white bg-opacity-80 backdrop-blur-2xl text-black drop-shadow-lg rounded-xl space-y-4 h-full text-center flex flex-col justify-center"
 						>
 							<span
-								class="text-yellow-500 drop-shadow-2xl size-48 p-3 rounded-2xl bg-gray-900 bg-opacity-80 inline-block material-symbols-outlined mx-auto"
+								class="text-white drop-shadow-2xl size-48 p-3 rounded-2xl bg-teal-500 bg-opacity-80 inline-block material-symbols-outlined mx-auto"
 							>
 								{feature.icon}
 							</span>

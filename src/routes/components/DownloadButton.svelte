@@ -22,7 +22,7 @@
 </script>
 
 <Animate>
-	<div class="flex flex-col space-y-2 items-start">
+	<div class="flex flex-col space-y-2 items-center lg:items-start">
 		<Button
 			{primary}
 			{background}

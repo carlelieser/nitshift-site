@@ -4,10 +4,6 @@
 
 	const data = [
 		{
-			question: "What's the catch?",
-			answer: "No catch and no strings attached. Glimmr is completely free to use. However, for more advanced features like Shade Mode and Scheduling, you can purchase a premium license from with-in the app for as little as $1.99."
-		},
-		{
 			question: "How does it work?",
 			answer: "Glimmr simplifies brightness adjustment by directly interfacing with your monitors through DDC/CI. This provides the same outcome as using the built-in buttons on the monitor's back or sides, but with enhanced convenience and ease-of-use."
 		},
@@ -45,11 +41,11 @@
 </script>
 
 <div>
-	<section class="w-full bg-teal-50">
+	<section class="w-full bg-teal-500 text-white">
 		<div class="container max-w-screen-lg mx-auto py-12 text-center space-y-8 px-8">
 			<div class="space-y-4">
 				<h1 class="text-5xl font-display font-bold">FAQ</h1>
-				<p class="opacity-70 text-2xl">You've got questions, we've got answers.</p>
+				<p class="opacity-80 text-2xl">You've got questions, we've got answers.</p>
 			</div>
 			<div class="space-y-6">
 				{#each data as content, i}
@@ -61,7 +57,7 @@
 		</div>
 		<div class="py-12 text-center px-8">
 			<span class="opacity-60">Feel free to send us an email at</span>
-			<a href="mailto:support@glimmr.app" class="text-teal-500 hover:text-teal-700"
+			<a href="mailto:support@glimmr.app" class="text-teal-300 hover:text-teal-700"
 				>support@glimmr.app</a
 			>
 			<span class="opacity-60">if you have any questions!</span>

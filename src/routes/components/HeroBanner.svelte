@@ -29,8 +29,7 @@
 	<link rel="preload" as="image" href={Screenshot} />
 </svelte:head>
 
-<div class="w-full py-12 md:py-24 px-4 bg-gray-950 text-white overflow-hidden z-0 bg-cover bg-center"
-     style="background-image: url({bg})">
+<div class="w-full py-12 md:py-24 px-4 text-white overflow-hidden z-0 bg-blue-800">
 	<div class="container max-w-7xl px-5 md:px-12 mx-auto relative z-10">
 		<div class="text-center lg:text-left grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<div class="space-y-12">
@@ -40,7 +39,7 @@
 							class="text-6xl md:text-8xl text-transparent font-display font-bold flex md:block justify-center"
 						>
 							<span
-								class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 text-shadow-xl shadow-indigo-500/20"
+								class="bg-clip-text bg-gradient-to-r from-yellow-500 to-white"
 							>
 								Simplified Brightness Control
 							</span>

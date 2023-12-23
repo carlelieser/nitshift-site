@@ -10,7 +10,7 @@
 <section
 	class=" p-6 rounded-lg cursor-pointer transition {open
 		? 'bg-gray-950 text-white shadow-2xl'
-		: 'bg-white text-black hover:bg-teal-500 hover:text-white shadow-xl hover:shadow-2xl'}"
+		: 'bg-white text-black hover:bg-teal-700 hover:text-white shadow-xl hover:shadow-2xl'}"
 	on:click={() => (open = !open)}
 >
 	<div class="flex items-center justify-between text-left">
