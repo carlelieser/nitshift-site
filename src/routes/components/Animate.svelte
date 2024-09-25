@@ -2,6 +2,7 @@
 	import { inview } from "svelte-inview";
 
 	export let delay = "0s";
+	export let className = "";
 
 	let isInView = false;
 
@@ -20,6 +21,7 @@
 	on:inview_change={handleChange}
 	class:animate={isInView}
 	class:opacity-0={true}
+	class="{className}"
 	style="--delay: {delay};"
 >
 	<slot />

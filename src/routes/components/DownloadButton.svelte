@@ -1,7 +1,6 @@
 <script>
 	import Button from "./Button.svelte";
-	import Animate from "./Animate.svelte";
-	import { release } from "../stores.js";
+	import { release } from "../stores";
 
 	export let primary = true;
 	export let showFileSize = false;
@@ -21,29 +20,25 @@
 	};
 </script>
 
-<Animate>
-	<div class="flex flex-col space-y-2 items-center lg:items-start">
+<Button
+	{primary}
+	{background}
+	{size}
+	className="download-button"
+	icon="mdi:microsoft"
+	label="Download for Windows"
+	secondaryLabel={showFileSize ? $release?.size : false}
+	on:click={handleStartDownload}
+/>
+{#if enableStoreDownload}
+	<a href="ms-windows-store://pdp/?productid=XP89FPP9MX5S91">
 		<Button
-			{primary}
+			primary={false}
 			{background}
 			{size}
-			className="download-button"
-			icon="mdi:rocket"
-			label="Download for Windows"
-			secondaryLabel={showFileSize ? $release?.size : false}
-			on:click={handleStartDownload}
+			className="store-download-button"
+			icon="mdi:shopping"
+			label="Get it from the Microsoft Store"
 		/>
-		{#if enableStoreDownload}
-			<a href="ms-windows-store://pdp/?productid=XP89FPP9MX5S91">
-				<Button
-					primary={false}
-					{background}
-					{size}
-					className="store-download-button"
-					icon="mdi:microsoft"
-					label="Get it from Microsoft"
-				/>
-			</a>
-		{/if}
-	</div>
-</Animate>
+	</a>
+{/if}

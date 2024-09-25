@@ -1,11 +1,11 @@
 <script>
-	import TrustpilotLogo from "$lib/assets/trustpilot.svg";
+	import TrustpilotLogo from "$lib/client/assets/trustpilot.svg";
 </script>
 
-<section class="w-full bg-amber-300 text-black shadow-2xl">
-	<div class="container max-w-sm mx-auto py-12">
-		<div class="flex items-center justify-center space-x-2">
-			<div class="font-display text-2xl">We're on</div>
+<section class="w-full bg-zinc-800 text-white shadow-2xl">
+	<div class="container max-w-md mx-auto py-12">
+		<div class="flex items-center justify-center space-x-4">
+			<div class="font-display text-3xl">We're on</div>
 			<a href="https://www.trustpilot.com/review/glimmr.app">
 				<img
 					src={TrustpilotLogo}

@@ -7,6 +7,10 @@ body {
 	@apply bg-gray-950;
 }
 
+p{
+	@apply leading-relaxed;
+}
+
 * {
 	user-select: none;
 }
@@ -31,26 +35,35 @@ span.size-48 {
 	font-variation-settings: "OPSZ" 48;
 }
 
+.section-container {
+	@apply w-full px-4;
+}
+
+.section {
+	@apply container max-w-screen-2xl mx-auto px-8 md:px-12;
+}
+
 @font-face {
-	src: url("./lib/fonts/roboto-regular.ttf");
+	src: url("$lib/client/fonts/roboto-regular.ttf");
 	font-family: "roboto";
 	font-weight: 400;
 }
 
 @font-face {
-	src: url("./lib/fonts/roboto-medium.ttf");
+	src: url("$lib/client/fonts/roboto-medium.ttf");
 	font-family: "roboto";
 	font-weight: 500;
 }
 
 @font-face {
-	src: url("./lib/fonts/sofia-pro-regular.ttf");
+	src: url("$lib/client/fonts/sofia-pro-regular.ttf");
 	font-family: "sofia-pro";
 	font-weight: 400;
 }
 
 @font-face {
-	src: url("./lib/fonts/sofia-pro-bold.ttf");
+	src: url("$lib/client/fonts/sofia-pro-bold.ttf");
 	font-family: "sofia-pro";
 	font-weight: bold;
 }
+

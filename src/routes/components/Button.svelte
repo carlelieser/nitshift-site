@@ -1,11 +1,11 @@
-<script>
-	import Icon from '@iconify/svelte';
+<script lang="ts">
+	import Icon from "@iconify/svelte";
 
 	export let label = "";
 	export let secondaryLabel = "";
 
 	export let primary = true;
-	export let icon = false;
+	export let icon: boolean | string = false;
 	export let background = "dark";
 	export let className = "";
 
@@ -26,10 +26,10 @@
 		  (background === 'dark'
 				? 'hover:bg-white hover:text-black'
 				: 'hover:bg-black hover:text-teal-300')
-		: 'bg-white text-black ' +
+		: 'bg-teal-900/10 text-black ' +
 		  (background === 'dark'
 				? 'hover:bg-teal-500 hover:text-white'
-				: 'hover:bg-black hover:text-teal-500')} bg-opacity-90 backdrop-blur-3xl rounded-full hover:drop-shadow-2xl text-[{size *
+				: 'hover:bg-black hover:text-teal-500')} rounded-2xl bg-opacity-90 backdrop-blur-3xl hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] inline-block {className}"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
@@ -38,8 +38,8 @@
 		{#if icon}
 			<Icon {icon} style="width: 24px; height: 24px; opacity: 70%;" />
 		{/if}
-		<div class="flex flex-col items-start sm:space-x-2 sm:flex-row sm:items-center">
-			<div class="font-medium whitespace-nowrap">{label}</div>
+		<div class="flex flex-col items-start sm:space-x-2 sm:flex-row sm:items-center truncate">
+			<div class="font-medium whitespace-nowrap text-md">{label}</div>
 			{#if secondaryLabel}
 				<div class="opacity-70 text-xs sm:text-sm">{secondaryLabel}</div>
 			{/if}

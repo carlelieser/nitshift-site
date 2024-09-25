@@ -1,11 +1,11 @@
 <script>
 	import Navbar from "../components/Navbar.svelte";
-	import Privacy from "$lib/privacy.md";
+	import Privacy from "$lib/client/privacy.md";
 	import Button from "../components/Button.svelte";
 	import Footer from "../components/Footer.svelte";
 	import Loading from "../components/Loading.svelte";
 	import { onMount } from "svelte";
-	import { loading } from "../stores.js";
+	import { loading } from "../stores.ts";
 
 	onMount(() => {
 		loading.set(false);

@@ -41,26 +41,19 @@
 </script>
 
 <div>
-	<section class="w-full bg-teal-500 text-white">
-		<div class="container max-w-screen-lg mx-auto py-12 text-center space-y-8 px-8">
-			<div class="space-y-4">
-				<h1 class="text-5xl font-display font-bold">FAQ</h1>
-				<p class="opacity-80 text-2xl">You've got questions, we've got answers.</p>
-			</div>
+	<section class="w-full bg-white border-t border-gray-100">
+		<div class="section flex flex-col items-center py-24 gap-12 text-center">
 			<div class="space-y-6">
+				<h1 class="text-5xl md:text-6xl font-display font-bold">Support</h1>
+				<p class="opacity-70 text-2xl">Quick answers to get you started without a hitch.</p>
+			</div>
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 				{#each data as content, i}
 					<Animate>
 						<QA question={content.question} answer={content.answer} />
 					</Animate>
 				{/each}
 			</div>
-		</div>
-		<div class="py-12 text-center px-8">
-			<span class="opacity-60">Feel free to send us an email at</span>
-			<a href="mailto:support@glimmr.app" class="text-teal-300 hover:text-teal-700"
-				>support@glimmr.app</a
-			>
-			<span class="opacity-60">if you have any questions!</span>
 		</div>
 	</section>
 </div>

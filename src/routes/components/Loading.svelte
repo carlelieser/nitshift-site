@@ -1,5 +1,5 @@
 <script>
-	import { loading } from "../stores.js";
+	import { loading } from "../stores.ts";
 </script>
 
 <style>
