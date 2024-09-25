@@ -11,11 +11,15 @@
 
 <svelte:window bind:scrollY={scrollTop} bind:innerWidth />
 
-<div class="section-container flex items-center justify-center sticky top-0 z-50 bg-transparent py-4">
-	<div
-		class="transition mx-auto text-white"
-	>
-		<div class="mx-auto {scrollTop === 0 ? 'bg-teal-950' : 'bg-white/90'} transition backdrop-blur-3xl p-4 px-8 rounded-3xl">
+<div
+	class="section-container flex items-center justify-center sticky top-0 z-50 bg-transparent py-4"
+>
+	<div class="transition mx-auto text-white">
+		<div
+			class="mx-auto {scrollTop === 0
+				? 'bg-teal-950'
+				: 'bg-white/90'} transition backdrop-blur-3xl p-4 px-8 rounded-3xl"
+		>
 			<div class="flex items-center justify-between flex-col md:flex-row gap-4 lg:gap-12">
 				<Animate>
 					<div class="flex items-center space-x-2">
@@ -29,4 +33,3 @@
 		</div>
 	</div>
 </div>
-

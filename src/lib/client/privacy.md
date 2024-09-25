@@ -37,8 +37,8 @@ we collect from you when you use our application.
 
 Glimmr collects the following data:
 
-- Information regarding your monitor settings and adjustments you make within the application.
-- Usage statistics to improve our services.
+-   Information regarding your monitor settings and adjustments you make within the application.
+-   Usage statistics to improve our services.
 
 Please note that we do not collect any sensitive personal data or information that can be used to identify you
 personally.
@@ -47,15 +47,15 @@ personally.
 
 We collect data and process data when you:
 
-- Use or view our application via your device's analytics.
-- Voluntarily provide feedback on any of our message boards or via email.
+-   Use or view our application via your device's analytics.
+-   Voluntarily provide feedback on any of our message boards or via email.
 
 ## 4. How will we use your data?
 
 We collect your data so that we can:
 
-- Improve our services.
-- Understand how you use our app to tailor it to customer needs.
+-   Improve our services.
+-   Understand how you use our app to tailor it to customer needs.
 
 ## 5. How do we store your data?
 
@@ -68,15 +68,15 @@ We will keep your usage data indefinitely or until we are asked to delete it.
 Glimmr would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the
 following:
 
-- The right to access – You have the right to request copies of your personal data.
-- The right to rectification – You have the right to request that we correct any information you believe is inaccurate.
-- The right to erasure – You have the right to request that we erase your personal data, under certain conditions.
-- The right to restrict processing – You have the right to request that we restrict the processing of your personal
-  data, under certain conditions.
-- The right to object to processing – You have the right to object to our processing of your personal data, under
-  certain conditions.
-- The right to data portability – You have the right to request that we transfer the data that we have collected to
-  another organization, or directly to you, under certain conditions.
+-   The right to access – You have the right to request copies of your personal data.
+-   The right to rectification – You have the right to request that we correct any information you believe is inaccurate.
+-   The right to erasure – You have the right to request that we erase your personal data, under certain conditions.
+-   The right to restrict processing – You have the right to request that we restrict the processing of your personal
+    data, under certain conditions.
+-   The right to object to processing – You have the right to object to our processing of your personal data, under
+    certain conditions.
+-   The right to data portability – You have the right to request that we transfer the data that we have collected to
+    another organization, or directly to you, under certain conditions.
 
 ## 7. Privacy policies of other websites
 

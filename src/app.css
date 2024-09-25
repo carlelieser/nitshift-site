@@ -7,7 +7,7 @@ body {
 	@apply bg-gray-950;
 }
 
-p{
+p {
 	@apply leading-relaxed;
 }
 
@@ -67,3 +67,8 @@ span.size-48 {
 	font-weight: bold;
 }
 
+@font-face {
+	src: url("$lib/client/fonts/sofia-pro-black.otf");
+	font-family: "sofia-pro";
+	font-weight: 900;
+}

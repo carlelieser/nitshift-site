@@ -21,7 +21,7 @@
 	on:inview_change={handleChange}
 	class:animate={isInView}
 	class:opacity-0={true}
-	class="{className}"
+	class={className}
 	style="--delay: {delay};"
 >
 	<slot />
