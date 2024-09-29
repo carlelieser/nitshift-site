@@ -3,7 +3,7 @@
 
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
-	import demo from "$lib/client/assets/glimmr-product-diagram.png";
+	import demo from "$lib/client/assets/glimmr-product-diagram.png?enhanced";
 	import { loading } from "../stores";
 	import Detail from "./Detail.svelte";
 
@@ -40,7 +40,7 @@
 
 <svelte:window bind:scrollY />
 
-<div class="section-container bg-white text-black relative z-0 pt-12">
+<div class="section-container !px-0 md:!px-4 bg-white text-black relative z-0 pt-12">
 	<div class="section p-12 md:p-24 bg-teal-900/10 rounded-3xl relative z-20 bg-repeat bg-contain">
 		<div class="section relative z-10">
 			<div
@@ -50,10 +50,10 @@
 					<div class="space-y-8 text-shadow-2xl shadow-amber-100/10">
 						<Animate>
 							<div
-								class="max-w-sm mx-auto lg:mx-0 lg:text-left text-center text-5xl lg:text-7xl text-transparent font-display font-bold flex md:block justify-center"
+								class="max-w-sm mx-auto lg:mx-0 lg:text-left text-center text-5xl md:text-6xl lg:text-7xl text-transparent font-display font-bold flex md:block justify-center"
 							>
-								<span class="bg-clip-text bg-black capitalize leading-snug">
-									Meet the ultimate brightness tool
+								<span class="bg-clip-text bg-black capitalize leading-tight">
+									Simplified Brightness Control
 								</span>
 							</div>
 						</Animate>
@@ -77,11 +77,11 @@
 					</Animate>
 				</div>
 				<div
-					class="shrink-0 -order-1 xl:order-1 flex items-center justify-center w-full h-full relative"
+					class="shrink-0 -order-1 lg:order-1 flex items-center justify-center w-full h-full relative"
 				>
-					<div class="w-full max-w-2xl">
+					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
-							<img src={demo} alt="demo" />
+							<enhanced:img src={demo} class="min-w-96" alt="demo"/>
 						</Animate>
 					</div>
 				</div>

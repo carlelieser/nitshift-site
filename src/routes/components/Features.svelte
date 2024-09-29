@@ -47,7 +47,7 @@
 			<h1
 				class="text-6xl font-display text-black font-bold text-center leading-tight md:leading-tight"
 			>
-				Designed for simplicity
+				Designed for Simplicity
 			</h1>
 			<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 p-2 md:p-0">
 				{#each features as feature, i}

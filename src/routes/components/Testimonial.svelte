@@ -1,8 +1,10 @@
 <script lang="ts">
+	import type { Picture } from 'vite-imagetools';
+
 	export let message: string = "";
 	export let name: string = "";
 	export let title: string = "";
-	export let avatar: string = "";
+	export let avatar: Picture;
 </script>
 
 <div class="bg-teal-900/10 rounded-3xl p-8 flex flex-col gap-8 h-full">
@@ -17,7 +19,7 @@
 	</div>
 	<div class="flex items-center space-x-2">
 		<div class="rounded-full overflow-hidden">
-			<img src={avatar} width="48" height="48" />
+			<enhanced:img src={avatar} width="48" height="48" />
 		</div>
 		<div>
 			<div class="font-medium opacity-90">{name}</div>
