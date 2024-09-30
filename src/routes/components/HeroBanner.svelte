@@ -41,7 +41,9 @@
 <svelte:window bind:scrollY />
 
 <div class="section-container bg-white text-white relative z-0 pt-12">
-	<div class="section p-12 md:p-24 !py-36 bg-zinc-900 rounded-3xl relative z-20 bg-repeat bg-contain">
+	<div
+		class="section p-12 md:p-24 !py-36 bg-zinc-900 rounded-3xl relative z-20 bg-repeat bg-contain"
+	>
 		<div class="section relative z-10">
 			<div
 				class="text-center xl:text-left grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
@@ -82,7 +84,7 @@
 				>
 					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
-							<enhanced:img src={demo} class="min-w-80" alt="demo"/>
+							<enhanced:img src={demo} class="min-w-80" alt="demo" />
 						</Animate>
 					</div>
 				</div>

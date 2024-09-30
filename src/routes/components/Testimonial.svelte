@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Picture } from 'vite-imagetools';
+	import type { Picture } from "vite-imagetools";
 
 	export let message: string = "";
 	export let name: string = "";

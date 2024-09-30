@@ -8,17 +8,20 @@
 		{
 			video: brightnessModeDemo,
 			title: "Create & Apply Custom Brightness Modes",
-			description: "Whether you're working, gaming, or watching a movie, with just a few clicks, you can set the perfect brightness for your display."
+			description:
+				"Whether you're working, gaming, or watching a movie, with just a few clicks, you can set the perfect brightness for your display."
 		},
 		{
 			video: scheduleChangeDemo,
 			title: "Use Custom Schedules to Automate Brightness Changes",
-			description: "Create custom schedules to automatically adjust your display's brightness without lifting a finger."
+			description:
+				"Create custom schedules to automatically adjust your display's brightness without lifting a finger."
 		},
 		{
 			video: globalChangeDemo,
 			title: "Adjust Monitors Individually or in Sync",
-			description: "Change the brightness of all your monitors at once or adjust them individually to suit your needs."
+			description:
+				"Change the brightness of all your monitors at once or adjust them individually to suit your needs."
 		}
 	];
 </script>
@@ -26,9 +29,7 @@
 <div class="section-container">
 	<div class="section !px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 		{#each features as feature, i}
-			<Highlight
-				{...feature}
-			/>
+			<Highlight {...feature} />
 		{/each}
 	</div>
 </div>
