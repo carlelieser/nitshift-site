@@ -24,8 +24,8 @@
 <div class="fade-in bg-white">
 	<Navbar />
 	<HeroBanner />
-	<TrustedBy />
 	<Highlights />
+	<TrustedBy />
 	<Intro />
 	<Features />
 	<Testimonials />

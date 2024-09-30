@@ -28,7 +28,7 @@
 				: 'hover:bg-black hover:text-teal-300')
 		: 'bg-teal-900/10 text-black ' +
 		  (background === 'dark'
-				? 'hover:bg-teal-500 hover:text-white'
+				? 'text-white hover:bg-teal-500 hover:text-white'
 				: 'hover:bg-black hover:text-teal-500')} rounded-2xl bg-opacity-90 backdrop-blur-3xl hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] inline-block {className}"

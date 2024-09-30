@@ -16,7 +16,7 @@
 >
 	<div class="transition mx-auto text-white">
 		<div
-			class="mx-auto {scrollTop === 0
+			class="mx-auto shadow-sm {scrollTop === 0
 				? 'bg-teal-950'
 				: 'bg-white/90'} transition backdrop-blur-3xl p-4 px-8 rounded-3xl"
 		>
@@ -27,7 +27,7 @@
 					</div>
 				</Animate>
 				{#if innerWidth > 600 && showDownloadButton}
-					<DownloadButton primary={scrollTop === 0} size={2} />
+					<DownloadButton background="light" primary={scrollTop === 0} size={2} />
 				{/if}
 			</div>
 		</div>

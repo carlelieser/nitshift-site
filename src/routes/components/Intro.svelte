@@ -5,8 +5,8 @@
 	import Icon from "@iconify/svelte";
 </script>
 
-<section class="section-container my-24">
-	<div class="section">
+<section class="section-container">
+	<div class="section p-36 rounded-3xl bg-teal-900/5 text-black">
 			<SplitScreen>
 				<div slot="left">
 					<video class="w-full h-full rounded-3xl" autoplay loop muted playsinline>

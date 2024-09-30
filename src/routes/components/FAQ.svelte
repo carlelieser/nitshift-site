@@ -46,7 +46,7 @@
 			<div class="space-y-6">
 				<h1 class="text-5xl md:text-6xl font-display font-bold">Got questions?</h1>
 				<p class="opacity-70 text-2xl">
-					We've got answers. Check out our most frequently asked questions below.
+					We've got answers. Check out our frequently asked questions below.
 				</p>
 			</div>
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">

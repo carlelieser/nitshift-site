@@ -41,8 +41,8 @@
 	];
 </script>
 
-<section class="bg-teal-900/10 text-black relative overflow-hidden">
-	<div class="container mx-auto space-y-4 py-36 px-6 md:px-12">
+<div class="section-container bg-teal-900/10 mt-24">
+	<div class="section py-24">
 		<div class="grid grid-cols-1 gap-12 items-center z-10 relative">
 			<h1
 				class="text-6xl font-display text-black font-bold text-center leading-tight md:leading-tight"
@@ -82,4 +82,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</div>
