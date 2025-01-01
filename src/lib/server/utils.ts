@@ -38,6 +38,7 @@ export const handleRequest = (handler: RequestHandler, secure = true): RequestHa
 						message: "Unauthorized"
 					});
 				}
+				event.locals.user = await response.json();
 			}
 		}
 
