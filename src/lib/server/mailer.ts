@@ -5,6 +5,7 @@ import * as nodemailer from "nodemailer";
 import emailVerificationTemplate from "./templates/email-verification.html?raw";
 import licenseVerifiedTemplate from "./templates/license-verified.html?raw";
 import { SMTP_FROM, SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER } from "$env/static/private";
+import { PUBLIC_ICON_URL } from "$env/static/public";
 
 export const config: SMTPTransport.Options = {
 	service: "Gmail",
@@ -21,8 +22,8 @@ export const getEmailVerificationConfig = (email: string, code: string): Mailer.
 	subject: "Your single-use code",
 	html: emailVerificationTemplate.replace("[CODE]", code),
 	headers: {
-		"X-Face": "https://glimmr.app/images/icon.png",
-		"X-Image-URL": "https://glimmr.app/images/icon.png"
+		"X-Face": PUBLIC_ICON_URL,
+		"X-Image-URL": PUBLIC_ICON_URL
 	}
 });
 
@@ -33,8 +34,8 @@ export const getLicenseVerifiedConfig = (email: string): Mailer.Options => ({
 	subject: "License verified",
 	html: licenseVerifiedTemplate,
 	headers: {
-		"X-Face": "https://glimmr.app/images/icon.png",
-		"X-Image-URL": "https://glimmr.app/images/icon.png"
+		"X-Face": PUBLIC_ICON_URL,
+		"X-Image-URL": PUBLIC_ICON_URL
 	}
 });
 
