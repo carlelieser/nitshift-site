@@ -7,8 +7,7 @@ import licenseVerifiedTemplate from "./templates/license-verified.html?raw";
 import { SMTP_FROM, SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER } from "$env/static/private";
 
 export const config: SMTPTransport.Options = {
-	host: SMTP_HOST,
-	port: Number(SMTP_PORT),
+	service: "Gmail",
 	auth: {
 		user: SMTP_USER,
 		pass: SMTP_PASSWORD
@@ -55,12 +54,15 @@ export const getBugReportConfig = async (title: string, description: string, mac
 	};
 };
 
-export const sendLicenseVerifiedEmail = async (email: string) => {
+export const sendMail = async (options: Mailer.Options) => {
 	const transporter = nodemailer.createTransport(config);
-	await transporter.sendMail(getLicenseVerifiedConfig(email));
+	await transporter.sendMail(options);
+};
+
+export const sendLicenseVerifiedEmail = async (email: string) => {
+	return sendMail(getLicenseVerifiedConfig(email));
 };
 
 export const sendEmailVerification = async (email: string, code: string) => {
-	const transporter = nodemailer.createTransport(config);
-	await transporter.sendMail(getEmailVerificationConfig(email, code));
+	return sendMail(getEmailVerificationConfig(email, code));
 };
