@@ -5,6 +5,13 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			secret?: string | null;
+			user?: {
+				id: string;
+				email: string;
+				license: string;
+				trialAvailability: boolean;
+				trialStartDate: number | null;
+			};
 		}
 
 		interface PageData {
