@@ -1,10 +1,10 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
 import admin from "firebase-admin";
 import { randomUUID } from "crypto";
-import { sendEmailVerification, sendLicenseVerifiedEmail } from "$lib/server/mailer";
+import { sendEmailVerification } from "$lib/server/mailer";
 import { handleRequest } from "$lib/server/utils";
 
-export const GET: RequestHandler = handleRequest(async ({ url }) => {
+export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	const { searchParams } = url;
 	const email = searchParams.get("email");
 	const code = searchParams.get("code");
@@ -19,7 +19,14 @@ export const GET: RequestHandler = handleRequest(async ({ url }) => {
 		if (verificationCode.exists) {
 			const verified = verificationCode.data()?.code === code;
 
-			if (verified) await sendLicenseVerifiedEmail(email);
+			if (verified) {
+				await verificationCode.ref.delete();
+				const userRef = admin
+					.firestore()
+					.collection("users")
+					.doc(locals.user?.id as string);
+				await userRef.set({ email }, { merge: true });
+			}
 
 			return json({ verified }, { status: verified ? 200 : 403 });
 		}
