@@ -1,5 +1,3 @@
-import { PUBLIC_GLIMMR_API_KEY } from "$env/static/public";
-import { SERVER_HOST } from "$env/static/private";
 import { error, type RequestHandler } from "@sveltejs/kit";
 
 export const isProduction = process.env.NODE_ENV === "production";
@@ -20,26 +18,13 @@ export const handleRequest = (handler: RequestHandler, secure = true): RequestHa
 		}
 
 		if (secure && secret) {
-			const isUsingSecretKey = secret === PUBLIC_GLIMMR_API_KEY;
-			const isClientRequest = secret !== PUBLIC_GLIMMR_API_KEY;
-			const isNotFromServer = event.getClientAddress() !== SERVER_HOST;
-			const isMaliciousRequest = isUsingSecretKey && isNotFromServer && isProduction;
-
-			if (isMaliciousRequest) {
+			const response = await event.fetch(`/api/users/${secret}`);
+			if (!response.ok) {
 				error(403, {
 					message: "Unauthorized"
 				});
 			}
-
-			if (isClientRequest) {
-				const response = await event.fetch(`/api/users/${secret}`);
-				if (!response.ok) {
-					error(403, {
-						message: "Unauthorized"
-					});
-				}
-				event.locals.user = await response.json();
-			}
+			event.locals.user = await response.json();
 		}
 
 		return handler(event);

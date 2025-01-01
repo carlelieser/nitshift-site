@@ -50,4 +50,4 @@ export const GET: RequestHandler = handleRequest(async ({ url }) => {
 	});
 
 	throw redirect(303, paymentLink.url);
-});
+}, false);

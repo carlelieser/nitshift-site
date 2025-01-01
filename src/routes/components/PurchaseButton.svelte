@@ -4,7 +4,6 @@
 	import List, { Item } from "@smui/list";
 	import { page } from "$app/stores";
 	import { goto } from "$app/navigation";
-	import { PUBLIC_GLIMMR_API_KEY } from "$env/static/public";
 
 	let isOpen: boolean = false;
 
@@ -19,7 +18,7 @@
 	<Menu bind:open={isOpen} anchorCorner="BOTTOM_LEFT" class="w-full mt-1 rounded-2xl">
 		<List>
 			{#each $page.data.prices as price}
-				<Item onSMUIAction={() => goto(`/checkout?price=${price}&key=${PUBLIC_GLIMMR_API_KEY}`)}>${price}</Item>
+				<Item onSMUIAction={() => goto(`/checkout?price=${price}`)}>${price}</Item>
 			{/each}
 		</List>
 	</Menu>
