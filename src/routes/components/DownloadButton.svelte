@@ -3,7 +3,6 @@
 	import { release } from "../stores";
 
 	export let primary = true;
-	export let showFileSize = false;
 	export let size = 0;
 	export let background = "dark";
 
@@ -25,9 +24,9 @@
 	{background}
 	{size}
 	className="download-button"
-	icon="mdi:microsoft"
+	startIcon="mdi:microsoft"
 	label="Download for Windows"
-	secondaryLabel={showFileSize ? $release?.size : false}
+	secondaryLabel={"Try for free"}
 	on:click={handleStartDownload}
 />
 {#if enableStoreDownload}
@@ -36,9 +35,10 @@
 			primary={false}
 			{background}
 			{size}
-			className="store-download-button"
-			icon="mdi:shopping"
+			className="download-button"
+			startIcon="mdi:external-link"
 			label="Get it from the Microsoft Store"
+			secondaryLabel="Try for free"
 		/>
 	</a>
 {/if}

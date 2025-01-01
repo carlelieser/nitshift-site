@@ -40,22 +40,20 @@
 	];
 </script>
 
-<div>
-	<section class="w-full bg-white border-t border-gray-100">
-		<div class="section flex flex-col items-center py-24 gap-12 text-center">
-			<div class="space-y-6">
-				<h1 class="text-5xl md:text-6xl font-display font-bold">Got questions?</h1>
-				<p class="opacity-70 text-2xl">
-					We've got answers. Check out our frequently asked questions below.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-				{#each data as content, i}
-					<Animate>
-						<QA question={content.question} answer={content.answer} />
-					</Animate>
-				{/each}
-			</div>
+<section class="w-full bg-white border-t border-gray-100 z-0">
+	<div class="section flex flex-col items-center py-24 gap-12 text-center">
+		<div class="space-y-6">
+			<h1 class="text-5xl md:text-6xl font-display font-bold">Got questions?</h1>
+			<p class="opacity-70 text-2xl">
+				We've got answers. Check out our frequently asked questions below.
+			</p>
 		</div>
-	</section>
-</div>
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+			{#each data as content, i}
+				<Animate>
+					<QA question={content.question} answer={content.answer} />
+				</Animate>
+			{/each}
+		</div>
+	</div>
+</section>

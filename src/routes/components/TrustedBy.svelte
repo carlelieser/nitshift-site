@@ -12,6 +12,6 @@
 				>{$userCount.toLocaleString()}</span
 			> satisfied users!
 		</h1>
-		<DownloadButton background="dark" primary={false} size={2} showFileSize={false} />
+		<DownloadButton background="dark" primary={false} size={2} />
 	</div>
 </div>

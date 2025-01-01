@@ -5,7 +5,8 @@
 	export let secondaryLabel = "";
 
 	export let primary = true;
-	export let icon: boolean | string = false;
+	export let startIcon: string = "";
+	export let endIcon: string = "";
 	export let background = "dark";
 	export let className = "";
 
@@ -20,7 +21,10 @@
 </script>
 
 <div
+	tabindex="0"
+	role="button"
 	on:click
+	on:keydown
 	class="cursor-pointer transition-all group {primary
 		? 'bg-teal-500 text-white ' +
 		  (background === 'dark'
@@ -35,14 +39,17 @@
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
 >
 	<div class="flex items-center space-x-2">
-		{#if icon}
-			<Icon {icon} style="width: 24px; height: 24px; opacity: 70%;" />
+		{#if startIcon}
+			<Icon icon={startIcon} style="width: 24px; height: 24px; opacity: 70%;" />
 		{/if}
-		<div class="flex flex-col items-start sm:space-x-2 sm:flex-row sm:items-center truncate">
+		<div class="flex flex-col items-start gap-0 truncate cursor-pointer">
 			<div class="font-medium whitespace-nowrap text-md">{label}</div>
 			{#if secondaryLabel}
 				<div class="opacity-70 text-xs sm:text-sm">{secondaryLabel}</div>
 			{/if}
 		</div>
+		{#if endIcon}
+			<Icon icon={endIcon} style="width: 24px; height: 24px; opacity: 70%;" />
+		{/if}
 	</div>
 </div>

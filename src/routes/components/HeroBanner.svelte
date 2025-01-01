@@ -3,7 +3,7 @@
 
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
-	import demo from "$lib/client/assets/glimmr-product-diagram.png?enhanced";
+	import demo from "$lib/client/assets/glimmr-product-diagram.png";
 	import { loading } from "../stores";
 	import Detail from "./Detail.svelte";
 
@@ -54,7 +54,7 @@
 							<div
 								class="max-w-sm mx-auto lg:mx-0 lg:text-left text-center text-5xl md:text-6xl lg:text-7xl text-transparent font-display font-bold flex md:block justify-center"
 							>
-								<span class="bg-clip-text bg-amber-500 capitalize leading-tight">
+								<span class="bg-clip-text bg-teal-500 capitalize leading-tight">
 									Simplified Brightness Control
 								</span>
 							</div>
@@ -68,13 +68,12 @@
 					</div>
 					<Animate
 						delay="0.2s"
-						className="flex gap-4 flex-wrap justify-center lg:justify-start"
+						className="flex gap-4 flex-wrap items-center justify-center lg:justify-start"
 					>
 						<DownloadButton
 							background="dark"
 							primary={true}
 							size={2}
-							showFileSize={true}
 							enableStoreDownload={true}
 						/>
 					</Animate>
@@ -84,7 +83,7 @@
 				>
 					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
-							<enhanced:img src={demo} class="min-w-80" alt="demo" />
+							<img src={demo} class="min-w-80" alt="demo" />
 						</Animate>
 					</div>
 				</div>

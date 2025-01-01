@@ -1,9 +1,9 @@
 <script>
-	import happyCustomer from "$lib/client/assets/happy-customer.png?enhanced";
-	import mia from "$lib/client/assets/mia.png?enhanced";
-	import jordan from "$lib/client/assets/jordan.png?enhanced";
-	import riley from "$lib/client/assets/riley.png?enhanced";
-	import alex from "$lib/client/assets/alex.png?enhanced";
+	import happyCustomer from "$lib/client/assets/happy-customer.png";
+	import mia from "$lib/client/assets/mia.png";
+	import jordan from "$lib/client/assets/jordan.png";
+	import riley from "$lib/client/assets/riley.png";
+	import alex from "$lib/client/assets/alex.png";
 	import Testimonial from "./Testimonial.svelte";
 	import SplitScreen from "./layouts/SplitScreen.svelte";
 </script>
@@ -12,7 +12,7 @@
 	<div class="section py-36">
 		<SplitScreen>
 			<div slot="left">
-				<enhanced:img class="object-contain" src={happyCustomer} />
+				<img class="object-contain" src={happyCustomer} />
 			</div>
 			<div slot="right" class="space-y-4 md:space-y-8">
 				<div class="text-6xl font-bold font-display text-black">

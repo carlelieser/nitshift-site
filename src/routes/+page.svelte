@@ -10,6 +10,7 @@
 	import Testimonials from "./components/Testimonials.svelte";
 	import TrustedBy from "./components/TrustedBy.svelte";
 	import Highlights from "./components/Highlights.svelte";
+	import TrustPilotBanner from "./components/TrustPilotBanner.svelte";
 
 	export let data;
 
@@ -24,6 +25,7 @@
 <div class="fade-in bg-white">
 	<Navbar />
 	<HeroBanner />
+	<TrustPilotBanner />
 	<Highlights />
 	<TrustedBy />
 	<Intro />
@@ -34,17 +36,17 @@
 </div>
 
 <style>
-	@keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 100%;
-		}
-	}
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100%;
+        }
+    }
 
-	.fade-in {
-		opacity: 0;
-		animation: fade-in 0.5s ease-in-out forwards;
-	}
+    .fade-in {
+        opacity: 0;
+        animation: fade-in 0.5s ease-in-out forwards;
+    }
 </style>

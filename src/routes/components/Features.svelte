@@ -1,6 +1,7 @@
 <script>
 	import Animate from "./Animate.svelte";
 	import DownloadButton from "./DownloadButton.svelte";
+	import PurchaseButton from "./PurchaseButton.svelte";
 
 	const features = [
 		{
@@ -77,8 +78,9 @@
 					</div>
 				{/each}
 			</section>
-			<div class="mx-auto">
+			<div class="mx-auto flex gap-2 flex-col md:flex-row">
 				<DownloadButton size={4} />
+				<PurchaseButton size={4} />
 			</div>
 		</div>
 	</div>

@@ -18,7 +18,7 @@
 	<Navbar />
 	<div class="container max-w-screen-lg mx-auto py-12 px-12 space-y-4">
 		<a href="/">
-			<Button icon="mdi:arrow-back" label="Home" size={2} />
+			<Button startIcon="mdi:arrow-back" label="Home" size={2} />
 		</a>
 		<Privacy />
 	</div>
