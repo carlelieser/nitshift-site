@@ -1,7 +1,8 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
 import { findCustomerByEmail, getLatestPaymentIntent } from "$lib/server/stripe";
+import { handleRequest } from "$lib/server/utils";
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = handleRequest(async ({ url }) => {
 	const { searchParams } = url;
 	const email = searchParams.get("email");
 
@@ -21,4 +22,4 @@ export const GET: RequestHandler = async ({ url }) => {
 	}
 
 	return json({ error: "No email provided" }, { status: 400 });
-};
+});

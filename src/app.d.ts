@@ -3,7 +3,10 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			secret?: string | null;
+		}
+
 		interface PageData {
 			metadata: object;
 			userCount: number;

@@ -2,8 +2,9 @@ import { LICENSE_MAX_PRICE, LICENSE_MIN_PRICE, STRIPE_PRODUCT_ID } from "$env/st
 import { json, redirect, type RequestHandler } from "@sveltejs/kit";
 import range from "lodash/range";
 import { stripe } from "$lib/server/stripe";
+import { handleRequest } from "$lib/server/utils";
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = handleRequest(async ({ url }) => {
 	const { searchParams } = url;
 	const suggestedPriceAmount = searchParams.get("price");
 	const customerId = searchParams.get("customer-id");
@@ -49,4 +50,4 @@ export const GET: RequestHandler = async ({ url }) => {
 	});
 
 	throw redirect(303, paymentLink.url);
-};
+});

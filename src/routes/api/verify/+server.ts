@@ -1,9 +1,10 @@
-import { json, type RequestHandler } from "@sveltejs/kit";
+import { error, json, type RequestHandler } from "@sveltejs/kit";
 import admin from "firebase-admin";
 import { randomUUID } from "crypto";
 import { sendEmailVerification, sendLicenseVerifiedEmail } from "$lib/server/mailer";
+import { handleRequest } from "$lib/server/utils";
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = handleRequest(async ({ url }) => {
 	const { searchParams } = url;
 	const email = searchParams.get("email");
 	const code = searchParams.get("code");
@@ -23,7 +24,9 @@ export const GET: RequestHandler = async ({ url }) => {
 			return json({ verified }, { status: verified ? 200 : 403 });
 		}
 
-		return json({ error: "Verification code not found" }, { status: 404 });
+		return error(404, {
+			message: "Verification code not found"
+		});
 	}
 
 	if (email) {
@@ -35,5 +38,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		return json({ success: true });
 	}
 
-	return json({ error: "No email or code provided" }, { status: 400 });
-};
+	return error(400, {
+		message: "No email provided"
+	});
+});
