@@ -8,12 +8,15 @@ import { SMTP_FROM, SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER } from "$env/
 import { PUBLIC_ICON_URL } from "$env/static/public";
 
 export const config: SMTPTransport.Options = {
-	service: "Gmail",
+	host: SMTP_HOST,
+	port: Number(SMTP_PORT),
 	auth: {
 		user: SMTP_USER,
 		pass: SMTP_PASSWORD
 	},
-	requireTLS: true
+	secure: true,
+	logger: true,
+	debug: true
 };
 
 export const getEmailVerificationConfig = (email: string, code: string): Mailer.Options => ({
@@ -39,7 +42,11 @@ export const getLicenseVerifiedConfig = (email: string): Mailer.Options => ({
 	}
 });
 
-export const getBugReportConfig = async (title: string, description: string, machine: object) => {
+export const getBugReportConfig = (
+	title: string,
+	description: string,
+	machine: object
+): Mailer.Options => {
 	const data = {
 		description,
 		machine
@@ -66,4 +73,9 @@ export const sendLicenseVerifiedEmail = async (email: string) => {
 
 export const sendEmailVerification = async (email: string, code: string) => {
 	return sendMail(getEmailVerificationConfig(email, code));
+};
+
+export const sendBugReport = async (title: string, description: string, machine: object) => {
+	const options = getBugReportConfig(title, description, machine);
+	return sendMail(options);
 };
