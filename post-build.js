@@ -1,29 +1,34 @@
 import dotenv from "dotenv";
-import { Client } from "basic-ftp";
+import { NodeSSH } from "node-ssh";
 
 dotenv.config();
 
-const client = new Client();
-client.ftp.verbose = true;
+const ssh = new NodeSSH();
 
-client
-	.access({
-		host: process.env.FTP_HOST,
-		user: process.env.FTP_USER,
-		password: process.env.FTP_PASSWORD,
-		secure: false
+ssh.connect({
+	host: process.env.SERVER_HOST,
+	username: process.env.SERVER_USER,
+	password: process.env.SERVER_PASSWORD
+})
+	.then(() => {
+		return ssh.putDirectory("build", "/var/www/html");
 	})
 	.then(() => {
-		return client.ensureDir("/var/www/html");
+		return ssh.putFile("package.json", "/var/www/html/package.json");
 	})
 	.then(() => {
-		return client.uploadFromDir("build");
+		return ssh.execCommand("npm install", {
+			cwd: "/var/www/html"
+		});
 	})
 	.then(() => {
-		return client.uploadFrom("package.json", "package.json");
+		return ssh.execCommand("chmod -R 755 /var/www/html");
 	})
 	.then(() => {
-		return client.close();
+		return ssh.execCommand("service apache2 restart");
+	})
+	.then(() => {
+		return ssh.dispose();
 	})
 	.catch((err) => {
 		console.error(err);
