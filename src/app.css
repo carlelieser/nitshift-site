@@ -44,28 +44,28 @@ span.size-48 {
 }
 
 @font-face {
-	src: url("$lib/client/fonts/roboto-regular.ttf");
+	src: url("$lib/client/fonts/roboto-regular.woff2");
 	font-family: "roboto";
 	font-weight: 400;
 	font-display: swap;
 }
 
 @font-face {
-	src: url("$lib/client/fonts/roboto-medium.ttf");
+	src: url("$lib/client/fonts/roboto-medium.woff2");
 	font-family: "roboto";
 	font-weight: 500;
 	font-display: swap;
 }
 
 @font-face {
-	src: url("$lib/client/fonts/sofia-pro-regular.ttf");
+	src: url("$lib/client/fonts/sofia-pro-regular.woff2");
 	font-family: "sofia-pro";
 	font-weight: 400;
 	font-display: swap;
 }
 
 @font-face {
-	src: url("$lib/client/fonts/sofia-pro-bold.ttf");
+	src: url("$lib/client/fonts/sofia-pro-bold.woff2");
 	font-family: "sofia-pro";
 	font-display: swap;
 	font-weight: bold;
