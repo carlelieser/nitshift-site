@@ -3,7 +3,7 @@
 	import HeroBanner from "./components/HeroBanner.svelte";
 	import Features from "./components/Features.svelte";
 	import DownloadBanner from "./components/Footer.svelte";
-	import { release, userCount } from "./stores";
+	import { userCount } from "./stores";
 	import FAQ from "./components/FAQ.svelte";
 	import Loading from "./components/Loading.svelte";
 	import Intro from "./components/Intro.svelte";
@@ -15,7 +15,6 @@
 	export let data;
 
 	$: {
-		release.set(data.metadata);
 		userCount.set(data.userCount);
 	}
 </script>

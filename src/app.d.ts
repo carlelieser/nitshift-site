@@ -15,7 +15,6 @@ declare global {
 		}
 
 		interface PageData {
-			metadata: object;
 			userCount: number;
 		}
 		// interface Platform {}

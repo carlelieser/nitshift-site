@@ -1,6 +1,6 @@
 <script>
 	import Button from "./Button.svelte";
-	import { release } from "../stores";
+	import { PUBLIC_INSTALLER_NAME } from "$env/static/public";
 
 	export let primary = true;
 	export let size = 0;
@@ -10,8 +10,8 @@
 
 	const handleStartDownload = () => {
 		const link = document.createElement("a");
-		link.href = $release.url;
-		link.download = $release.name;
+		link.href = "/releases/latest/glimmr-setup.exe";
+		link.download = PUBLIC_INSTALLER_NAME;
 		link.style.display = "none";
 		document.body.appendChild(link);
 		link.click();
