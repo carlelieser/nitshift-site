@@ -20,7 +20,7 @@ const getTrustPilotInfo = async () => {
 	return { logoImageUrl, bannerImageUrl, rating };
 };
 
-export const load: ServerLoad = async ({ fetch }) => {
+export const load: ServerLoad = async () => {
 	const userCount = await getUserCount();
 	const trustPilotInfo = await getTrustPilotInfo();
 	const prices = getPriceRange();
