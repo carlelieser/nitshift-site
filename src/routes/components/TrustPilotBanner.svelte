@@ -14,10 +14,11 @@
 					height={34}
 					class="inline-block text-white"
 					alt="trustpilot logo"
+					loading="lazy"
 				/></a
 			>
 			<img src={$page.data.trustPilotInfo.bannerImageUrl} class="rounded-xl overflow-hidden" width={200} height={36}
-			     alt="trustpilot rating" />
+			     alt="trustpilot rating" loading="lazy"/>
 			<div class="font-display text-xl opacity-70">{$page.data.trustPilotInfo.rating}/5</div>
 			<Button
 				on:click={() => {

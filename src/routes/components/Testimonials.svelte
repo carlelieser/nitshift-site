@@ -12,7 +12,7 @@
 	<div class="section py-36">
 		<SplitScreen>
 			<div slot="left">
-				<enhanced:img class="object-contain" src={happyCustomer} />
+				<enhanced:img class="object-contain" src={happyCustomer} loading="lazy" />
 			</div>
 			<div slot="right" class="space-y-4 md:space-y-8">
 				<div class="text-6xl font-bold font-display text-black">

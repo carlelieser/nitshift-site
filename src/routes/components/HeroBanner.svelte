@@ -79,7 +79,7 @@
 				>
 					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
-							<enhanced:img src={demo} class="min-w-80" alt="demo" />
+							<enhanced:img src={demo} class="min-w-80" alt="demo" fetchpriority="high" />
 						</Animate>
 					</div>
 				</div>
@@ -92,3 +92,7 @@
 		</div>
 	</div>
 </div>
+
+<svelte:head>
+	<link rel="preload" as="image" href={demo.img.src}>
+</svelte:head>
