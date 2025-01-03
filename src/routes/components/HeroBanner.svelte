@@ -40,9 +40,9 @@
 
 <svelte:window bind:scrollY />
 
-<div class="section-container bg-white text-white relative z-0 pt-12">
+<div class="section-container bg-white text-white relative z-0 !pt-0 !-mt-32">
 	<div
-		class="section p-12 md:p-24 !py-36 bg-zinc-900 rounded-3xl relative z-20 bg-repeat bg-contain"
+		class="section p-12 md:p-24 !py-36 !pt-44 bg-zinc-900 rounded-3xl relative z-20 bg-repeat bg-contain"
 	>
 		<div class="section relative z-10">
 			<div
