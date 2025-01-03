@@ -19,7 +19,7 @@
 	</div>
 	<div class="flex items-center space-x-2">
 		<div class="rounded-full overflow-hidden">
-			<img src={avatar} width="48" height="48" />
+			<enhanced:img src={avatar} width="48" height="48" />
 		</div>
 		<div>
 			<div class="font-medium opacity-90">{name}</div>

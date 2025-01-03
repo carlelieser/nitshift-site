@@ -3,7 +3,7 @@
 
 	import DownloadButton from "./DownloadButton.svelte";
 	import Animate from "./Animate.svelte";
-	import demo from "$lib/client/assets/glimmr-product-diagram.png";
+	import demo from "$lib/client/assets/glimmr-product-diagram.png?enhanced";
 	import { loading } from "../stores";
 	import Detail from "./Detail.svelte";
 
@@ -33,10 +33,6 @@
 		loading.set(false);
 	});
 </script>
-
-<svelte:head>
-	<link rel="preload" as="image" href={demo} />
-</svelte:head>
 
 <svelte:window bind:scrollY />
 
@@ -83,7 +79,7 @@
 				>
 					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
-							<img src={demo} class="min-w-80" alt="demo" />
+							<enhanced:img src={demo} class="min-w-80" alt="demo" />
 						</Animate>
 					</div>
 				</div>
