@@ -112,7 +112,7 @@
 							{#if isPro}
 								<PurchaseButton class="w-full mt-12" size={2} background="dark" />
 							{:else}
-								<DownloadButton class="w-full mt-12" size={2} background="light" />
+								<DownloadButton class="w-full mt-12" size={2} background="light" primary={false} />
 							{/if}
 						</div>
 					{/each}

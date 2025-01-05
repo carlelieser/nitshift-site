@@ -8,7 +8,7 @@
 >
 	<slot />
 	<i
-		class="material-symbols-outlined !text-sm !font-bold pointer-events-none -translate-x-1 group-hover:translate-x-0 relative flex items-center justify-center w-4 h-4 transition-transform"
+		class="material-symbols-outlined !text-sm !font-bold pointer-events-none -translate-x-1 group-hover:translate-x-0 relative flex items-center justify-center w-4 h-[24px] !leading-[24px] transition-transform"
 	>
 		<span class="opacity-100 group-hover:opacity-0 absolute">keyboard_arrow_right</span>
 		<span class="opacity-0 group-hover:opacity-100 absolute">arrow_right_alt</span>
