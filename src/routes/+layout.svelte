@@ -1,5 +1,7 @@
 <script>
 	import "../app.css";
+	import Footer from "$lib/client/components/Footer.svelte";
+	import Navbar from "$lib/client/components/Navbar.svelte";
 </script>
 
 <svelte:head>
@@ -9,4 +11,8 @@
 	/>
 </svelte:head>
 
-<slot />
+<div class="fade-in bg-white">
+	<Navbar />
+	<slot />
+	<Footer />
+</div>

@@ -17,6 +17,15 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 			.get();
 
 		if (verificationCode.exists) {
+			const isExpired = verificationCode.data()?.expires < Date.now();
+
+			if (isExpired) {
+				await verificationCode.ref.delete();
+				return error(410, {
+					message: "Verification code expired"
+				});
+			}
+
 			const verified = verificationCode.data()?.code === code;
 
 			if (verified) {
@@ -40,7 +49,7 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 		const id = randomUUID().split("-").join("");
 		const code = id.substring(0, 6).toUpperCase();
 		const docRef = admin.firestore().collection("verificationCodes").doc(email);
-		await docRef.set({ code });
+		await docRef.set({ code, expires: Date.now() + 1000 * 60 * 5 });
 		await sendEmailVerification(email, code);
 		return json({ success: true });
 	}

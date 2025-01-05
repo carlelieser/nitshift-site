@@ -1,4 +1,4 @@
-import { json, type RequestHandler } from "@sveltejs/kit";
+import { error, json, type RequestHandler } from "@sveltejs/kit";
 import { findCustomerByEmail, getLatestPaymentIntent } from "$lib/server/stripe";
 import { handleRequest } from "$lib/server/utils";
 import { sendLicenseVerifiedEmail } from "$lib/server/mailer";
@@ -35,5 +35,5 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals, fetch }) 
 		);
 	}
 
-	return json({ error: "No email provided" }, { status: 400 });
+	return error(400, { message: "No email provided" });
 });

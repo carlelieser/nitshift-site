@@ -3,12 +3,12 @@ import plugin from "tailwindcss/plugin.js";
 /** @type {import("tailwindcss").Config} */
 export default {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
+	darkMode: "class",
 	theme: {
 		fontFamily: {
 			sans: ['"roboto"', "sans-serif"],
 			display: ['"sofia-pro"', "sans-serif"]
 		},
-
 		extend: {
 			textShadow: {
 				sm: "0 1px 2px var(--tw-shadow-color)",
