@@ -16,6 +16,7 @@
 		"smui-theme": "smui-theme compile static/smui.css -i src/theme"
 	},
 	"devDependencies": {
+		"@analytics/google-analytics": "^1.1.0",
 		"@iconify/svelte": "^3.1.4",
 		"@octokit/rest": "^21.0.2",
 		"@smui/list": "^8.0.0-beta.3",
@@ -23,6 +24,7 @@
 		"@sveltejs/adapter-node": "^5.2.11",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"@sveltejs/kit": "^2.4.0",
+		"analytics": "^0.8.16",
 		"autoprefixer": "^10.4.14",
 		"dotenv": "^16.4.5",
 		"isomorphic-dompurify": "^2.19.0",

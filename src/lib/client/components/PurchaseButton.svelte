@@ -6,12 +6,18 @@
 	import { goto } from "$app/navigation";
 	import Portal from "svelte-portal";
 	import { onMount } from "svelte";
+	import { analytics } from "$lib/client/analytics";
 
 	let buttonRef: HTMLDivElement;
 	let menu: Menu;
 	let isOpen: boolean = false;
 
 	export let size = 0;
+
+	const handleOpenPriceMenu = () => {
+		analytics.track("open_price_menu");
+		isOpen = !isOpen;
+	}
 
 	onMount(() => {
 		menu.getMenuSurface().setIsHoisted(true);
@@ -25,7 +31,7 @@
 		endIcon="mdi:chevron-down"
 		label="Buy Glimmr Pro"
 		secondaryLabel="Lifetime license: Choose your price"
-		on:click={() => (isOpen = true)}
+		on:click={handleOpenPriceMenu}
 		{...$$props}
 	/>
 	<Portal>
@@ -40,7 +46,11 @@
 		>
 			<List>
 				{#each $page.data.prices as price}
-					<Item onSMUIAction={() => goto(`/checkout?price=${price}`)} class="font-medium"
+					{@const handlePriceClick = () => {
+						analytics.track("start_checkout", { price });
+						goto(`/checkout?price=${price}`)
+					}}
+					<Item onSMUIAction={handlePriceClick} class="font-medium"
 						>${price}</Item
 					>
 				{/each}

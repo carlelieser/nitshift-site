@@ -2,6 +2,9 @@
 	import "../app.css";
 	import Footer from "$lib/client/components/Footer.svelte";
 	import Navbar from "$lib/client/components/Navbar.svelte";
+	import { analytics } from "$lib/client/analytics";
+
+	analytics.page();
 </script>
 
 <svelte:head>

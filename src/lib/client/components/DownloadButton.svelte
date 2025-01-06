@@ -1,6 +1,7 @@
 <script>
 	import Button from "./Button.svelte";
 	import { PUBLIC_INSTALLER_NAME } from "$env/static/public";
+	import { analytics } from "$lib/client/analytics";
 
 	export let primary = true;
 	export let size = 0;
@@ -9,6 +10,7 @@
 	export let enableStoreDownload = false;
 
 	const handleStartDownload = () => {
+		analytics.track("download", { platform: "windows", version: "latest" });
 		const link = document.createElement("a");
 		link.href = "/releases/latest/glimmr-setup.exe";
 		link.download = PUBLIC_INSTALLER_NAME;
