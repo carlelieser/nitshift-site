@@ -77,7 +77,7 @@
 
 								<div class="flex flex-col gap-4">
 									<h1
-										class="text-4xl font-display text-black leading-tight font-bold"
+										class="text-4xl font-display text-teal-900 leading-tight font-bold"
 									>
 										{feature.title}
 									</h1>
