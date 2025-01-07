@@ -3,7 +3,7 @@ import { handleRequest } from "$lib/server/utils";
 import { sendLicenseVerifiedEmail } from "$lib/server/mailer";
 import admin from "firebase-admin";
 
-export const GET: RequestHandler = handleRequest(async ({ url, locals, fetch }) => {
+export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	const { searchParams } = url;
 	const email = searchParams.get("email");
 	const code = searchParams.get("code");
@@ -16,7 +16,8 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals, fetch }) 
 	const license = licenseRef.data();
 	const success = license?.code === code;
 
-	if (!success) return error(403, { message: "Invalid license code" });
+	if (!success) return error(403, { message: "Unauthorized" });
+	if (locals.user?.email !== email) return error(403, { message: "Unauthorized" });
 
 	await sendLicenseVerifiedEmail(email);
 	await admin
