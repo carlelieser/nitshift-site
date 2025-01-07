@@ -27,7 +27,7 @@
 </script>
 
 <div class="section-container">
-	<div class="section !px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+	<div class="section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 		{#each features as feature, i}
 			<Highlight {...feature} />
 		{/each}
