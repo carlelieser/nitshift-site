@@ -37,6 +37,22 @@
 		{
 			question: "Is the app compatible with both desktop and laptop computers?",
 			answer: "Yes, you can use Glimmr to adjust both internal and external displays. It can also be used from a laptop or desktop, whichever you prefer."
+		},
+		{
+			question: "Can I try Glimmr before purchasing a license?",
+			answer: "Absolutely – you can download and install Glimmr for free to try out its features. The free version includes basic functionality to get you started. If you find Glimmr useful and want to unlock additional features, such as scheduling, Shade Mode, and more, you can purchase a premium license to access the full suite of capabilities."
+		},
+		{
+			question: "I'm having trouble activating my license. What should I do?",
+			answer: "If you're experiencing issues activating your license, please ensure that you're connected to the internet and that your firewall or antivirus software isn't blocking Glimmr's connection to the licensing server. If you continue to encounter issues, please reach out to our support team at support@glimmr.app for further assistance."
+		},
+		{
+			question: "I never received my license key. What should I do?",
+			answer: "If you haven't received your license key after purchasing a premium license, please make sure to check your spam or junk folder. If you still can't find it, please reach out to our support team and we'll be happy to assist you."
+		},
+		{
+			question: "Can I use Glimmr on multiple devices with a single license?",
+			answer: "Yes! Your license key can be used on an unlimited number of devices. This flexibility ensures that you can access Glimmr's functionality wherever you need it, without any restrictions."
 		}
 	];
 </script>
