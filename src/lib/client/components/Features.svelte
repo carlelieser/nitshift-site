@@ -6,23 +6,24 @@
 	import TrustedBy from "./TrustedBy.svelte";
 	import Intro from "./Intro.svelte";
 	import Link from "$lib/client/components/Link.svelte";
-	import Button from "$lib/client/components/Button.svelte";
+	import Chip, { Text } from "@smui/chips";
 
 	const features = [
 		{
 			icon: "light_mode",
-			title: "Precise Brightness Control",
+			title: "Adjust Brightness",
 			description:
 				"Effortlessly adjust display brightness individually or in sync with other displays."
 		},
 		{
 			icon: "schedule",
-			title: "Personalized Brightness Schedules",
-			description: "Easily modify brightness levels based on the time of day."
+			title: "Scheduling",
+			description: "Easily modify brightness levels based on the time of day.",
+			pro: true
 		},
 		{
 			icon: "sync_saved_locally",
-			title: "Universal Display Compatibility",
+			title: "Universal Compatibility",
 			description:
 				"Unlike other brightness tools, Glimmr works with all display types, regardless of connection type."
 		},
@@ -30,13 +31,14 @@
 			icon: "model_training",
 			title: "Brightness Profiles",
 			description:
-				"Easily switch between brightness levels for different lighting scenarios with predefined modes or customize your own."
+				"Easily switch between different presets with just a few clicks."
 		},
 		{
 			icon: "donut_small",
 			title: "Shade Mode",
 			description:
-				"Artificially dim your display by overlaying a semi-transparent window on top of your screen."
+				"Artificially control brightness levels on displays that don't support native adjustments.",
+			pro: true
 		},
 		{
 			icon: "rocket_launch",
@@ -76,11 +78,18 @@
 								</div>
 
 								<div class="flex flex-col gap-4">
-									<h1
-										class="text-4xl font-display text-teal-900 leading-tight font-bold"
-									>
-										{feature.title}
-									</h1>
+									<div class="flex items-center justify-between">
+										<h1
+											class="text-4xl font-display text-teal-900 leading-tight font-bold"
+										>
+											{feature.title}
+										</h1>
+										{#if feature.pro}
+											<Link to="/pricing" class="bg-teal-500 !text-white px-3 py-1 rounded-full">
+												<Text>PRO</Text>
+											</Link>
+										{/if}
+									</div>
 									<p class="text-xl opacity-80 leading-relaxed">
 										{feature.description}
 									</p>
