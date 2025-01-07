@@ -15,10 +15,10 @@
 			</div>
 			<div slot="right">
 				<div class="space-y-8 flex flex-col items-center max-w-lg mx-auto text-center">
-					<Icon icon="mdi:cursor-default-click" class="text-6xl text-teal-500" />
+					<Icon icon="mdi:cursor-default-click" class="text-6xl text-teal-900" />
 					<Animate>
 						<div
-							class="text-teal-500 text-4xl md:text-5xl lg:text-6xl font-display leading-tight font-bold"
+							class="text-teal-900 text-4xl md:text-5xl lg:text-6xl font-display leading-tight font-bold"
 						>
 							Accessible & Convenient
 						</div>

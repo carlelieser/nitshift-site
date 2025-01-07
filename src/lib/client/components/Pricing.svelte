@@ -57,7 +57,7 @@
 			<div class="mx-auto max-w-4xl text-center">
 				<h2 class="text-base/7 font-semibold text-teal-600 font-display">Pricing</h2>
 				<p
-					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl"
+					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-teal-900 sm:text-6xl"
 				>
 					Choose What Works Best for You
 				</p>
@@ -81,12 +81,12 @@
 
 				<!-- Pricing Tiers -->
 				<div
-					class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
+					class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 lg:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
 				>
 					{#each pricing as { title, price, description, features, frequency }, i}
 						{@const isPro = title === "PRO"}
 						<div
-							class="rounded-3xl sm:mx-8 sm:rounded-b-none sm:p-10 lg:mx-0 lg:rounded-bl-3xl lg:rounded-tr-none p-8 {isPro
+							class="rounded-3xl sm:mx-8 lg:rounded-b-none sm:p-10 lg:mx-0 lg:rounded-bl-3xl lg:rounded-tr-none p-8 {isPro
 								? 'bg-teal-950 text-white !rounded-3xl shadow-lg'
 								: 'bg-white/60 ring-1 ring-gray-900/10'}"
 						>
@@ -110,7 +110,7 @@
 								{/each}
 							</ul>
 							{#if isPro}
-								<PurchaseButton class="w-full mt-12" size={2} background="dark" />
+								<PurchaseButton context="pricing" class="w-full mt-12" size={2} background="dark" />
 							{:else}
 								<DownloadButton class="w-full mt-12" size={2} background="light" primary={false} />
 							{/if}

@@ -19,7 +19,7 @@
 					<h2 class="text-base/7 font-semibold text-teal-600 font-display">
 						Testimonials
 					</h2>
-					<div class="text-6xl font-bold font-display text-black">
+					<div class="text-6xl font-bold font-display text-teal-900">
 						See What Our Customers Have to Say
 					</div>
 				</div>

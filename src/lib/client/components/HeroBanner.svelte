@@ -38,7 +38,7 @@
 
 <div class="section-container bg-white text-white relative z-0">
 	<div
-		class="section p-12 md:p-24 !py-36 !pt-44 bg-zinc-900 rounded-3xl relative z-20 bg-repeat bg-contain"
+		class="section p-12 md:p-24 !py-36 !pt-44 bg-teal-950 rounded-3xl relative z-20 bg-repeat bg-contain"
 	>
 		<div class="section relative z-10">
 			<div
@@ -56,7 +56,7 @@
 							</div>
 						</Animate>
 						<Animate delay="0.1s">
-							<div class="text-2xl md:text-4xl font-display opacity-80">
+							<div class="text-2xl md:text-4xl font-display opacity-80 lg:text-left">
 								Easily adjust brightness for all your displays right from your
 								system tray.
 							</div>

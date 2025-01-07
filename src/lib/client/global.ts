@@ -1,14 +1,17 @@
 export const menu = [
 	{
 		name: "Features",
-		link: "/features"
+		link: "/features",
+		icon: "star"
 	},
 	{
 		name: "Pricing",
-		link: "/pricing"
+		link: "/pricing",
+		icon: "sell"
 	},
 	{
 		name: "Support",
-		link: "/support"
+		link: "/support",
+		icon: "support"
 	}
 ];

@@ -4,6 +4,13 @@
 	import celebrating from "$lib/client/assets/flexy-happy-young-man-celebrating-something.svg";
 	import error from "$lib/client/assets/error.png?enhanced";
 	import Link from "$lib/client/components/Link.svelte";
+	import { analytics } from "$lib/client/analytics";
+
+	$effect(() => {
+		analytics.track($page.data.checkout.success ? "purchase_success" : "purchase_error", {
+			customer: $page.data.checkout.customerId,
+		});
+	})
 </script>
 
 <div class="section-container">

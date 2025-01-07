@@ -57,7 +57,7 @@
 			<div class="mx-auto max-w-4xl text-center">
 				<h2 class="text-base/7 font-semibold text-teal-600 font-display">Features</h2>
 				<p
-					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl"
+					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-teal-900 sm:text-6xl"
 				>
 					Designed for Simplicity
 				</p>
@@ -93,7 +93,7 @@
 			<div class="mx-aut flex flex-col items-center gap-8">
 				<div class="flex gap-2 flex-col md:flex-row">
 					<DownloadButton size={4} />
-					<PurchaseButton size={4} />
+					<PurchaseButton context="features" size={4} />
 				</div>
 				<Link to="/pricing">View Pricing</Link>
 			</div>

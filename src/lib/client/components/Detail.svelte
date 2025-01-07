@@ -6,7 +6,7 @@
 
 <div class="gap-4 flex flex-col w-full md:max-w-sm">
 	<div
-		class="p-4 rounded-full flex items-center justify-center bg-zinc-800 text-teal-500 self-start"
+		class="p-4 rounded-full flex items-center justify-center bg-teal-900 text-teal-500 self-start"
 	>
 		<span class="material-symbols-outlined">{icon}</span>
 	</div>

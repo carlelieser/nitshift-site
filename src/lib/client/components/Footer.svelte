@@ -7,24 +7,26 @@
 </script>
 
 <footer class="w-full py-12 md:py-24 bg-teal-950 text-white z-10 flex flex-col items-center">
-	<div class="container mx-auto px-4 relative flex items-center flex-col text-center gap-12">
-		<div class="flex flex-col-reverse items-start gap-24 md:flex-row">
+	<div class="w-full lg:container mx-auto px-4 relative text-center flex flex-col gap-12">
+		<div class="flex flex-col items-center gap-12 lg:gap-24 md:flex-row md:items-start justify-center mx-auto">
 			<Logo />
-			<div class="flex flex-col items-start gap-4">
-				<p class="font-display uppercase opacity-70 text-xs">Directory</p>
-				{#each menu as { name, link }, i}
-					<Link to={link}>
-						{name}
-					</Link>
-				{/each}
+			<div class="flex gap-4 md:gap-8 lg:gap-12">
+				<div class="flex flex-col items-start gap-4">
+					<p class="font-display uppercase opacity-70 text-xs">Directory</p>
+					{#each menu as { name, link }, i}
+						<Link to={link}>
+							{name}
+						</Link>
+					{/each}
+				</div>
+				<div class="flex flex-col items-start gap-4">
+					<p class="font-display uppercase opacity-70 text-xs">Contact</p>
+					<Link to="mailto:support@glimmr.app">Email us</Link>
+				</div>
 			</div>
-			<div class="flex flex-col items-start gap-4">
-				<p class="font-display uppercase opacity-70 text-xs">Contact</p>
-				<Link to="mailto:support@glimmr.app">Email us</Link>
-			</div>
-			<div class="flex items-center gap-2">
+			<div class="flex flex-col xl:flex-row gap-2">
 				<DownloadButton size={4} background="dark" />
-				<PurchaseButton size={4} background="dark" />
+				<PurchaseButton context="footer" size={4} background="dark" />
 			</div>
 		</div>
 		<div class="flex flex-col gap-4 items-center">

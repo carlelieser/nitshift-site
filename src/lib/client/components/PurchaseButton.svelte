@@ -13,9 +13,13 @@
 	let isOpen: boolean = false;
 
 	export let size = 0;
+	export let width = 0;
+	export let containerClass ="";
+	export let menuClass = "";
+	export let context = "default";
 
 	const handleOpenPriceMenu = () => {
-		analytics.track("open_price_menu");
+		analytics.track("open_price_menu", { context });
 		isOpen = !isOpen;
 	}
 
@@ -24,11 +28,13 @@
 	});
 </script>
 
-<div class="flex flex-col" bind:this={buttonRef}>
+<div class="flex flex-col {containerClass}">
 	<Button
 		{size}
+		bind:ref={buttonRef}
+		bind:offsetWidth={width}
 		startIcon="mdi:shopping"
-		endIcon="mdi:chevron-down"
+		endIcon="{isOpen ? 'mdi:chevron-up' : 'mdi:chevron-down'}"
 		label="Buy Glimmr Pro"
 		secondaryLabel="Lifetime license: Choose your price"
 		on:click={handleOpenPriceMenu}
@@ -41,8 +47,8 @@
 			anchor={false}
 			anchorElement={buttonRef}
 			anchorCorner="BOTTOM_LEFT"
-			class="my-2 z-50 rounded-2xl"
-			style="min-width: {buttonRef?.offsetWidth}px;"
+			class="my-2 z-50 rounded-2xl {menuClass}"
+			style="min-width: {width}px;"
 		>
 			<List>
 				{#each $page.data.prices as price}

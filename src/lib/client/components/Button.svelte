@@ -8,7 +8,8 @@
 	export let startIcon: string = "";
 	export let endIcon: string = "";
 	export let background = "dark";
-	export let ref: HTMLDivElement = null;
+	export let ref: HTMLDivElement | null = null;
+	export let offsetWidth = 0;
 
 	/**
 	 *
@@ -26,6 +27,7 @@
 	role="button"
 	on:click
 	on:keydown
+	bind:offsetWidth
 	class="cursor-pointer transition-all group {primary
 		? 'bg-teal-500 text-white ' +
 			(background === 'dark'
@@ -39,18 +41,18 @@
 		18}px] flex items-center {$$props.class}"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
 >
-	<div class="flex items-center space-x-2">
+	<div class="flex items-center space-x-2 flex-1 shrink min-w-0">
 		{#if startIcon}
 			<Icon icon={startIcon} style="width: 24px; height: 24px; opacity: 70%;" />
 		{/if}
-		<div class="flex flex-col items-start gap-0 truncate cursor-pointer flex-1">
-			<div class="font-medium whitespace-nowrap text-md">{label}</div>
+		<div class="flex flex-col items-start gap-0 cursor-pointer text-left flex-1 shrink min-w-0 overflow-hidden">
+			<div class="font-medium whitespace-nowrap text-md truncate flex-1 shrink w-full">{label}</div>
 			{#if secondaryLabel}
-				<div class="opacity-70 text-xs sm:text-sm">{secondaryLabel}</div>
+				<div class="opacity-70 text-xs sm:text-sm flex-1 truncate w-full">{secondaryLabel}</div>
 			{/if}
 		</div>
 		{#if endIcon}
-			<Icon icon={endIcon} style="width: 24px; height: 24px; opacity: 70%;" />
+			<Icon icon={endIcon} style="width: 24px; height: 24px; opacity: 70%; flex-shrink: 0;" />
 		{/if}
 	</div>
 </div>
