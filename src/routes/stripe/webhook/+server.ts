@@ -22,7 +22,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	const type = event.type;
 
 	if (type === "payment_intent.succeeded") {
-		await generateLicenseAndNotifyUser(event.data.object);
+		await generateLicenseAndNotifyUser(
+			event.data.object,
+			"Thank you for purchasing a pro license."
+		);
 	}
 
 	return json({

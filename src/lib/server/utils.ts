@@ -12,6 +12,7 @@ export const getPriceRange = () => range(Number(LICENSE_MIN_PRICE), Number(LICEN
 export const handleRequest = (handler: RequestHandler, secure = true): RequestHandler => {
 	return async (event) => {
 		const { request } = event;
+
 		const secret =
 			request.headers.get("X-Glimmr-Secret-Key") || event.url.searchParams.get("key");
 

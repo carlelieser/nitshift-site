@@ -4,7 +4,10 @@ import admin from "firebase-admin";
 import { stripe } from "$lib/server/stripe";
 import { sendLicenseEmail } from "$lib/server/mailer";
 
-export const generateLicenseAndNotifyUser = async (paymentIntent: Stripe.PaymentIntent) => {
+export const generateLicenseAndNotifyUser = async (
+	paymentIntent: Stripe.PaymentIntent,
+	infoText?: string
+) => {
 	const license = randomUUID().toUpperCase();
 	const customer = await stripe.customers.retrieve(paymentIntent.customer as string);
 
@@ -14,5 +17,5 @@ export const generateLicenseAndNotifyUser = async (paymentIntent: Stripe.Payment
 		code: license
 	});
 
-	await sendLicenseEmail(customer.email, license);
+	await sendLicenseEmail(customer.email, license, infoText);
 };

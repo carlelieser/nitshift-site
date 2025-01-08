@@ -43,10 +43,14 @@ export const getLicenseVerifiedConfig = (email: string): Mailer.Options => ({
 	...defaultOptions
 });
 
-export const getLicenseConfig = (email: string, code: string): Mailer.Options => ({
+export const getLicenseConfig = (
+	email: string,
+	code: string,
+	intro: string = ""
+): Mailer.Options => ({
 	to: email,
 	subject: "Your new license",
-	html: licenseTemplate.replace("{{ code }}", code),
+	html: licenseTemplate.replace("{{ code }}", code).replace("{{ intro }}", intro),
 	...defaultOptions
 });
 
@@ -90,8 +94,8 @@ export const sendEmailVerification = async (email: string, code: string) => {
 	return sendMail(getEmailVerificationConfig(email, code));
 };
 
-export const sendLicenseEmail = (email: string, code: string) => {
-	return sendMail(getLicenseConfig(email, code));
+export const sendLicenseEmail = (email: string, code: string, intro?: string) => {
+	return sendMail(getLicenseConfig(email, code, intro));
 };
 
 export const sendBugReport = async (title: string, description: string, machine: object) => {
