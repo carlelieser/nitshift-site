@@ -9,7 +9,15 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 		const user = await docRef.get();
 
 		if (user.exists) {
-			return json(user.data());
+			const data = user.data();
+
+			if (data) {
+				if (Object.keys(data).length === 1) {
+					await docRef.delete();
+				} else {
+					return json(user.data());
+				}
+			}
 		}
 
 		return fetch(`/api/users?email=${id}@glimmr.com`);
