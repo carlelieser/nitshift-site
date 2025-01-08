@@ -27,23 +27,23 @@ export const GET: RequestHandler = async ({ url }) => {
 	return json({ error: "No query provided" }, { status: 400 });
 };
 
-export const POST: RequestHandler = handleRequest(async ({ request }) => {
-	try {
-		const body = await request.json();
-		const docRef = admin.firestore().collection("users").doc(body.id);
-		const user = await docRef.get();
+export const POST: RequestHandler = async ({ request }) => {
+	const body = await request.json();
+	const docRef = admin.firestore().collection("users").doc(body.id);
+	const user = await docRef.get();
 
-		if (user.exists) {
-			const data = user.data();
-			if (data?.license !== body.license) {
-				return error(403, { message: "Cannot change license" });
-			}
+	if (user.exists) {
+		const data = user.data();
+		if (data?.license !== body.license) {
+			return error(403, { message: "Cannot change license" });
 		}
-
-		await docRef.set(body, { merge: true });
-
-		return json(body);
-	} catch (err) {
-		return error(500, { message: "Failed to create user" });
+	} else {
+		if (body.license !== "free") {
+			return error(403, { message: "Invalid license" });
+		}
 	}
-});
+
+	await docRef.set(body, { merge: true });
+
+	return json(body);
+};
