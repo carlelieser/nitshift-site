@@ -11,7 +11,14 @@ export const GET: RequestHandler = async ({ url }) => {
 		const user = await docRef.get();
 
 		if (user.exists) {
-			return json(user.data());
+			const data = user.data();
+
+			if (data) {
+				await admin.firestore().collection("users").doc(data.id).set(data);
+				await docRef.delete();
+			}
+
+			return json(data);
 		}
 
 		return json({ error: "User not found" }, { status: 404 });
