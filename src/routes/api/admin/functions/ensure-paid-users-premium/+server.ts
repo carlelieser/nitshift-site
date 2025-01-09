@@ -16,7 +16,7 @@ const ensurePaidUsersPremium = async (starting_after?: string) => {
 		limit: 100
 	});
 
-	for (const checkout of checkouts.data) {
+	for await (const checkout of checkouts.data) {
 		if (
 			checkout.metadata?.id &&
 			checkout.customer_details &&
