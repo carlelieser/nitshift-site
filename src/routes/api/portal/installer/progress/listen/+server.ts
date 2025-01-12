@@ -14,13 +14,6 @@ export const GET: RequestHandler = async ({ locals }) => {
 		}
 	});
 
-	await pollWorkflowJob(installer.data()?.jobId, (job) => {
-		const completed = job.steps?.filter((step) => step.status === "completed").length;
-		const total = job.steps?.length;
-		const progress = `${completed} / ${total}`;
-		updateInstallerProgress(locals.user.email, { progress });
-	});
-
 	const unsubscribe = installerRef.onSnapshot(
 		(doc) => {
 			const data = `event: update\ndata: ${JSON.stringify(doc.data())}\n\n`;
@@ -31,6 +24,16 @@ export const GET: RequestHandler = async ({ locals }) => {
 			stream.push(errorData);
 		}
 	);
+
+	pollWorkflowJob(installer.data()?.jobId, (job) => {
+		const completed = job.steps?.filter((step) => step.status === "completed").length;
+		const total = job.steps?.length;
+		const progress = `${completed} / ${total}`;
+		updateInstallerProgress(locals.user.email, { progress, status: job.status });
+		if (job.status === "completed") {
+			stream.destroy();
+		}
+	});
 
 	stream.on("close", () => {
 		unsubscribe();

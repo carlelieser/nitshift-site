@@ -12,7 +12,7 @@ import admin from "firebase-admin";
 const ensurePaidUsersPremium = async (starting_after?: string) => {
 	const checkouts = await stripe.checkout.sessions.list({
 		starting_after,
-		status: "complete",
+		status: "completed",
 		limit: 100
 	});
 

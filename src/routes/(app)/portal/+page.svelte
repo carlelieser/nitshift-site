@@ -48,13 +48,11 @@
 	};
 
 	const generateInstaller = async () => {
-		await fetch("/api/portal/installer/generate");
+		const response = await fetch("/api/portal/installer/generate");
+		const { data } = await response.json();
 		message = "This should take about 10 minutes or less. Feel free to come back later.";
 		snackbar?.open();
-		goto("/portal", {
-			replaceState: true,
-			invalidateAll: true
-		});
+		installer = data;
 	};
 
 	const downloadInstaller = async () => {
@@ -144,7 +142,7 @@
 		>
 			<IconButton onclick={openMenu}>
 				<Label class="text-[1rem] font-bold opacity-70"
-					>{data.user.email.substring(0, 2).toUpperCase()}</Label
+				>{data.user.email.substring(0, 2).toUpperCase()}</Label
 				>
 			</IconButton>
 			<Menu
@@ -216,7 +214,7 @@
 					<IconButton
 						class="material-symbols-outlined"
 						onclick={copyLicenseKeyToClipboard}
-						>content_copy
+					>content_copy
 					</IconButton>
 					<IconButton
 						class="material-symbols-outlined"
@@ -277,7 +275,8 @@
 			</div>
 			<div class="ml-auto">
 				<IconButton class="material-symbols-outlined" onclick={openAddDeviceDialog}
-					>add</IconButton
+				>add
+				</IconButton
 				>
 			</div>
 		</div>
@@ -300,7 +299,7 @@
 				<Chip {chip} shouldRemoveOnTrailingIconClick={false} class="truncate max-w-48">
 					<Text tabindex={0}>{chip}</Text>
 					<TrailingAction icon$class="material-symbols-outlined" onclick={deleteDevice}
-						>cancel
+					>cancel
 					</TrailingAction>
 				</Chip>
 			{/snippet}
@@ -329,14 +328,14 @@
 			{:else}
 				<Button
 					disabled={installer?.status === "pending"}
-					color={installer?.status === "complete" ? "secondary" : "primary"}
+					color={installer?.status === "completed" ? "secondary" : "primary"}
 					onclick={generateInstaller}
 					class="gap-2"
 				>
 					{#if installer?.status === "pending"}
 						<CircularProgress class="w-4 h-4" indeterminate />
 						<Label>Generating Installer (Step {installer?.progress ?? 1})</Label>
-					{:else if installer?.status === "complete"}
+					{:else if installer?.status === "completed"}
 						<Icon class="material-symbols-outlined">refresh</Icon>
 						<Label>Regenerate</Label>
 					{:else}
@@ -344,7 +343,7 @@
 						<Label>Generate installer</Label>
 					{/if}
 				</Button>
-				{#if installer?.status === "complete"}
+				{#if installer?.status === "completed"}
 					<Button onclick={downloadInstaller}>
 						<Icon class="material-symbols-outlined">download</Icon>
 						<Label>Download</Label>

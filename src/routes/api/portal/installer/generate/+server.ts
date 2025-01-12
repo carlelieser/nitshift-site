@@ -45,14 +45,14 @@ const beginDownload = async (user: User) => {
 		const workflow = await waitUntilWorkflowInProgress(branch);
 		const job = await getWorkflowJob(workflow.id);
 
-		await updateInstallerProgress(user.email, {
+		return {
 			workflowId: workflow.id,
 			jobId: job.id
-		});
+		};
 	} catch (err) {
-		await updateInstallerProgress(user.email, {
+		return {
 			status: "error"
-		});
+		};
 	}
 };
 
@@ -62,10 +62,15 @@ export const GET: RequestHandler = async ({ locals }) => {
 			status: "pending"
 		});
 
-		await beginDownload(locals.user);
+		const result = await beginDownload(locals.user);
+
+		await updateInstallerProgress(locals.user.email, result);
 
 		return json({
-			success: true
+			success: true,
+			data: {
+				status: "pending"
+			}
 		});
 	}
 
