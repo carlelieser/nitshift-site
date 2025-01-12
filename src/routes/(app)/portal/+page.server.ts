@@ -18,18 +18,24 @@ export const load: PageServerLoad = async ({ locals }) => {
 			.firestore()
 			.collection("users")
 			.where("email", "==", locals.user.email);
-		const devices = await deviceQuery.get();
+		const deviceQuerySnapshot = await deviceQuery.get();
 
 		if (licenseSnapshot.exists) {
 			const license = licenseSnapshot.data() as License;
-			const installer = installerSnapshot.data() as { status: string };
+			const licenseIssuedOn = licenseSnapshot.createTime?.toDate();
+			const installer = installerSnapshot.data() as {
+				status: string;
+				error?: string;
+				progress?: string;
+			};
+			const devices = deviceQuerySnapshot.docs.map((doc) => doc.data()?.id);
 			return {
 				license: {
 					...license,
-					issuedOn: licenseSnapshot.createTime?.toDate()
+					issuedOn: licenseIssuedOn
 				},
 				installer,
-				devices: devices.docs.map((doc) => doc.data()?.id)
+				devices
 			};
 		}
 	}
