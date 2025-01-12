@@ -144,7 +144,7 @@
 		>
 			<IconButton onclick={openMenu}>
 				<Label class="text-[1rem] font-bold opacity-70"
-				>{data.user.email.substring(0, 2).toUpperCase()}</Label
+					>{data.user.email.substring(0, 2).toUpperCase()}</Label
 				>
 			</IconButton>
 			<Menu
@@ -173,9 +173,7 @@
 {/snippet}
 
 {#snippet renderGenerateButton()}
-	<Button
-		color={"primary"} onclick={generateInstaller}
-		class="gap-2">
+	<Button color={"primary"} onclick={generateInstaller} class="gap-2">
 		<Icon class="material-symbols-outlined">rocket</Icon>
 		<Label>Generate installer</Label>
 	</Button>
@@ -183,12 +181,13 @@
 
 {#snippet license()}
 	<div class="bg-white rounded-lg border shadow-md p-6 flex flex-col gap-4">
-
 		<div
 			class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center flex-wrap"
 		>
 			<div class="flex items-center gap-6">
-				<div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center">
+				<div
+					class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center"
+				>
 					<i class="material-symbols-outlined opacity-70">key</i>
 				</div>
 				<div>
@@ -217,7 +216,7 @@
 					<IconButton
 						class="material-symbols-outlined"
 						onclick={copyLicenseKeyToClipboard}
-					>content_copy
+						>content_copy
 					</IconButton>
 					<IconButton
 						class="material-symbols-outlined"
@@ -265,20 +264,21 @@
 		</Actions>
 	</Dialog>
 
-	<div
-		class="flex  justify-between flex-col gap-4 p-6 bg-white border rounded-lg shadow-md">
+	<div class="flex justify-between flex-col gap-4 p-6 bg-white border rounded-lg shadow-md">
 		<div class="flex items-center gap-6">
-			<div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center">
+			<div
+				class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center"
+			>
 				<i class="material-symbols-outlined opacity-70">devices</i>
 			</div>
 			<div>
 				<div class="text-2xl font-display">Your devices</div>
-				<div class="opacity-70">
-					Add or remove devices
-				</div>
+				<div class="opacity-70">Add or remove devices</div>
 			</div>
 			<div class="ml-auto">
-				<IconButton class="material-symbols-outlined" onclick={openAddDeviceDialog}>add</IconButton>
+				<IconButton class="material-symbols-outlined" onclick={openAddDeviceDialog}
+					>add</IconButton
+				>
 			</div>
 		</div>
 		<Set bind:chips={devices} input>
@@ -297,13 +297,10 @@
 						invalidateAll: true
 					});
 				}}
-				<Chip
-					{chip}
-					shouldRemoveOnTrailingIconClick={false}
-					class="truncate max-w-48"
-				>
+				<Chip {chip} shouldRemoveOnTrailingIconClick={false} class="truncate max-w-48">
 					<Text tabindex={0}>{chip}</Text>
-					<TrailingAction icon$class="material-symbols-outlined" onclick={deleteDevice}>cancel
+					<TrailingAction icon$class="material-symbols-outlined" onclick={deleteDevice}
+						>cancel
 					</TrailingAction>
 				</Chip>
 			{/snippet}
@@ -313,25 +310,29 @@
 
 {#snippet renderInstaller()}
 	<div
-		class="flex  justify-between flex-col md:flex-row md:items-center gap-4 p-6 bg-white border rounded-lg shadow-md">
+		class="flex justify-between flex-col md:flex-row md:items-center gap-4 p-6 bg-white border rounded-lg shadow-md"
+	>
 		<div class="flex items-center gap-6">
-			<div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center">
+			<div
+				class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center"
+			>
 				<i class="material-symbols-outlined opacity-70">download</i>
 			</div>
 			<div>
 				<div class="text-2xl font-display">Glimmr Installer</div>
-				<div class="opacity-70">
-					With your license pre-installed
-				</div>
+				<div class="opacity-70">With your license pre-installed</div>
 			</div>
 		</div>
 		<div class="flex items-center justify-center gap-4">
 			{#if installer?.status === "error"}
 				{@render renderGenerateButton()}
 			{:else}
-				<Button disabled={installer?.status === "pending"}
-				        color={installer?.status === "complete" ? "secondary" : "primary"} onclick={generateInstaller}
-				        class="gap-2">
+				<Button
+					disabled={installer?.status === "pending"}
+					color={installer?.status === "complete" ? "secondary" : "primary"}
+					onclick={generateInstaller}
+					class="gap-2"
+				>
 					{#if installer?.status === "pending"}
 						<CircularProgress class="w-4 h-4" indeterminate />
 						<Label>Generating Installer (Step {installer?.progress ?? 1})</Label>
