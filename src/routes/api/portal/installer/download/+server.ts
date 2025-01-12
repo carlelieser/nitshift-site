@@ -5,25 +5,29 @@ import { GITHUB_USER } from "$env/static/private";
 import { octokit } from "$lib/server/octokit";
 
 export const GET: RequestHandler = async ({ locals }) => {
-	if (locals.user) {
-		const installerRef = admin.firestore().collection("installers").doc(locals.user.email);
-		const installer = (await installerRef.get()).data();
+	const installerRef = admin.firestore().collection("installers").doc(locals.user.email);
+	const installer = (await installerRef.get()).data();
 
-		if (installer?.artifactId) {
-			const downloadUrl = await octokit.rest.actions.downloadArtifact({
-				owner: GITHUB_USER,
-				repo: "glimmr",
-				artifact_id: installer?.artifactId,
-				archive_format: "zip"
-			});
+	if (!installer || !installer?.workflowId) return error(500, { message: "Installer not ready" });
 
-			const response = await fetch(downloadUrl.url);
+	const artifacts = await octokit.rest.actions.listWorkflowRunArtifacts({
+		owner: GITHUB_USER,
+		repo: "glimmr",
+		run_id: installer?.workflowId
+	});
 
-			return new Response(response.body);
-		}
+	const artifact = artifacts.data.artifacts[0];
 
-		return error(500, { message: "Installer not ready" });
-	}
+	if (!artifact) return error(500, { message: "Installer not ready" });
 
-	return error(403, { message: "Unauthorized" });
+	const downloadUrl = await octokit.rest.actions.downloadArtifact({
+		owner: GITHUB_USER,
+		repo: "glimmr",
+		artifact_id: artifact.id,
+		archive_format: "zip"
+	});
+
+	const response = await fetch(downloadUrl.url);
+
+	return new Response(response.body);
 };

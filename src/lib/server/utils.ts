@@ -65,3 +65,6 @@ export const getUserDataPath = async (license: string) => {
 	await fs.ensureDir(userPath);
 	return userPath;
 };
+
+export const updateInstallerProgress = (email: string, data: object) =>
+	admin.firestore().collection("installers").doc(email).set(data, { merge: true });

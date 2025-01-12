@@ -1,14 +1,24 @@
 import { type RequestHandler } from "@sveltejs/kit";
 import admin from "firebase-admin";
 import { Readable } from "node:stream";
+import { pollWorkflowJob } from "$lib/server/octokit";
+import { updateInstallerProgress } from "$lib/server/utils";
 
 export const GET: RequestHandler = async ({ locals }) => {
 	const installerRef = admin.firestore().collection("installers").doc(locals.user?.email);
+	const installer = await installerRef.get();
 
 	const stream = new Readable({
 		read() {
 			// The read function is not used directly here since we push data manually
 		}
+	});
+
+	await pollWorkflowJob(installer.data()?.jobId, (job) => {
+		const completed = job.steps?.filter((step) => step.status === "completed").length;
+		const total = job.steps?.length;
+		const progress = `${completed} / ${total}`;
+		updateInstallerProgress(locals.user.email, { progress });
 	});
 
 	const unsubscribe = installerRef.onSnapshot(
