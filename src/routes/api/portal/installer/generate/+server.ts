@@ -62,7 +62,7 @@ export const GET: RequestHandler = async ({ locals }) => {
 			status: "pending"
 		});
 
-		beginDownload(locals.user);
+		await beginDownload(locals.user);
 
 		return json({
 			success: true
