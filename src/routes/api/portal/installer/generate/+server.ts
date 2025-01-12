@@ -59,7 +59,7 @@ const beginDownload = async (user: User) => {
 export const GET: RequestHandler = async ({ locals }) => {
 	if (locals.user) {
 		await admin.firestore().collection("installers").doc(locals.user.email).set({
-			status: "pending"
+			status: "in_progress"
 		});
 
 		const result = await beginDownload(locals.user);

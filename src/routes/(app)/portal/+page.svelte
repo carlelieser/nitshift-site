@@ -102,7 +102,7 @@
 	});
 
 	$effect(() => {
-		if (installer?.status === "pending") {
+		if (installer?.status === "in_progress") {
 			const source = new EventSource("/api/portal/installer/progress/listen");
 
 			source.addEventListener("update", (event) => {
@@ -327,12 +327,12 @@
 				{@render renderGenerateButton()}
 			{:else}
 				<Button
-					disabled={installer?.status === "pending"}
+					disabled={installer?.status === "in_progress"}
 					color={installer?.status === "completed" ? "secondary" : "primary"}
 					onclick={generateInstaller}
 					class="gap-2"
 				>
-					{#if installer?.status === "pending"}
+					{#if installer?.status === "in_progress"}
 						<CircularProgress class="w-4 h-4" indeterminate />
 						<Label>Generating Installer (Step {installer?.progress ?? 1})</Label>
 					{:else if installer?.status === "completed"}
