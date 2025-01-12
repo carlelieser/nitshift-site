@@ -320,7 +320,7 @@
 			</div>
 			<div>
 				<div class="text-2xl font-display">Glimmr Installer</div>
-				<div class="opacity-70">With your license pre-installed</div>
+				<div class="opacity-70">With license pre-installed</div>
 			</div>
 		</div>
 		<div class="flex items-center justify-center gap-4">
