@@ -7,7 +7,6 @@
 	export let background = "dark";
 
 	export let enableStoreDownload = false;
-
 </script>
 
 <Button

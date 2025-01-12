@@ -4,7 +4,7 @@
 
 <a
 	href={to}
-	class="group text-md flex items-center gap-1 font-display font-medium !text-inherit hover:opacity-70 no-underline transition-all {$$props.class} gap-2"
+	class="group text-md flex items-center gap-1 font-display font-medium !text-inherit hover:opacity-70 no-underline transition-all cursor-pointer {$$props.class} gap-2"
 >
 	<slot />
 	<i

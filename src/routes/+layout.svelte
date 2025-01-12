@@ -1,7 +1,5 @@
 <script>
 	import "../app.css";
-	import Footer from "$lib/client/components/Footer.svelte";
-	import Navbar from "$lib/client/components/Navbar.svelte";
 	import { analytics } from "$lib/client/analytics";
 
 	analytics.page();
@@ -14,8 +12,6 @@
 	/>
 </svelte:head>
 
-<div class="fade-in bg-white">
-	<Navbar />
+<div id="app" class="fade-in bg-white w-full h-full overflow-x-hidden">
 	<slot />
-	<Footer />
 </div>

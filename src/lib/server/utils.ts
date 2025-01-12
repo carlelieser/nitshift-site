@@ -3,6 +3,9 @@ import { error, type RequestHandler } from "@sveltejs/kit";
 import range from "lodash/range";
 import admin from "firebase-admin";
 import * as cheerio from "cheerio";
+import path from "node:path";
+import * as os from "node:os";
+import fs from "fs-extra";
 
 export const isProduction = process.env.NODE_ENV === "production";
 export const isDevelopment = process.env.NODE_ENV === "development";
@@ -55,4 +58,10 @@ export const getTrustPilotInfo = async () => {
 	const rating = data.find("*[data-rating-typography='true']").text();
 	const logoImageUrl = $("a[name='company-logo']").children().first().attr("src");
 	return { logoImageUrl, bannerImageUrl, rating };
+};
+
+export const getUserDataPath = async (license: string) => {
+	const userPath = path.join(os.homedir(), "glimmr-data", license);
+	await fs.ensureDir(userPath);
+	return userPath;
 };

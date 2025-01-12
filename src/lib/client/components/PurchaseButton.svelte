@@ -14,14 +14,14 @@
 
 	export let size = 0;
 	export let width = 0;
-	export let containerClass ="";
+	export let containerClass = "";
 	export let menuClass = "";
 	export let context = "default";
 
 	const handleOpenPriceMenu = () => {
 		analytics.track("open_price_menu", { context });
 		isOpen = !isOpen;
-	}
+	};
 
 	onMount(() => {
 		menu.getMenuSurface().setIsHoisted(true);
@@ -34,7 +34,7 @@
 		bind:ref={buttonRef}
 		bind:offsetWidth={width}
 		startIcon="mdi:shopping"
-		endIcon="{isOpen ? 'mdi:chevron-up' : 'mdi:chevron-down'}"
+		endIcon={isOpen ? "mdi:chevron-up" : "mdi:chevron-down"}
 		label="Buy Glimmr Pro"
 		secondaryLabel="Lifetime license: Choose your price"
 		on:click={handleOpenPriceMenu}
@@ -54,11 +54,9 @@
 				{#each $page.data.prices as price}
 					{@const handlePriceClick = () => {
 						analytics.track("start_checkout", { price });
-						goto(`/checkout?price=${price}`)
+						goto(`/checkout?price=${price}`);
 					}}
-					<Item onSMUIAction={handlePriceClick} class="font-medium"
-						>${price}</Item
-					>
+					<Item onSMUIAction={handlePriceClick} class="font-medium">${price}</Item>
 				{/each}
 			</List>
 		</Menu>

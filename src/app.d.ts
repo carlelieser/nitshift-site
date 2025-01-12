@@ -2,20 +2,17 @@
 // for information about these interfaces
 declare global {
 	namespace App {
+		import { User, License } from "$lib/common/types";
 		// interface Error {}
 		interface Locals {
 			secret?: string | null;
-			user?: {
-				id: string;
-				email: string;
-				license: string;
-				trialAvailability: boolean;
-				trialStartDate: number | null;
-			};
+			user?: User;
 		}
 
 		interface PageData {
-			userCount: number;
+			userCount?: number;
+			user?: User;
+			license?: License;
 		}
 		// interface Platform {}
 	}

@@ -13,5 +13,10 @@ export const menu = [
 		name: "Support",
 		link: "/support",
 		icon: "support"
+	},
+	{
+		name: "Portal",
+		link: "/portal",
+		icon: "person"
 	}
 ];

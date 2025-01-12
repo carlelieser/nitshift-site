@@ -45,10 +45,16 @@
 		{#if startIcon}
 			<Icon icon={startIcon} style="width: 24px; height: 24px; opacity: 70%;" />
 		{/if}
-		<div class="flex flex-col items-start gap-0 cursor-pointer text-left flex-1 shrink min-w-0 overflow-hidden">
-			<div class="font-medium whitespace-nowrap text-md truncate flex-1 shrink w-full">{label}</div>
+		<div
+			class="flex flex-col items-start gap-0 cursor-pointer text-left flex-1 shrink min-w-0 overflow-hidden"
+		>
+			<div class="font-medium whitespace-nowrap text-md truncate flex-1 shrink w-full">
+				{label}
+			</div>
 			{#if secondaryLabel}
-				<div class="opacity-70 text-xs sm:text-sm flex-1 truncate w-full">{secondaryLabel}</div>
+				<div class="opacity-70 text-xs sm:text-sm flex-1 truncate w-full">
+					{secondaryLabel}
+				</div>
 			{/if}
 		</div>
 		{#if endIcon}

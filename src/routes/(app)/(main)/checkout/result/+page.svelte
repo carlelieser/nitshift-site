@@ -8,9 +8,9 @@
 
 	$effect(() => {
 		analytics.track($page.data.checkout.success ? "purchase_success" : "purchase_error", {
-			customer: $page.data.checkout.customerId,
+			customer: $page.data.checkout.customerId
 		});
-	})
+	});
 </script>
 
 <div class="section-container">

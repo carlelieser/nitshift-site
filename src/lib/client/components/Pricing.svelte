@@ -110,9 +110,19 @@
 								{/each}
 							</ul>
 							{#if isPro}
-								<PurchaseButton context="pricing" class="w-full mt-12" size={2} background="dark" />
+								<PurchaseButton
+									context="pricing"
+									class="w-full mt-12"
+									size={2}
+									background="dark"
+								/>
 							{:else}
-								<DownloadButton class="w-full mt-12" size={2} background="light" primary={false} />
+								<DownloadButton
+									class="w-full mt-12"
+									size={2}
+									background="light"
+									primary={false}
+								/>
 							{/if}
 						</div>
 					{/each}

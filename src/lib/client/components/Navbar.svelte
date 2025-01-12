@@ -13,6 +13,7 @@
 	import { downloadInstaller } from "$lib/client/utils";
 	import { goto, onNavigate } from "$app/navigation";
 	import PurchaseButton from "$lib/client/components/PurchaseButton.svelte";
+	import { onMount } from "svelte";
 
 	let scrollTop = $state(0);
 	let innerWidth = $state(0);
@@ -22,9 +23,13 @@
 	onNavigate(() => {
 		open = false;
 	});
-</script>
 
-<svelte:window bind:scrollY={scrollTop} bind:innerWidth />
+	onMount(() => {
+		document.getElementById("app")?.addEventListener("scroll", (e) => {
+			scrollTop = document.getElementById("app")?.scrollTop;
+		});
+	});
+</script>
 
 <Drawer variant="modal" class="z-[100]" bind:open>
 	<Header class="flex items-center justify-center py-12">
@@ -35,11 +40,7 @@
 		<List class="flex-1">
 			{#each menu as { name, link, icon }, i}
 				{@const active = $page.url.href.replace($page.url.origin, "") === link}
-				<Item
-					href="javascript:void(0)"
-					onclick={() => goto(link)}
-					activated={active}
-				>
+				<Item href="javascript:void(0)" onclick={() => goto(link)} activated={active}>
 					<Graphic class="material-symbols-outlined">{icon}</Graphic>
 					<Text>{name}</Text>
 				</Item>
@@ -87,7 +88,9 @@
 					{/each}
 				</div>
 				<div class="flex lg:hidden cursor-pointer">
-					<IconButton class="material-symbols-outlined" onclick={() => open = true}>menu</IconButton>
+					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
+						>menu</IconButton
+					>
 				</div>
 				<div class="hidden lg:flex">
 					<DownloadButton size={2} />

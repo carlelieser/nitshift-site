@@ -30,8 +30,7 @@
 		{
 			icon: "model_training",
 			title: "Brightness Profiles",
-			description:
-				"Easily switch between different presets with just a few clicks."
+			description: "Easily switch between different presets with just a few clicks."
 		},
 		{
 			icon: "donut_small",
@@ -85,7 +84,10 @@
 											{feature.title}
 										</h1>
 										{#if feature.pro}
-											<Link to="/pricing" class="bg-teal-500 !text-white px-3 py-1 rounded-full">
+											<Link
+												to="/pricing"
+												class="bg-teal-500 !text-white px-3 py-1 rounded-full"
+											>
 												<Text>PRO</Text>
 											</Link>
 										{/if}

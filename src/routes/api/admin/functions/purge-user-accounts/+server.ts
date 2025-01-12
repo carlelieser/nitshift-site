@@ -2,6 +2,7 @@ import { json, type RequestHandler } from "@sveltejs/kit";
 import admin from "firebase-admin";
 import type { UserRecord } from "firebase-admin/auth";
 import { handleRequest } from "$lib/server/utils";
+import { delay } from "$lib/common/utils";
 
 const getAllUsers = async (users: Array<UserRecord> = [], pageToken?: string) => {
 	const results = await admin.auth().listUsers(1000, pageToken);
@@ -14,8 +15,6 @@ const getAllUsers = async (users: Array<UserRecord> = [], pageToken?: string) =>
 };
 
 const purgeUser = (user: UserRecord) => admin.auth().deleteUser(user.uid);
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const GET: RequestHandler = handleRequest(async () => {
 	const users = await getAllUsers();

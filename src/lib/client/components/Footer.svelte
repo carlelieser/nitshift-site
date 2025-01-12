@@ -8,7 +8,9 @@
 
 <footer class="w-full py-12 md:py-24 bg-teal-950 text-white z-10 flex flex-col items-center">
 	<div class="w-full lg:container mx-auto px-4 relative text-center flex flex-col gap-12">
-		<div class="flex flex-col items-center gap-12 lg:gap-24 md:flex-row md:items-start justify-center mx-auto">
+		<div
+			class="flex flex-col items-center gap-12 lg:gap-24 md:flex-row md:items-start justify-center mx-auto"
+		>
 			<Logo />
 			<div class="flex gap-4 md:gap-8 lg:gap-12">
 				<div class="flex flex-col items-start gap-4">
