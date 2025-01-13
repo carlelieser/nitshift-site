@@ -44,11 +44,11 @@
 		},
 		{
 			question: "I'm having trouble activating my license. What should I do?",
-			answer: "If you're experiencing issues activating your license, please ensure that you're connected to the internet and that your firewall or antivirus software isn't blocking Glimmr's connection to the licensing server. If you continue to encounter issues, please reach out to our support team at support@glimmr.app for further assistance."
+			answer: "If you're experiencing issues activating your license, please ensure that you're connected to the internet and that your firewall or antivirus software isn't blocking Glimmr's connection to the licensing server. You can also download a user-specific version of Glimmr from your portal. If you continue to encounter issues, please reach out to our support team at support@glimmr.app for further assistance."
 		},
 		{
 			question: "I never received my license key. What should I do?",
-			answer: "If you haven't received your license key after purchasing a premium license, please make sure to check your spam or junk folder. If you still can't find it, please reach out to our support team and we'll be happy to assist you."
+			answer: "If you haven't received your license key after your purchase, please make sure to check your spam or junk folder. If you still can't find it, please reach out to our support team and we'll be happy to assist you."
 		},
 		{
 			question: "Can I use Glimmr on multiple devices with a single license?",
