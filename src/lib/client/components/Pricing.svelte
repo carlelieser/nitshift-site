@@ -70,8 +70,8 @@
 			</div>
 			<div class="relative isolate">
 				<div
-					class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
 					aria-hidden="true"
+					class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
 				>
 					<div
 						class="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"

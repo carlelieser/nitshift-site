@@ -1,28 +1,28 @@
 import type { PageServerLoad } from "./$types";
-import { getUsersByEmail, InstallerCollection, LicenseCollection } from "$lib/server/firebase";
+import { get, getUsersByEmail, InstallerCollection, LicenseCollection } from "$lib/server/firebase";
 
 export const load: PageServerLoad = async ({ locals, depends }) => {
 	if (locals.user) {
-		const licenseSnapshot = await LicenseCollection().doc(locals.user.email).get();
-		const installerSnapshot = await InstallerCollection().doc(locals.user.email).get();
 		const deviceQuery = await getUsersByEmail(locals.user.email);
+		const license = await get(LicenseCollection(), locals.user.email);
+		const installer = await get(InstallerCollection(), locals.user.email);
 
-		if (licenseSnapshot.exists) {
-			const license = licenseSnapshot.data();
-			const licenseIssuedOn = licenseSnapshot.createTime?.toDate();
+		if (license.data) {
+			const licenseIssuedOn = license.data.issuedOn || license.doc.createTime?.toDate();
 			const devices = deviceQuery.docs.map((doc) => doc.data()?.id);
-			let installer = installerSnapshot.data();
 
-			if (installer?.cancelled) {
-				installer = undefined;
+			let installerInfo = installer.data;
+
+			if (installer.data?.cancelled) {
+				installerInfo = undefined;
 			}
 
 			return {
 				license: {
-					...license,
+					...license.data,
 					issuedOn: licenseIssuedOn
 				},
-				installer,
+				installer: installerInfo,
 				devices
 			};
 		}

@@ -1,6 +1,5 @@
 <script>
 	import Logo from "$lib/client/components/Logo.svelte";
-	import Link from "$lib/client/components/Link.svelte";
 	import Button from "$lib/client/components/Button.svelte";
 	import { goto } from "$app/navigation";
 
@@ -65,27 +64,27 @@
 					</h1>
 					<div class="mt-2 flex flex-col gap-4">
 						<div>
-							<label for="email" class="block text-sm font-medium text-gray-700"
-								>Email</label
+							<label class="block text-sm font-medium text-gray-700" for="email"
+							>Email</label
 							>
 							<input
 								bind:value={email}
-								type="email"
+								class="mt-1 block w-full p-3 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 text-sm"
 								id="email"
 								name="email"
-								class="mt-1 block w-full p-3 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 text-sm"
+								type="email"
 							/>
 						</div>
 						<div>
-							<label for="password" class="block text-sm font-medium text-gray-700"
-								>License</label
+							<label class="block text-sm font-medium text-gray-700" for="password"
+							>License</label
 							>
 							<input
 								bind:value={password}
-								type="password"
+								class="mt-1 block w-full p-3 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 text-sm"
 								id="password"
 								name="password"
-								class="mt-1 block w-full p-3 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 text-sm"
+								type="password"
 							/>
 						</div>
 						{#if error}
@@ -96,9 +95,9 @@
 						<div class="mt-4">
 							<Button
 								class="rounded-md items-center shadow-sm border border-transparent hover:border-gray-100 hover:shadow-sm"
-								on:click={handleLogin}
-								label="Login"
 								endIcon="mdi:login"
+								label="Login"
+								on:click={handleLogin}
 							></Button>
 						</div>
 					</div>

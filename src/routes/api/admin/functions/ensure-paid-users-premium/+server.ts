@@ -1,7 +1,7 @@
 import { handleRequest } from "$lib/server/utils";
 import { json, type RequestHandler } from "@sveltejs/kit";
 import { stripe } from "$lib/server/stripe";
-import admin from "firebase-admin";
+import { get, UserCollection } from "$lib/server/firebase";
 
 /*
 	Loops through all successful checkout sessions and makes sure that:
@@ -23,14 +23,13 @@ const ensurePaidUsersPremium = async (starting_after?: string) => {
 			checkout.payment_status === "paid"
 		) {
 			const userId = checkout.metadata?.id;
-			const email = checkout.customer_details.email;
+			const email = checkout.customer_details.email as string;
 
 			console.log("Found checkout session: ", checkout.id);
 			console.log("User ID: ", userId);
 			console.log("User email: ", email);
 
-			const userRef = admin.firestore().collection("users").doc(userId);
-			const user = await userRef.get();
+			const user = await get(UserCollection(), userId);
 
 			const paidUserData = {
 				email,
@@ -39,43 +38,36 @@ const ensurePaidUsersPremium = async (starting_after?: string) => {
 				trialStartDate: null
 			};
 
-			if (user.exists) {
-				const userData = user.data();
+			if (user.data) {
+				console.log("Found user: ", user.data);
 
-				console.log("Found user: ", userData);
-
-				if (userData) {
-					const isMalformed = Object.keys(userData).length !== 5;
+				if (user.data) {
+					const isMalformed = Object.keys(user.data).length !== 5;
 
 					if (isMalformed) {
 						console.log("User is malformed.");
 
-						const staleUserRef = admin
-							.firestore()
-							.collection("users")
-							.doc(`${userId}@glimmr.com`);
-						const staleUser = await staleUserRef.get();
-						const staleUserData = staleUser.data();
+						const staleUser = await get(UserCollection(), `${userId}@glimmr.com`);
 
-						if (staleUser.exists) {
+						if (staleUser.data) {
 							console.log("Found stale user with @glimmr.com email");
 							const updatedUser = {
-								...staleUserData,
-								...userData,
+								...staleUser.data,
+								...user.data,
 								...paidUserData
 							};
 
-							await userRef.set(updatedUser);
+							await user.ref.set(updatedUser);
 
 							console.log("Merging user...", updatedUser);
 
-							await staleUserRef.delete();
+							await staleUser.ref.delete();
 
 							console.log("Deleting old user...");
 						}
 					} else {
-						if (userData.license !== "premium" || userData.email !== email) {
-							await userRef.update(paidUserData);
+						if (user.data.license !== "premium" || user.data.email !== email) {
+							await user.ref.update(paidUserData);
 						}
 					}
 				}

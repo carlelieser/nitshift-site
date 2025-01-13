@@ -1,5 +1,5 @@
 import admin, { type ServiceAccount } from "firebase-admin";
-import type { License, Session, User } from "$lib/common/types";
+import type { License, Session, User, VerificationCode } from "$lib/common/types";
 import type { CollectionReference } from "firebase-admin/firestore";
 import type { Installer } from "$lib/server/octokit";
 import { randomUUID } from "node:crypto";
@@ -22,6 +22,18 @@ export const LicenseCollection = () => db().collection("licenses") as Collection
 export const InstallerCollection = () =>
 	db().collection("installers") as CollectionReference<Installer>;
 export const SessionCollection = () => db().collection("sessions") as CollectionReference<Session>;
+export const VerificationCodeCollection = () =>
+	db().collection("verificationCodes") as CollectionReference<VerificationCode>;
+
+export const get = async <T>(collection: CollectionReference<T>, id: string) => {
+	const snapshot = await collection.doc(id).get();
+	return {
+		data: snapshot.data(),
+		ref: snapshot.ref,
+		doc: snapshot
+	};
+};
+
 export const getUsersByEmail = (email: string) => {
 	return UserCollection().where("email", "==", email).get();
 };

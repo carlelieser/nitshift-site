@@ -1,8 +1,8 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
-import admin from "firebase-admin";
 import { randomUUID } from "crypto";
 import { sendEmailVerification } from "$lib/server/mailer";
 import { handleRequest } from "$lib/server/utils";
+import { get, UserCollection, VerificationCodeCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	const { searchParams } = url;
@@ -10,14 +10,10 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	const code = searchParams.get("code");
 
 	if (email && code) {
-		const verificationCode = await admin
-			.firestore()
-			.collection("verificationCodes")
-			.doc(email)
-			.get();
+		const verificationCode = await get(VerificationCodeCollection(), email);
 
-		if (verificationCode.exists) {
-			const isExpired = verificationCode.data()?.expires < Date.now();
+		if (verificationCode.data) {
+			const isExpired = verificationCode.data.expires < Date.now();
 
 			if (isExpired) {
 				await verificationCode.ref.delete();
@@ -26,15 +22,13 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 				});
 			}
 
-			const verified = verificationCode.data()?.code === code;
+			const verified = verificationCode.data.code === code;
 
 			if (verified) {
 				await verificationCode.ref.delete();
-				const userRef = admin
-					.firestore()
-					.collection("users")
-					.doc(locals.user?.id as string);
-				await userRef.set({ email }, { merge: true });
+				await UserCollection()
+					.doc(locals.user?.id as string)
+					.set({ email }, { merge: true });
 			}
 
 			return json({ verified }, { status: verified ? 200 : 403 });
@@ -48,8 +42,9 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	if (email) {
 		const id = randomUUID().split("-").join("");
 		const code = id.substring(0, 6).toUpperCase();
-		const docRef = admin.firestore().collection("verificationCodes").doc(email);
-		await docRef.set({ code, expires: Date.now() + 1000 * 60 * 5 });
+		await VerificationCodeCollection()
+			.doc(email)
+			.set({ code, expires: Date.now() + 1000 * 60 * 5 });
 		await sendEmailVerification(email, code);
 		return json({ success: true });
 	}

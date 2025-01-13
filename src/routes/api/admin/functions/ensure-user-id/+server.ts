@@ -1,14 +1,15 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
 import { handleRequest } from "$lib/server/utils";
-import admin, { firestore } from "firebase-admin";
+import { firestore } from "firebase-admin";
+import { UserCollection } from "$lib/server/firebase";
+import { type User } from "$lib/common/types";
 import QueryDocumentSnapshot = firestore.QueryDocumentSnapshot;
 
-const ensureUserId = async (userDoc: QueryDocumentSnapshot) => {
+const ensureUserId = async (userDoc: QueryDocumentSnapshot<User>) => {
 	const user = userDoc.data();
 	if (userDoc.id.includes("@glimmr.com")) {
-		const userCollection = admin.firestore().collection("users");
 		await userDoc.ref.delete();
-		await userCollection.doc(user.id).set(user);
+		await UserCollection().doc(user.id).set(user);
 	}
 };
 
@@ -17,8 +18,7 @@ const ensureUserId = async (userDoc: QueryDocumentSnapshot) => {
 	Since migrating firebase auth/user logic to the server, users no longer use @glimmr.com ids.
  */
 export const GET: RequestHandler = handleRequest(async () => {
-	const userCollection = admin.firestore().collection("users");
-	const users = await userCollection.get();
+	const users = await UserCollection().get();
 	const promises = users.docs.map(ensureUserId);
 
 	await Promise.all(promises);

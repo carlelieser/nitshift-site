@@ -6,7 +6,7 @@
 	import TrustedBy from "./TrustedBy.svelte";
 	import Intro from "./Intro.svelte";
 	import Link from "$lib/client/components/Link.svelte";
-	import Chip, { Text } from "@smui/chips";
+	import { Text } from "@smui/chips";
 
 	const features = [
 		{

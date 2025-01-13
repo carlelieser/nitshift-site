@@ -1,12 +1,11 @@
 import { GLIMMR_SECRET_KEY, LICENSE_MAX_PRICE, LICENSE_MIN_PRICE } from "$env/static/private";
 import { error, type RequestHandler } from "@sveltejs/kit";
 import range from "lodash/range";
-import admin from "firebase-admin";
 import * as cheerio from "cheerio";
 import path from "node:path";
 import * as os from "node:os";
 import fs from "fs-extra";
-import { InstallerCollection } from "$lib/server/firebase";
+import { InstallerCollection, UserCollection } from "$lib/server/firebase";
 
 export const isProduction = process.env.NODE_ENV === "production";
 export const isDevelopment = process.env.NODE_ENV === "development";
@@ -45,7 +44,7 @@ export const handleRequest = (handler: RequestHandler, secure = true): RequestHa
 };
 
 export const getUserCount = async () => {
-	const result = admin.firestore().collection("users").count();
+	const result = UserCollection().count();
 	const count = await result.get();
 	return count.data().count;
 };

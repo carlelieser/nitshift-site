@@ -3,6 +3,7 @@
 declare global {
 	namespace App {
 		import { User, License } from "$lib/common/types";
+
 		// interface Error {}
 		interface Locals {
 			secret?: string | null;
@@ -14,6 +15,7 @@ declare global {
 			user?: User;
 			license?: License;
 		}
+
 		// interface Platform {}
 	}
 }

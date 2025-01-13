@@ -12,9 +12,9 @@
 	<div class="section py-36">
 		<SplitScreen>
 			<div slot="left">
-				<enhanced:img class="object-contain" src={happyCustomer} loading="lazy" />
+				<enhanced:img class="object-contain" loading="lazy" src={happyCustomer} />
 			</div>
-			<div slot="right" class="space-y-4 md:space-y-8">
+			<div class="space-y-4 md:space-y-8" slot="right">
 				<div class="gap-2">
 					<h2 class="text-base/7 font-semibold text-teal-600 font-display">
 						Testimonials
@@ -25,28 +25,28 @@
 				</div>
 				<div class="grid grid-cols-1 xl:grid-cols-2 grid-rows-2 gap-10 gap-y-16 pt-12">
 					<Testimonial
+						avatar={mia}
+						message="Before Glimmr, adjusting my display's brightness was a daily hassle, especially when dealing with the tiny buttons on the back of my screen. Now, I can easily manage everything from my desktop. It's not just convenient; it's a relief."
 						name="Mia T."
 						title="Digital Marketing Manager"
-						message="Before Glimmr, adjusting my display's brightness was a daily hassle, especially when dealing with the tiny buttons on the back of my screen. Now, I can easily manage everything from my desktop. It's not just convenient; it's a relief."
-						avatar={mia}
 					/>
 					<Testimonial
+						avatar={jordan}
+						message="The custom schedules feature in Glimmr has been a game-changer for me. I love how my screen automatically dims as the sun sets, making those long writing sessions less of a strain on my eyes. It's such a smart, user-friendly tool."
 						name="Jordan M."
 						title="Aspiring Writer"
-						message="The custom schedules feature in Glimmr has been a game-changer for me. I love how my screen automatically dims as the sun sets, making those long writing sessions less of a strain on my eyes. It's such a smart, user-friendly tool."
-						avatar={jordan}
 					/>
 					<Testimonial
+						avatar={riley}
+						message="I'm all about aesthetics, and Glimmr is not only a lifesaver for managing my dual displays but it's also beautifully designed. It fits perfectly into my workflow and my desktop setup. Finally, an app that gets it right."
 						name="Riley S."
 						title="Graphic Designer"
-						message="I'm all about aesthetics, and Glimmr is not only a lifesaver for managing my dual displays but it's also beautifully designed. It fits perfectly into my workflow and my desktop setup. Finally, an app that gets it right."
-						avatar={riley}
 					/>
 					<Testimonial
+						avatar={alex}
+						message="Dealing with multiple displays used to mean constantly fiddling with settings to get a uniform look. With Glimmr, it's a one-time setup, and everything is synchronized perfectly. It's such a simple solution to what was an ongoing frustration."
 						name="Alex D."
 						title="IT Professional"
-						message="Dealing with multiple displays used to mean constantly fiddling with settings to get a uniform look. With Glimmr, it's a one-time setup, and everything is synchronized perfectly. It's such a simple solution to what was an ongoing frustration."
-						avatar={alex}
 					/>
 				</div>
 			</div>

@@ -1,5 +1,4 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
-import admin from "firebase-admin";
 import { type User } from "$lib/common/types";
 import { updateInstallerProgress } from "$lib/server/utils";
 import {
@@ -10,7 +9,7 @@ import {
 	waitUntilWorkflowInProgress,
 	withOptions
 } from "$lib/server/octokit";
-import { getUsersByEmail } from "$lib/server/firebase";
+import { get, getUsersByEmail, InstallerCollection } from "$lib/server/firebase";
 
 const beginDownload = async (user: User) => {
 	try {
@@ -56,15 +55,13 @@ const beginDownload = async (user: User) => {
 
 export const GET: RequestHandler = async ({ locals }) => {
 	if (locals.user) {
-		const installerRef = admin.firestore().collection("installers").doc(locals.user.email);
-		const prevInstaller = await installerRef.get();
-		const prevInstallerWorkflowId = prevInstaller.data()?.workflowId;
+		const installer = await get(InstallerCollection(), locals.user.email);
 
-		if (prevInstallerWorkflowId) {
-			await cancelWorkflowRun(prevInstallerWorkflowId);
+		if (installer.data?.workflowId) {
+			await cancelWorkflowRun(installer.data?.workflowId);
 		}
 
-		await installerRef.set(
+		await installer.ref.set(
 			{
 				status: "in_progress"
 			},

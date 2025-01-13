@@ -11,7 +11,7 @@
 	import Snackbar from "@smui/snackbar";
 	import Chip, { TrailingAction } from "@smui/chips";
 	import Dialog, { Actions, Content, Title } from "@smui/dialog";
-	import { onMount, type Snippet, tick } from "svelte";
+	import { onMount, type Snippet } from "svelte";
 
 	let props = $props();
 
@@ -48,10 +48,10 @@
 		await goto("/portal/login");
 	};
 
-	const generateInstaller = async () => {
+	const buildInstaller = async () => {
 		preppingInstaller = true;
 		message = "Prepping installer...";
-		const response = await fetch("/api/portal/installer/generate");
+		const response = await fetch("/api/portal/installer/build");
 		const { data } = await response.json();
 		message = "This should take about 10 minutes. Feel free to come back later.";
 		props.data.installer = data;
@@ -60,11 +60,7 @@
 		listenForInstallerUpdates();
 	};
 
-	const downloadInstaller = async () => {
-		goto("/api/portal/installer/download");
-	};
-
-	const cancelInstallerGeneration = async () => {
+	const cancelInstallerBuild = async () => {
 		const response = await fetch("/api/portal/installer/cancel");
 		installerProgressSource?.close();
 		props.data.installer.status = "error";
@@ -74,6 +70,10 @@
 		} else {
 			message = "Failed to cancel installer";
 		}
+	};
+
+	const downloadInstaller = async () => {
+		goto("/api/portal/installer/download");
 	};
 
 	let deviceAddDialogOpen = $state(false);
@@ -222,10 +222,10 @@
 	</div>
 {/snippet}
 
-{#snippet renderGenerateButton()}
-	<Button color={"primary"} onclick={generateInstaller} class="gap-2">
-		<Icon class="material-symbols-outlined">rocket</Icon>
-		<Label>Generate installer</Label>
+{#snippet buildButton()}
+	<Button color={"primary"} onclick={buildInstaller} class="gap-2">
+		<Icon class="material-symbols-outlined">build</Icon>
+		<Label>Build installer</Label>
 	</Button>
 {/snippet}
 
@@ -334,10 +334,10 @@
 	{#snippet installerInfo()}
 		<div class="flex items-center justify-center gap-4">
 			{#if props.data.installer?.status === "error"}
-				{@render renderGenerateButton()}
+				{@render buildButton()}
 			{:else}
 				{#if props.data.installer?.status === "in_progress"}
-					<Button color="secondary" onclick={cancelInstallerGeneration}>
+					<Button color="secondary" onclick={cancelInstallerBuild}>
 						<Icon class="material-symbols-outlined">close</Icon>
 						<Label>Cancel</Label>
 					</Button>
@@ -345,14 +345,14 @@
 				<Button
 					disabled={props.data.installer?.status === "in_progress"}
 					color={props.data.installer?.status === "completed" ? "secondary" : "primary"}
-					onclick={generateInstaller}
+					onclick={buildInstaller}
 					class="gap-2"
 				>
 					{#if props.data.installer?.status === "in_progress"}
 						<CircularProgress class="w-4 h-4" indeterminate />
 						{#if props.data.installer?.progress}
 							<div class="flex flex-col items-start text-left">
-								<Label>Generating Installer (Step {props.data.installer?.progress})</Label>
+								<Label>Building Installer (Step {props.data.installer?.progress})</Label>
 								<Label class="opacity-70">{props.data.installer?.step}</Label>
 							</div>
 						{:else}
@@ -361,10 +361,10 @@
 
 					{:else if props.data.installer?.status === "completed"}
 						<Icon class="material-symbols-outlined">refresh</Icon>
-						<Label>Regenerate</Label>
+						<Label>Rebuild</Label>
 					{:else}
 						<Icon class="material-symbols-outlined">rocket</Icon>
-						<Label>Generate installer</Label>
+						<Label>Build installer</Label>
 					{/if}
 				</Button>
 				{#if props.data.installer?.status === "completed"}

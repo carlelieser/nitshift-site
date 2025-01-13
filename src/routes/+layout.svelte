@@ -7,11 +7,11 @@
 
 <svelte:head>
 	<link
-		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
+		rel="stylesheet"
 	/>
 </svelte:head>
 
-<div id="app" class="fade-in bg-white w-full h-full overflow-x-hidden">
+<div class="fade-in bg-white w-full h-full overflow-x-hidden" id="app">
 	<slot />
 </div>

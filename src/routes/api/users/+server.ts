@@ -1,24 +1,18 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
-import admin from "firebase-admin";
-import { handleRequest } from "$lib/server/utils";
+import { get, UserCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ url }) => {
 	const { searchParams } = url;
 	const email = searchParams.get("email");
 
 	if (email) {
-		const docRef = admin.firestore().collection("users").doc(email);
-		const user = await docRef.get();
+		const user = await get(UserCollection(), email);
 
-		if (user.exists) {
-			const data = user.data();
+		if (user.data) {
+			await UserCollection().doc(user.data.id).set(user.data);
+			await user.ref.delete();
 
-			if (data) {
-				await admin.firestore().collection("users").doc(data.id).set(data);
-				await docRef.delete();
-			}
-
-			return json(data);
+			return json(user.data);
 		}
 
 		return json({ error: "User not found" }, { status: 404 });
@@ -29,12 +23,10 @@ export const GET: RequestHandler = async ({ url }) => {
 
 export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json();
-	const docRef = admin.firestore().collection("users").doc(body.id);
-	const user = await docRef.get();
+	const user = await get(UserCollection(), body.id);
 
-	if (user.exists) {
-		const data = user.data();
-		if (data?.license !== body.license) {
+	if (user.data) {
+		if (user.data.license !== body.license) {
 			return error(403, { message: "Cannot change license" });
 		}
 	} else {
@@ -43,7 +35,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 	}
 
-	await docRef.set(body, { merge: true });
+	await user.ref.set(body, { merge: true });
 
 	return json(body);
 };

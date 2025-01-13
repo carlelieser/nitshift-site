@@ -1,8 +1,8 @@
 import { randomUUID } from "crypto";
 import Stripe from "stripe";
-import admin from "firebase-admin";
 import { stripe } from "$lib/server/stripe";
 import { sendLicenseEmail } from "$lib/server/mailer";
+import { LicenseCollection } from "$lib/server/firebase";
 
 export const generateLicenseAndNotifyUser = async (
 	paymentIntent: Stripe.PaymentIntent,
@@ -13,8 +13,9 @@ export const generateLicenseAndNotifyUser = async (
 
 	if (customer.deleted || !customer.email) return null;
 
-	await admin.firestore().collection("licenses").doc(customer.email).set({
-		code: license
+	await LicenseCollection().doc(customer.email).set({
+		code: license,
+		issuedOn: new Date()
 	});
 
 	await sendLicenseEmail(customer.email, license, infoText);

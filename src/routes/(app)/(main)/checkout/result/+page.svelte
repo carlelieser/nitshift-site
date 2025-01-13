@@ -35,9 +35,9 @@
 				</div>
 				<div class="font-display opacity-70 text-xl mt-4">
 					There was an error processing your order. Please try again or contact us at <span
-						class="inline-block text-teal-600"
-						><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
-					>
+					class="inline-block text-teal-600"
+				><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
+				>
 				</div>
 			</div>
 		{/if}

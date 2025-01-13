@@ -10,15 +10,15 @@
 </script>
 
 <Button
-	{primary}
-	{background}
-	{size}
-	class="download-button"
-	startIcon="mdi:microsoft"
-	label="Download for Windows"
-	secondaryLabel={"Free"}
-	on:click={downloadInstaller}
 	{...$$props}
+	{background}
+	class="download-button"
+	label="Download for Windows"
+	on:click={downloadInstaller}
+	{primary}
+	secondaryLabel={"Free"}
+	{size}
+	startIcon="mdi:microsoft"
 />
 {#if enableStoreDownload}
 	<a href="ms-windows-store://pdp/?productid=XP89FPP9MX5S91">

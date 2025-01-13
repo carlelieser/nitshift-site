@@ -1,7 +1,7 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
 import { handleRequest } from "$lib/server/utils";
 import { sendLicenseVerifiedEmail } from "$lib/server/mailer";
-import admin from "firebase-admin";
+import { get, LicenseCollection, UserCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 	const { searchParams } = url;
@@ -12,17 +12,14 @@ export const GET: RequestHandler = handleRequest(async ({ url, locals }) => {
 		return error(400, { message: "No email or code provided" });
 	}
 
-	const licenseRef = await admin.firestore().collection("licenses").doc(email).get();
-	const license = licenseRef.data();
-	const success = license?.code === code;
+	const license = await get(LicenseCollection(), email);
+	const success = license.data?.code === code;
 
 	if (!success) return error(403, { message: "Unauthorized" });
 	if (locals.user?.email !== email) return error(403, { message: "Unauthorized" });
 
 	await sendLicenseVerifiedEmail(email);
-	await admin
-		.firestore()
-		.collection("users")
+	await UserCollection()
 		.doc(locals.user?.id as string)
 		.set(
 			{ license: "premium", trialAvailability: false, trialStartDate: null },

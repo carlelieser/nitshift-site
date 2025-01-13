@@ -30,23 +30,23 @@
 
 <div class="flex flex-col {containerClass}">
 	<Button
-		{size}
-		bind:ref={buttonRef}
+		{...$$props}
 		bind:offsetWidth={width}
-		startIcon="mdi:shopping"
+		bind:ref={buttonRef}
 		endIcon={isOpen ? "mdi:chevron-up" : "mdi:chevron-down"}
 		label="Buy Glimmr Pro"
-		secondaryLabel="Lifetime license: Choose your price"
 		on:click={handleOpenPriceMenu}
-		{...$$props}
+		secondaryLabel="Lifetime license: Choose your price"
+		{size}
+		startIcon="mdi:shopping"
 	/>
 	<Portal>
 		<Menu
-			bind:this={menu}
-			bind:open={isOpen}
 			anchor={false}
-			anchorElement={buttonRef}
 			anchorCorner="BOTTOM_LEFT"
+			anchorElement={buttonRef}
+			bind:open={isOpen}
+			bind:this={menu}
 			class="my-2 z-50 rounded-2xl {menuClass}"
 			style="min-width: {width}px;"
 		>

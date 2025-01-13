@@ -71,9 +71,9 @@
 			>
 				Check out our frequently asked questions below. If you have any other questions, or
 				just wanna chat, feel free to reach out to us at <span
-					class="inline-block text-teal-500"
-					><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
-				>
+				class="inline-block text-teal-500"
+			><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
+			>
 			</p>
 		</div>
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-24">

@@ -1,22 +1,16 @@
-import admin from "firebase-admin";
 import { json, type RequestHandler } from "@sveltejs/kit";
+import { get, UserCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ params, fetch }) => {
 	const id = params.id as string;
 
 	if (id) {
-		const docRef = admin.firestore().collection("users").doc(id);
-		const user = await docRef.get();
-
-		if (user.exists) {
-			const data = user.data();
-
-			if (data) {
-				if (Object.keys(data).length === 1) {
-					await docRef.delete();
-				} else {
-					return json(user.data());
-				}
+		const user = await get(UserCollection(), id);
+		if (user.data) {
+			if (Object.keys(user.data).length === 1) {
+				await user.ref.delete();
+			} else {
+				return json(user.data);
 			}
 		}
 

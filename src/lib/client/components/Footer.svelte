@@ -27,8 +27,8 @@
 				</div>
 			</div>
 			<div class="flex flex-col xl:flex-row gap-2">
-				<DownloadButton size={4} background="dark" />
-				<PurchaseButton context="footer" size={4} background="dark" />
+				<DownloadButton background="dark" size={4} />
+				<PurchaseButton background="dark" context="footer" size={4} />
 			</div>
 		</div>
 		<div class="flex flex-col gap-4 items-center">

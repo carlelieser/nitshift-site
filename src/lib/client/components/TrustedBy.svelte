@@ -9,8 +9,8 @@
 	>
 		<h1 class="text-4xl text-center 2xl:text-left font-display font-bold">
 			Join our growing family of <span class="text-teal-500"
-				>{$page.data.userCount.toLocaleString()}</span
-			> satisfied users!
+		>{$page.data.userCount.toLocaleString()}</span
+		> satisfied users!
 		</h1>
 		<DownloadButton background="dark" primary={false} size={2} />
 	</div>

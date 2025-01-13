@@ -30,7 +30,7 @@
 	});
 </script>
 
-<Drawer variant="modal" class="z-[100]" bind:open>
+<Drawer bind:open class="z-[100]" variant="modal">
 	<Header class="flex items-center justify-center py-12">
 		<Logo />
 	</Header>
@@ -50,11 +50,11 @@
 				<Text>Download</Text>
 			</Item>
 		</List>
-		<PurchaseButton context="drawer" containerClass="mt-auto p-2" menuClass="z-[100]" />
+		<PurchaseButton containerClass="mt-auto p-2" context="drawer" menuClass="z-[100]" />
 	</Content>
 </Drawer>
 
-<Scrim fixed={true} class="z-[80]" />
+<Scrim class="z-[80]" fixed={true} />
 
 <div
 	class="section-container flex items-center justify-center sticky top-0 z-50 bg-transparent !py-4 pointer-events-none"
@@ -88,7 +88,8 @@
 				</div>
 				<div class="flex lg:hidden cursor-pointer">
 					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
-						>menu</IconButton
+					>menu
+					</IconButton
 					>
 				</div>
 				<div class="hidden lg:flex">

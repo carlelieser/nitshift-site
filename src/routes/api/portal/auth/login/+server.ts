@@ -1,6 +1,6 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
 import { randomUUID } from "node:crypto";
-import { getUsersByEmail, LicenseCollection, SessionCollection } from "$lib/server/firebase";
+import { get, getUsersByEmail, LicenseCollection, SessionCollection } from "$lib/server/firebase";
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
 	const body = await request.json();
@@ -10,11 +10,10 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return error(400, { message: "Email and password are required" });
 	}
 
-	const licenseSnapshot = await LicenseCollection().doc(email).get();
-	const license = licenseSnapshot.data();
+	const license = await get(LicenseCollection(), email);
 
-	if (license) {
-		if (license.code === password) {
+	if (license.data) {
+		if (license.data.code === password) {
 			const sessionId = randomUUID();
 			const userSnapshot = await getUsersByEmail(email);
 			const user = userSnapshot.docs.map((doc) => doc.data())[0];

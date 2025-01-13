@@ -1,5 +1,3 @@
-import * as cheerio from "cheerio";
-import admin from "firebase-admin";
 import { type ServerLoad } from "@sveltejs/kit";
 import { getTrustPilotInfo, getUserCount } from "$lib/server/utils";
 

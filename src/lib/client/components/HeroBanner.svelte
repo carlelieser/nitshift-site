@@ -63,14 +63,14 @@
 						</Animate>
 					</div>
 					<Animate
-						delay="0.2s"
 						class="flex gap-4 flex-wrap items-center justify-center lg:justify-start"
+						delay="0.2s"
 					>
 						<DownloadButton
 							background="dark"
+							enableStoreDownload={true}
 							primary={true}
 							size={2}
-							enableStoreDownload={true}
 						/>
 					</Animate>
 				</div>
@@ -80,10 +80,10 @@
 					<div class="w-full max-w-lg flex items-center justify-center">
 						<Animate>
 							<enhanced:img
-								src={demo}
-								class="min-w-80"
 								alt="demo"
+								class="min-w-80"
 								fetchpriority="high"
+								src={demo}
 							/>
 						</Animate>
 					</div>
@@ -99,5 +99,5 @@
 </div>
 
 <svelte:head>
-	<link rel="preload" as="image" href={demo.img.src} />
+	<link as="image" href={demo.img.src} rel="preload" />
 </svelte:head>

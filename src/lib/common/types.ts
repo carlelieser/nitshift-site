@@ -15,3 +15,8 @@ export interface Session {
 	userId: string;
 	expires: number;
 }
+
+export interface VerificationCode {
+	code: string;
+	expires: number;
+}

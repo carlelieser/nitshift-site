@@ -9,13 +9,13 @@
 	<div class="section p-36 rounded-3xl bg-teal-900/5 text-black">
 		<SplitScreen>
 			<div slot="left">
-				<video class="w-full h-full rounded-3xl" autoplay loop muted playsinline>
+				<video autoplay class="w-full h-full rounded-3xl" loop muted playsinline>
 					<source src={demo} type="video/mp4" />
 				</video>
 			</div>
 			<div slot="right">
 				<div class="space-y-8 flex flex-col items-center max-w-lg mx-auto text-center">
-					<Icon icon="mdi:cursor-default-click" class="text-6xl text-teal-900" />
+					<Icon class="text-6xl text-teal-900" icon="mdi:cursor-default-click" />
 					<Animate>
 						<div
 							class="text-teal-900 text-4xl md:text-5xl lg:text-6xl font-display leading-tight font-bold"

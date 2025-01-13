@@ -22,12 +22,8 @@
 </script>
 
 <div
-	bind:this={ref}
-	tabindex="0"
-	role="button"
-	on:click
-	on:keydown
 	bind:offsetWidth
+	bind:this={ref}
 	class="cursor-pointer transition-all group {primary
 		? 'bg-teal-500 text-white ' +
 			(background === 'dark'
@@ -39,7 +35,11 @@
 				: 'hover:bg-black hover:text-white')} rounded-2xl hover:drop-shadow-2xl text-[{size *
 		4 +
 		18}px] flex items-center {$$props.class}"
+	on:click
+	on:keydown
+	role="button"
 	style="padding-left: {paddingHorizontal}; padding-right: {paddingHorizontal}; padding-top: {paddingVertical}; padding-bottom: {paddingVertical};"
+	tabindex="0"
 >
 	<div class="flex items-center space-x-2 flex-1 shrink min-w-0">
 		{#if startIcon}

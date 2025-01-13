@@ -9,28 +9,28 @@
 			<div class="font-display text-3xl">We're on</div>
 			<a href="https://www.trustpilot.com/review/glimmr.app">
 				<img
+					alt="trustpilot logo"
+					class="inline-block text-white"
+					height={34}
+					loading="lazy"
 					src={$page.data.trustPilotInfo.logoImageUrl}
 					width={140}
-					height={34}
-					class="inline-block text-white"
-					alt="trustpilot logo"
-					loading="lazy"
 				/></a
 			>
 			<img
-				src={$page.data.trustPilotInfo.bannerImageUrl}
-				class="rounded-xl overflow-hidden"
-				width={200}
-				height={36}
 				alt="trustpilot rating"
+				class="rounded-xl overflow-hidden"
+				height={36}
 				loading="lazy"
+				src={$page.data.trustPilotInfo.bannerImageUrl}
+				width={200}
 			/>
 			<div class="font-display text-xl opacity-70">{$page.data.trustPilotInfo.rating}/5</div>
 			<Button
+				label="See Reviews"
 				on:click={() => {
 					window.open("https://www.trustpilot.com/review/glimmr.app", "_blank");
 				}}
-				label="See Reviews"
 				startIcon="mdi:external-link"
 			/>
 		</div>

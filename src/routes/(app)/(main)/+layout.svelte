@@ -1,5 +1,5 @@
 <script>
-	import { AppContent, Scrim } from "@smui/drawer";
+	import { AppContent } from "@smui/drawer";
 	import Navbar from "$lib/client/components/Navbar.svelte";
 	import Footer from "$lib/client/components/Footer.svelte";
 </script>

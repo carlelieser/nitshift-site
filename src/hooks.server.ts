@@ -1,5 +1,5 @@
 import { type Handle } from "@sveltejs/kit";
-import { initializeApp, SessionCollection, UserCollection } from "$lib/server/firebase";
+import { get, initializeApp, SessionCollection, UserCollection } from "$lib/server/firebase";
 
 initializeApp();
 
@@ -10,16 +10,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 	locals.user = null;
 
 	if (sessionId) {
-		const session = await SessionCollection().doc(sessionId).get();
-		const sessionData = session.data();
+		const session = await get(SessionCollection(), sessionId);
 
-		if (sessionData) {
-			if (sessionData.expires > Date.now()) {
-				const user = await UserCollection().doc(sessionData.userId).get();
-				const userData = user.data();
+		if (session.data) {
+			if (session.data.expires > Date.now()) {
+				const user = await get(UserCollection(), session.data.userId);
 
-				if (userData) {
-					locals.user = userData;
+				if (user.data) {
+					locals.user = user.data;
 				}
 			} else {
 				await SessionCollection().doc(sessionId).delete();

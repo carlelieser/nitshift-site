@@ -1,7 +1,7 @@
 import { stripe } from "$lib/server/stripe";
 import { json, type RequestHandler } from "@sveltejs/kit";
 import { generateLicenseAndNotifyUser } from "$lib/server/license";
-import admin from "firebase-admin";
+import { get, LicenseCollection } from "$lib/server/firebase";
 
 /*
 	Ensures all paid users have a license.
@@ -15,12 +15,11 @@ const ensureLicenses = async (starting_after?: string) => {
 
 	for await (const checkout of checkouts.data) {
 		if (checkout.payment_status === "paid" && checkout.customer_details) {
-			const licenseRef = admin
-				.firestore()
-				.collection("licenses")
-				.doc(checkout.customer_details.email as string);
-			const license = await licenseRef.get();
-			if (!license.exists) {
+			const license = await get(
+				LicenseCollection(),
+				checkout.customer_details.email as string
+			);
+			if (!license.data) {
 				const paymentIntent = await stripe.paymentIntents.retrieve(
 					checkout.payment_intent as string
 				);
