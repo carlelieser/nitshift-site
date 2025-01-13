@@ -9,7 +9,7 @@ import admin from "firebase-admin";
 const ensureLicenses = async (starting_after?: string) => {
 	const checkouts = await stripe.checkout.sessions.list({
 		starting_after,
-		status: "completed",
+		status: "complete",
 		limit: 100
 	});
 

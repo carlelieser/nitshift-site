@@ -43,7 +43,7 @@ export const waitUntilWorkflowInProgress = async (
 	console.log("waiting until workflow is in progress", start + timeout - Date.now());
 	if (start + timeout < Date.now()) throw new Error("Timeout");
 	const email = branch.split("/").pop() as string;
-	const installer = await InstallerCollection.doc(email).get();
+	const installer = await InstallerCollection().doc(email).get();
 	const workflows = await octokit.rest.actions.listWorkflowRuns({
 		...defaultOptions,
 		branch,

@@ -68,4 +68,4 @@ export const getUserDataPath = async (license: string) => {
 };
 
 export const updateInstallerProgress = (email: string, data: object) =>
-	InstallerCollection.doc(email).set(data, { merge: true });
+	InstallerCollection().doc(email).set(data, { merge: true });

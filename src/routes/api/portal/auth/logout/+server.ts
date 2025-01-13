@@ -6,7 +6,7 @@ export const GET: RequestHandler = async ({ cookies }) => {
 
 	if (sessionId) {
 		cookies.delete("session_id", { path: "/", httpOnly: true, secure: true });
-		await SessionCollection.doc(sessionId).delete();
+		await SessionCollection().doc(sessionId).delete();
 	}
 
 	return json({

@@ -9,7 +9,7 @@ export const GET: RequestHandler = async ({ locals }) => {
 	const workflow = workflows.data.workflow_runs[0];
 	const workflowId = workflow.id;
 	if (workflowId) await cancelWorkflowRun(workflowId);
-	const installerRef = InstallerCollection.doc(locals.user.email);
+	const installerRef = InstallerCollection().doc(locals.user.email);
 	await installerRef.set(
 		{
 			cancelled: true

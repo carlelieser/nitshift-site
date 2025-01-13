@@ -4,7 +4,7 @@ import { octokit, withOptions } from "$lib/server/octokit";
 import { InstallerCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ locals }) => {
-	const installerRef = InstallerCollection.doc(locals.user.email);
+	const installerRef = InstallerCollection().doc(locals.user.email);
 	const installer = (await installerRef.get()).data();
 
 	if (!installer || !installer?.workflowId) return error(500, { message: "Installer not ready" });

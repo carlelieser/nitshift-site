@@ -5,7 +5,7 @@ import { updateInstallerProgress } from "$lib/server/utils";
 import { InstallerCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ locals }) => {
-	const installerRef = InstallerCollection.doc(locals.user?.email);
+	const installerRef = InstallerCollection().doc(locals.user?.email);
 	const controller = new AbortController();
 
 	const stream = new Readable({

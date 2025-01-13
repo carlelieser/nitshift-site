@@ -10,7 +10,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return error(400, { message: "Email and password are required" });
 	}
 
-	const licenseSnapshot = await LicenseCollection.doc(email).get();
+	const licenseSnapshot = await LicenseCollection().doc(email).get();
 	const license = licenseSnapshot.data();
 
 	if (license) {
@@ -18,10 +18,12 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			const sessionId = randomUUID();
 			const userSnapshot = await getUsersByEmail(email);
 			const user = userSnapshot.docs.map((doc) => doc.data())[0];
-			await SessionCollection.doc(sessionId).set({
-				userId: user?.id,
-				expires: Date.now() + 1000 * 60 * 60 * 24
-			});
+			await SessionCollection()
+				.doc(sessionId)
+				.set({
+					userId: user?.id,
+					expires: Date.now() + 1000 * 60 * 60 * 24
+				});
 
 			cookies.set("session_id", sessionId, {
 				path: "/",

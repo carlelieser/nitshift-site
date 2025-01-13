@@ -3,8 +3,8 @@ import { getUsersByEmail, InstallerCollection, LicenseCollection } from "$lib/se
 
 export const load: PageServerLoad = async ({ locals, depends }) => {
 	if (locals.user) {
-		const licenseSnapshot = await LicenseCollection.doc(locals.user.email).get();
-		const installerSnapshot = await InstallerCollection.doc(locals.user.email).get();
+		const licenseSnapshot = await LicenseCollection().doc(locals.user.email).get();
+		const installerSnapshot = await InstallerCollection().doc(locals.user.email).get();
 		const deviceQuery = await getUsersByEmail(locals.user.email);
 
 		if (licenseSnapshot.exists) {

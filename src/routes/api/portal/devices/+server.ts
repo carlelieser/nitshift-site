@@ -10,10 +10,12 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		return error(400, { message: "Device ID is required" });
 	}
 
-	await UserCollection.doc(id).set({
-		...locals.user,
-		id
-	});
+	await UserCollection()
+		.doc(id)
+		.set({
+			...locals.user,
+			id
+		});
 
 	return new Response(null, { status: 200 });
 };
