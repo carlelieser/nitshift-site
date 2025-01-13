@@ -88,9 +88,8 @@
 				</div>
 				<div class="flex lg:hidden cursor-pointer">
 					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
-					>menu
-					</IconButton
-					>
+						>menu
+					</IconButton>
 				</div>
 				<div class="hidden lg:flex">
 					<DownloadButton size={2} />

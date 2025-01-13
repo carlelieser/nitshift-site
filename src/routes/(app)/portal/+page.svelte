@@ -171,7 +171,7 @@
 		>
 			<IconButton onclick={openMenu}>
 				<Label class="text-[1rem] font-bold opacity-70"
-				>{props.data.user.email.substring(0, 2).toUpperCase()}</Label
+					>{props.data.user.email.substring(0, 2).toUpperCase()}</Label
 				>
 			</IconButton>
 			<Menu
@@ -185,7 +185,9 @@
 					<Item class="pointer-events-none">
 						<Text>
 							<PrimaryText>{props.data.user.email}</PrimaryText>
-							<SecondaryText class="uppercase">{props.data.user.license}</SecondaryText>
+							<SecondaryText class="uppercase"
+								>{props.data.user.license}</SecondaryText
+							>
 						</Text>
 					</Item>
 					<Separator />
@@ -199,8 +201,18 @@
 	</div>
 {/snippet}
 
-{#snippet dashboardInfo(icon: string, title: string, description: string, loading: boolean, children: Snippet)}
-	<div class="bg-white rounded-lg border shadow-md p-6 flex flex-col gap-4 {loading ? 'animate-pulse' : ''}">
+{#snippet dashboardInfo(
+	icon: string,
+	title: string,
+	description: string,
+	loading: boolean,
+	children: Snippet
+)}
+	<div
+		class="bg-white rounded-lg border shadow-md p-6 flex flex-col gap-4 {loading
+			? 'animate-pulse'
+			: ''}"
+	>
 		<div
 			class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center flex-wrap"
 		>
@@ -231,9 +243,7 @@
 
 {#snippet license()}
 	{#snippet licenseInfo()}
-		<div
-			class="bg-white border rounded-lg flex items-center gap-4 px-4 py-2 w-full lg:w-auto"
-		>
+		<div class="bg-white border rounded-lg flex items-center gap-4 px-4 py-2 w-full lg:w-auto">
 			<div class="min-w-0 shrink flex-1">
 				<div class="text-xs uppercase opacity-60">Key</div>
 				<div class="text-lg opacity-70 font-[monospace] font-bold">
@@ -247,15 +257,10 @@
 				</div>
 			</div>
 			<div class="flex flex-row gap-2 opacity-70">
-				<IconButton
-					class="material-symbols-outlined"
-					onclick={copyLicenseKeyToClipboard}
-				>content_copy
+				<IconButton class="material-symbols-outlined" onclick={copyLicenseKeyToClipboard}
+					>content_copy
 				</IconButton>
-				<IconButton
-					class="material-symbols-outlined"
-					onclick={toggleLicenseKeyVisibility}
-				>
+				<IconButton class="material-symbols-outlined" onclick={toggleLicenseKeyVisibility}>
 					{#if licenseKeyVisible}
 						visibility_off
 					{:else}
@@ -265,7 +270,13 @@
 			</div>
 		</div>
 	{/snippet}
-	{@render dashboardInfo("key", "Your License", `Issued on ${dayjs(props.data.license?.issuedOn).format("MM/DD/YYYY")}`, false, licenseInfo)}
+	{@render dashboardInfo(
+		"key",
+		"Your License",
+		`Issued on ${dayjs(props.data.license?.issuedOn).format("MM/DD/YYYY")}`,
+		false,
+		licenseInfo
+	)}
 {/snippet}
 
 {#snippet renderDevices()}
@@ -315,19 +326,33 @@
 						await invalidateAll();
 						loadingDevices = false;
 					}}
-					<Chip chip={device} shouldRemoveOnTrailingIconClick={false} class="truncate max-w-48">
+					<Chip
+						chip={device}
+						shouldRemoveOnTrailingIconClick={false}
+						class="truncate max-w-48"
+					>
 						<Text tabindex={0}>{device}</Text>
-						<TrailingAction icon$class="material-symbols-outlined" onclick={deleteDevice}
-						>cancel
+						<TrailingAction
+							icon$class="material-symbols-outlined"
+							onclick={deleteDevice}
+							>cancel
 						</TrailingAction>
 					</Chip>
 				{/each}
 			{/if}
-			<IconButton class="material-symbols-outlined" onclick={openAddDeviceDialog}>add</IconButton>
+			<IconButton class="material-symbols-outlined" onclick={openAddDeviceDialog}
+				>add</IconButton
+			>
 		</div>
 	{/snippet}
 
-	{@render dashboardInfo("devices", "Your devices", "Add or remove devices", loadingDevices, devicesInfo)}
+	{@render dashboardInfo(
+		"devices",
+		"Your devices",
+		"Add or remove devices",
+		loadingDevices,
+		devicesInfo
+	)}
 {/snippet}
 
 {#snippet renderInstaller()}
@@ -352,13 +377,15 @@
 						<CircularProgress class="w-4 h-4" indeterminate />
 						{#if props.data.installer?.progress}
 							<div class="flex flex-col items-start text-left">
-								<Label>Building Installer (Step {props.data.installer?.progress})</Label>
+								<Label
+									>Building Installer (Step {props.data.installer
+										?.progress})</Label
+								>
 								<Label class="opacity-70">{props.data.installer?.step}</Label>
 							</div>
 						{:else}
 							<Label>Setting stuff up...</Label>
 						{/if}
-
 					{:else if props.data.installer?.status === "completed"}
 						<Icon class="material-symbols-outlined">refresh</Icon>
 						<Label>Rebuild</Label>
@@ -376,7 +403,13 @@
 			{/if}
 		</div>
 	{/snippet}
-	{@render dashboardInfo("download", "Glimmr Installer", "With license pre-installed", preppingInstaller, installerInfo)}
+	{@render dashboardInfo(
+		"download",
+		"Glimmr Installer",
+		"With license pre-installed",
+		preppingInstaller,
+		installerInfo
+	)}
 {/snippet}
 
 <Snackbar bind:this={snackbar}>

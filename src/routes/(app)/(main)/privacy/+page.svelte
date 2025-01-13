@@ -25,30 +25,30 @@
 </div>
 
 <style>
-    #policy-container :global(h1),
-    #policy-container :global(h2),
-    #policy-container :global(p),
-    #policy-container :global(li) {
-        font-family: "sofia-pro", sans-serif !important;
-        margin-top: 1em;
-    }
+	#policy-container :global(h1),
+	#policy-container :global(h2),
+	#policy-container :global(p),
+	#policy-container :global(li) {
+		font-family: "sofia-pro", sans-serif !important;
+		margin-top: 1em;
+	}
 
-    #policy-container :global(h1) {
-        font-size: 4em !important;
-    }
+	#policy-container :global(h1) {
+		font-size: 4em !important;
+	}
 
-    #policy-container :global(h2) {
-        font-size: 2em;
-    }
+	#policy-container :global(h2) {
+		font-size: 2em;
+	}
 
-    #policy-container :global(ul) {
-        list-style: unset;
-        margin-left: 2em;
-    }
+	#policy-container :global(ul) {
+		list-style: unset;
+		margin-left: 2em;
+	}
 
-    #policy-container :global(p),
-    #policy-container :global(li) {
-        line-height: 2em;
-        opacity: 0.7;
-    }
+	#policy-container :global(p),
+	#policy-container :global(li) {
+		line-height: 2em;
+		opacity: 0.7;
+	}
 </style>

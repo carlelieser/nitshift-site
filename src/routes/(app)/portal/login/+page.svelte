@@ -65,7 +65,7 @@
 					<div class="mt-2 flex flex-col gap-4">
 						<div>
 							<label class="block text-sm font-medium text-gray-700" for="email"
-							>Email</label
+								>Email</label
 							>
 							<input
 								bind:value={email}
@@ -77,7 +77,7 @@
 						</div>
 						<div>
 							<label class="block text-sm font-medium text-gray-700" for="password"
-							>License</label
+								>License</label
 							>
 							<input
 								bind:value={password}
