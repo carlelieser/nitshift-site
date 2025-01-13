@@ -1,18 +1,15 @@
 import type { RequestHandler } from "./$types";
-import admin from "firebase-admin";
 import { error } from "@sveltejs/kit";
-import { GITHUB_USER } from "$env/static/private";
-import { octokit } from "$lib/server/octokit";
+import { octokit, withOptions } from "$lib/server/octokit";
+import { InstallerCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ locals }) => {
-	const installerRef = admin.firestore().collection("installers").doc(locals.user.email);
+	const installerRef = InstallerCollection.doc(locals.user.email);
 	const installer = (await installerRef.get()).data();
 
 	if (!installer || !installer?.workflowId) return error(500, { message: "Installer not ready" });
 
-	const artifacts = await octokit.rest.actions.listWorkflowRunArtifacts({
-		owner: GITHUB_USER,
-		repo: "glimmr",
+	const artifacts = await withOptions(octokit.rest.actions.listWorkflowRunArtifacts, {
 		run_id: installer?.workflowId
 	});
 
@@ -20,14 +17,17 @@ export const GET: RequestHandler = async ({ locals }) => {
 
 	if (!artifact) return error(500, { message: "Installer not ready" });
 
-	const downloadUrl = await octokit.rest.actions.downloadArtifact({
-		owner: GITHUB_USER,
-		repo: "glimmr",
+	const downloadUrl = await withOptions(octokit.rest.actions.downloadArtifact, {
 		artifact_id: artifact.id,
 		archive_format: "zip"
 	});
 
 	const response = await fetch(downloadUrl.url);
 
-	return new Response(response.body);
+	return new Response(response.body, {
+		headers: {
+			"Content-Disposition": `attachment; filename=setup.zip`,
+			"Content-Type": "application/zip"
+		}
+	});
 };

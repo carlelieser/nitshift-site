@@ -1,6 +1,6 @@
 import { error, json, type RequestHandler } from "@sveltejs/kit";
-import admin from "firebase-admin";
 import { randomUUID } from "node:crypto";
+import { getUsersByEmail, LicenseCollection, SessionCollection } from "$lib/server/firebase";
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
 	const body = await request.json();
@@ -10,26 +10,18 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return error(400, { message: "Email and password are required" });
 	}
 
-	const licenseSnapshot = await admin.firestore().collection("licenses").doc(email).get();
+	const licenseSnapshot = await LicenseCollection.doc(email).get();
 	const license = licenseSnapshot.data();
 
 	if (license) {
 		if (license.code === password) {
 			const sessionId = randomUUID();
-			const userSnapshot = await admin
-				.firestore()
-				.collection("users")
-				.where("email", "==", email)
-				.get();
+			const userSnapshot = await getUsersByEmail(email);
 			const user = userSnapshot.docs.map((doc) => doc.data())[0];
-			await admin
-				.firestore()
-				.collection("sessions")
-				.doc(sessionId)
-				.set({
-					userId: user?.id,
-					expires: Date.now() + 1000 * 60 * 60 * 24
-				});
+			await SessionCollection.doc(sessionId).set({
+				userId: user?.id,
+				expires: Date.now() + 1000 * 60 * 60 * 24
+			});
 
 			cookies.set("session_id", sessionId, {
 				path: "/",

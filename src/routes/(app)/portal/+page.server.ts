@@ -1,34 +1,22 @@
 import type { PageServerLoad } from "./$types";
-import admin from "firebase-admin";
-import { type License } from "$lib/common/types";
+import { getUsersByEmail, InstallerCollection, LicenseCollection } from "$lib/server/firebase";
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals, depends }) => {
 	if (locals.user) {
-		const licenseSnapshot = await admin
-			.firestore()
-			.collection("licenses")
-			.doc(locals.user.email)
-			.get();
-		const installerSnapshot = await admin
-			.firestore()
-			.collection("installers")
-			.doc(locals.user.email)
-			.get();
-		const deviceQuery = admin
-			.firestore()
-			.collection("users")
-			.where("email", "==", locals.user.email);
-		const deviceQuerySnapshot = await deviceQuery.get();
+		const licenseSnapshot = await LicenseCollection.doc(locals.user.email).get();
+		const installerSnapshot = await InstallerCollection.doc(locals.user.email).get();
+		const deviceQuery = await getUsersByEmail(locals.user.email);
 
 		if (licenseSnapshot.exists) {
-			const license = licenseSnapshot.data() as License;
+			const license = licenseSnapshot.data();
 			const licenseIssuedOn = licenseSnapshot.createTime?.toDate();
-			const installer = installerSnapshot.data() as {
-				status: string;
-				error?: string;
-				progress?: string;
-			};
-			const devices = deviceQuerySnapshot.docs.map((doc) => doc.data()?.id);
+			const devices = deviceQuery.docs.map((doc) => doc.data()?.id);
+			let installer = installerSnapshot.data();
+
+			if (installer?.cancelled) {
+				installer = undefined;
+			}
+
 			return {
 				license: {
 					...license,

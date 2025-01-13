@@ -2,52 +2,50 @@ import { error, json, type RequestHandler } from "@sveltejs/kit";
 import admin from "firebase-admin";
 import { type User } from "$lib/common/types";
 import { updateInstallerProgress } from "$lib/server/utils";
-import { GITHUB_USER } from "$env/static/private";
 import {
+	cancelWorkflowRun,
 	getWorkflowJob,
 	octokit,
 	triggerWorkflow,
-	waitUntilWorkflowInProgress
+	waitUntilWorkflowInProgress,
+	withOptions
 } from "$lib/server/octokit";
+import { getUsersByEmail } from "$lib/server/firebase";
 
 const beginDownload = async (user: User) => {
 	try {
-		const usersByEmail = await admin
-			.firestore()
-			.collection("users")
-			.where("email", "==", user.email)
-			.get();
-		const ids = usersByEmail.docs.map((doc) => doc.data()).map((data) => data.id);
-
+		const users = await getUsersByEmail(user.email);
+		const ids = users.docs.map((doc) => doc.data()?.id);
 		const branch = `user/${user.email}`;
 
-		const { data } = await octokit.rest.repos.getCommit({
-			owner: GITHUB_USER,
-			repo: "glimmr",
+		const commit = await withOptions(octokit.rest.repos.getCommit, {
 			ref: "refs/heads/main"
 		});
 
-		await octokit.rest.git.deleteRef({
-			owner: GITHUB_USER,
-			repo: "glimmr",
-			ref: `heads/${branch}`
-		});
+		try {
+			await withOptions(octokit.rest.git.deleteRef, {
+				ref: `heads/${branch}`
+			});
+		} catch (err) {}
 
-		await octokit.rest.git.createRef({
-			owner: GITHUB_USER,
-			repo: "glimmr",
+		await withOptions(octokit.rest.git.createRef, {
 			ref: `refs/heads/${branch}`,
-			sha: data.sha
+			sha: commit.data.sha
 		});
 
 		await triggerWorkflow(branch, ids.join(","));
 
 		const workflow = await waitUntilWorkflowInProgress(branch);
+
+		if (!workflow) return { status: "error" };
+
 		const job = await getWorkflowJob(workflow.id);
 
 		return {
 			workflowId: workflow.id,
-			jobId: job.id
+			jobId: job.id,
+			cancelled: false,
+			status: job.status
 		};
 	} catch (err) {
 		return {
@@ -58,19 +56,28 @@ const beginDownload = async (user: User) => {
 
 export const GET: RequestHandler = async ({ locals }) => {
 	if (locals.user) {
-		await admin.firestore().collection("installers").doc(locals.user.email).set({
-			status: "in_progress"
-		});
+		const installerRef = admin.firestore().collection("installers").doc(locals.user.email);
+		const prevInstaller = await installerRef.get();
+		const prevInstallerWorkflowId = prevInstaller.data()?.workflowId;
+
+		if (prevInstallerWorkflowId) {
+			await cancelWorkflowRun(prevInstallerWorkflowId);
+		}
+
+		await installerRef.set(
+			{
+				status: "in_progress"
+			},
+			{ merge: true }
+		);
 
 		const result = await beginDownload(locals.user);
 
 		await updateInstallerProgress(locals.user.email, result);
 
 		return json({
-			success: true,
-			data: {
-				status: "pending"
-			}
+			success: result.status === "in_progress",
+			data: result
 		});
 	}
 

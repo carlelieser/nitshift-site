@@ -89,7 +89,9 @@
 							/>
 						</div>
 						{#if error}
-							<div class="text-red-500 text-sm">{error}</div>
+							<div class="bg-red-50 rounded-lg p-3">
+								<div class="text-red-500 text-sm font-medium">{error}</div>
+							</div>
 						{/if}
 						<div class="mt-4">
 							<Button

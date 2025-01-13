@@ -16,7 +16,6 @@
 	import { onMount } from "svelte";
 
 	let scrollTop = $state(0);
-	let innerWidth = $state(0);
 
 	let open = $state(false);
 

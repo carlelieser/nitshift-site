@@ -6,6 +6,7 @@ import * as cheerio from "cheerio";
 import path from "node:path";
 import * as os from "node:os";
 import fs from "fs-extra";
+import { InstallerCollection } from "$lib/server/firebase";
 
 export const isProduction = process.env.NODE_ENV === "production";
 export const isDevelopment = process.env.NODE_ENV === "development";
@@ -67,4 +68,4 @@ export const getUserDataPath = async (license: string) => {
 };
 
 export const updateInstallerProgress = (email: string, data: object) =>
-	admin.firestore().collection("installers").doc(email).set(data, { merge: true });
+	InstallerCollection.doc(email).set(data, { merge: true });

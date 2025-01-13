@@ -1,17 +1,16 @@
 import { type RequestHandler } from "@sveltejs/kit";
-import admin from "firebase-admin";
 import { Readable } from "node:stream";
-import { pollWorkflowJob } from "$lib/server/octokit";
+import { getWorkflowJob, pollWorkflowJob, waitUntilWorkflowInProgress } from "$lib/server/octokit";
 import { updateInstallerProgress } from "$lib/server/utils";
+import { InstallerCollection } from "$lib/server/firebase";
 
 export const GET: RequestHandler = async ({ locals }) => {
-	const installerRef = admin.firestore().collection("installers").doc(locals.user?.email);
-	const installer = await installerRef.get();
+	const installerRef = InstallerCollection.doc(locals.user?.email);
+	const controller = new AbortController();
 
 	const stream = new Readable({
-		read() {
-			// The read function is not used directly here since we push data manually
-		}
+		read() {},
+		signal: controller.signal
 	});
 
 	const unsubscribe = installerRef.onSnapshot(
@@ -25,27 +24,44 @@ export const GET: RequestHandler = async ({ locals }) => {
 		}
 	);
 
-	pollWorkflowJob(installer.data()?.jobId, (job) => {
-		const completed = job.steps?.filter((step) => step.status === "completed").length;
-		const total = job.steps?.length;
-		const progress = `${completed} / ${total}`;
-		updateInstallerProgress(locals.user.email, { progress, status: job.status });
-		if (job.status === "completed") {
-			stream.destroy();
-		}
-	});
+	waitUntilWorkflowInProgress(`user/${locals.user.email}`)
+		.then((workflow) => getWorkflowJob(workflow.id))
+		.then((job) =>
+			pollWorkflowJob(
+				job.id,
+				async ({ status, steps }) => {
+					const completed = steps?.filter((step) => step.status === "completed").length;
+					const step = steps?.find((step) => step.status === "in_progress")?.name;
+					const total = steps?.length;
+					const progress = `${completed} / ${total}`;
+					const installerInfo = await installerRef.get();
+					if (installerInfo.exists && !installerInfo?.data()?.cancelled) {
+						updateInstallerProgress(locals.user.email, {
+							progress,
+							status,
+							step: step ?? "None"
+						});
+					}
+
+					if (!installerInfo.exists || status === "completed") {
+						controller.abort();
+					}
+				},
+				5000,
+				controller.signal
+			)
+		)
+		.catch((err) => console.log(err));
 
 	stream.on("close", () => {
+		controller.abort();
 		unsubscribe();
 	});
 
 	return new Response(stream as unknown as BodyInit, {
 		headers: {
-			// SSE requires this content type
 			"Content-Type": "text/event-stream",
-			// Disables caching so the events stream live
 			"Cache-Control": "no-cache",
-			// Keep connection alive
 			Connection: "keep-alive"
 		}
 	});

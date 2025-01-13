@@ -1,6 +1,6 @@
 import type { RequestHandler } from "./$types";
 import { error } from "@sveltejs/kit";
-import admin from "firebase-admin";
+import { UserCollection } from "$lib/server/firebase";
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	const body = await request.json();
@@ -10,14 +10,10 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		return error(400, { message: "Device ID is required" });
 	}
 
-	await admin
-		.firestore()
-		.collection("users")
-		.doc(id)
-		.set({
-			...locals.user,
-			id
-		});
+	await UserCollection.doc(id).set({
+		...locals.user,
+		id
+	});
 
 	return new Response(null, { status: 200 });
 };

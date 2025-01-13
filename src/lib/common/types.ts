@@ -10,3 +10,8 @@ export interface License {
 	issuedOn: Date;
 	code: string;
 }
+
+export interface Session {
+	userId: string;
+	expires: number;
+}
