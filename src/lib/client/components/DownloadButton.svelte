@@ -12,7 +12,7 @@
 <Button
 	{...$$props}
 	{background}
-	class="download-button"
+	class="download-button ${$$props.class ?? ''}"
 	label="Download for Windows"
 	on:click={downloadInstaller}
 	{primary}
