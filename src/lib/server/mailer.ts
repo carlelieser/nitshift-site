@@ -4,6 +4,7 @@ import SMTPTransport from "nodemailer/lib/smtp-transport";
 import emailVerificationTemplate from "./templates/email-verification.html?raw";
 import licenseVerifiedTemplate from "./templates/license-verified.html?raw";
 import licenseTemplate from "./templates/license.html?raw";
+import reviewRequestTemplate from "./templates/review-request.html?raw";
 import { SMTP_FROM, SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER } from "$env/static/private";
 import { PUBLIC_ICON_URL } from "$env/static/public";
 import { postmarkClient } from "$lib/server/postmark";
@@ -51,6 +52,13 @@ export const getLicenseConfig = (
 	to: email,
 	subject: "Your new license",
 	html: licenseTemplate.replace("{{ code }}", code).replace("{{ intro }}", intro),
+	...defaultOptions
+});
+
+export const getReviewRequestConfig = (email: string, customer: string): Mailer.Options => ({
+	to: email,
+	subject: "What do you think about Glimmr?",
+	html: reviewRequestTemplate.replace("{{ customer }}", customer),
 	...defaultOptions
 });
 
