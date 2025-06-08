@@ -7,7 +7,9 @@
 <AppContent class="w-full h-full">
 	<div class="fade-in bg-white">
 		<Navbar />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
 	</div>
 </AppContent>

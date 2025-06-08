@@ -60,7 +60,7 @@
 
 <Scrim class="z-[80]" fixed={true} />
 
-<div
+<header
 	class="section-container flex items-center justify-center sticky top-0 z-50 bg-transparent !py-4 pointer-events-none"
 >
 	<div class="transition mx-auto text-white pointer-events-auto">
@@ -103,4 +103,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</header>
