@@ -37,13 +37,17 @@
 	<Separator />
 	<Content class="flex flex-col">
 		<List class="flex-1">
-			{#each menu as { name, link, icon }, i}
-				{@const active = $page.url.href.replace($page.url.origin, "") === link}
-				<Item href="javascript:void(0)" onclick={() => goto(link)} activated={active}>
-					<Graphic class="material-symbols-outlined">{icon}</Graphic>
-					<Text>{name}</Text>
-				</Item>
-			{/each}
+			<ul>
+				{#each menu as { name, link, icon }, i}
+					{@const active = $page.url.href.replace($page.url.origin, "") === link}
+					<li>
+						<Item href="javascript:void(0)" onclick={() => goto(link)} activated={active}>
+							<Graphic class="material-symbols-outlined">{icon}</Graphic>
+							<Text>{name}</Text>
+						</Item>
+					</li>
+				{/each}
+			</ul>
 			<Separator />
 			<Item href="javascript:void(0)" onclick={downloadInstaller}>
 				<Graphic class="material-symbols-outlined">download</Graphic>
@@ -69,26 +73,28 @@
 				<Animate>
 					<Logo />
 				</Animate>
-				<div class="items-center gap-8 hidden lg:flex">
+				<ul class="items-center gap-8 hidden lg:flex">
 					{#each menu as { name, link }, i}
 						{@const active = $page.url.href.replace($page.url.origin, "") === link}
-						<Animate delay={(i + 1) * 0.1 + "s"}>
-							<Link
-								to={link}
-								class={active
+						<li>
+							<Animate delay={(i + 1) * 0.1 + "s"}>
+								<Link
+									to={link}
+									class={active
 									? scrollTop === 0
 										? "!text-teal-300"
 										: "!text-teal-500"
 									: ""}
-							>
-								{name}
-							</Link>
-						</Animate>
+								>
+									{name}
+								</Link>
+							</Animate>
+						</li>
 					{/each}
-				</div>
+				</ul>
 				<div class="flex lg:hidden cursor-pointer">
 					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
-						>menu
+					>menu
 					</IconButton>
 				</div>
 				<div class="hidden lg:flex">

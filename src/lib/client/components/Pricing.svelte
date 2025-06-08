@@ -55,18 +55,18 @@
 	<div class="section py-12 pb-24">
 		<div class="grid grid-cols-1 gap-12 items-center z-10 relative">
 			<div class="mx-auto max-w-4xl text-center">
-				<h2 class="text-base/7 font-semibold text-teal-600 font-display">Pricing</h2>
-				<p
+				<span class="text-base/7 font-semibold text-teal-600 font-display">Pricing</span>
+				<h2
 					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-teal-900 sm:text-6xl"
 				>
 					Choose What Works Best for You
-				</p>
-				<p
+				</h2>
+				<span
 					class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
 				>
 					Glimmr offers a free version for essential brightness control, plus an optional
 					paid license for full functionality.
-				</p>
+				</span>
 			</div>
 			<div class="relative isolate">
 				<div
@@ -100,7 +100,7 @@
 								<span class="text-5xl font-semibold tracking-tight">{price}</span>
 								<span class="text-base opacity-70">{frequency}</span>
 							</p>
-							<p class="mt-6 text-base/7">{description}</p>
+							<span class="mt-6 text-base/7">{description}</span>
 							<ul role="list" class="mt-8 space-y-3 text-sm/6 sm:mt-10">
 								{#each features as feature}
 									<li class="flex gap-x-3">

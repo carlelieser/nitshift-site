@@ -14,15 +14,19 @@
 			<Logo />
 			<div class="flex gap-4 md:gap-8 lg:gap-12">
 				<div class="flex flex-col items-start gap-4">
-					<p class="font-display uppercase opacity-70 text-xs">Directory</p>
-					{#each menu as { name, link }, i}
-						<Link to={link}>
-							{name}
-						</Link>
-					{/each}
+					<h4 class="font-display uppercase opacity-70 text-xs">Directory</h4>
+					<ul class="flex flex-col gap-2">
+						{#each menu as { name, link }, i}
+							<li>
+								<Link to={link}>
+									{name}
+								</Link>
+							</li>
+						{/each}
+					</ul>
 				</div>
 				<div class="flex flex-col items-start gap-4">
-					<p class="font-display uppercase opacity-70 text-xs">Contact</p>
+					<h4 class="font-display uppercase opacity-70 text-xs">Contact</h4>
 					<Link to="mailto:support@glimmr.app">Email us</Link>
 				</div>
 			</div>

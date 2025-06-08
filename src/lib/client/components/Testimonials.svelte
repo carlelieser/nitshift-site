@@ -16,12 +16,12 @@
 			</div>
 			<div class="space-y-4 md:space-y-8" slot="right">
 				<div class="gap-2">
-					<h2 class="text-base/7 font-semibold text-teal-600 font-display">
+					<span class="text-base/7 font-semibold text-teal-600 font-display">
 						Testimonials
-					</h2>
-					<div class="text-6xl font-bold font-display text-teal-900">
+					</span>
+					<h2 class="text-6xl font-bold font-display text-teal-900">
 						See What Our Customers Have to Say
-					</div>
+					</h2>
 				</div>
 				<div class="grid grid-cols-1 xl:grid-cols-2 grid-rows-2 gap-10 gap-y-16 pt-12">
 					<Testimonial

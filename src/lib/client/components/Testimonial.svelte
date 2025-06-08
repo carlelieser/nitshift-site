@@ -13,9 +13,9 @@
 			class="material-symbols-outlined transform rotate-180 text-left self-start opacity-70"
 			style="font-size: 3rem !important;">format_quote</span
 		>
-		<div class="text-lg leading-relaxed">
+		<blockquote class="text-lg leading-relaxed">
 			{message}
-		</div>
+		</blockquote>
 	</div>
 	<div class="flex items-center space-x-2">
 		<div class="rounded-full overflow-hidden">

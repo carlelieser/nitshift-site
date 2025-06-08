@@ -3,7 +3,7 @@
 </script>
 
 <a
-	class="group text-md flex items-center gap-1 font-display font-medium !text-inherit hover:opacity-70 no-underline transition-all cursor-pointer {$$props.class} gap-2"
+	class="group text-md flex items-center font-display font-medium !text-inherit hover:opacity-70 no-underline transition-all cursor-pointer {$$props.class} gap-2"
 	href={to}
 >
 	<slot />

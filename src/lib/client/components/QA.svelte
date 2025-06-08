@@ -14,7 +14,7 @@
 	on:click={() => (open = !open)}
 >
 	<div class="flex items-center justify-between text-left w-full">
-		<h1 class="font-medium transition max-w-2xl font-display text-xl">{question}</h1>
+		<h3 class="font-medium transition max-w-2xl font-display text-xl">{question}</h3>
 		<span class="material-symbols-outlined">{open ? "expand_less" : "expand_more"}</span>
 	</div>
 	<div use:collapse={{ open }}>

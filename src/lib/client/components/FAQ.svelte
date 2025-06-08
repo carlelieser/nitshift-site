@@ -60,13 +60,13 @@
 <section class="w-full z-0">
 	<div class="section flex flex-col items-center py-24 gap-12 text-center">
 		<div class="mx-auto max-w-4xl text-center">
-			<h2 class="text-base/7 font-semibold text-teal-600 font-display">FAQ</h2>
-			<p
+			<span class="text-base/7 font-semibold text-teal-600 font-display">FAQ</span>
+			<h2
 				class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl"
 			>
 				Got Questions? We've Got Answers.
-			</p>
-			<p
+			</h2>
+			<span
 				class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
 			>
 				Check out our frequently asked questions below. If you have any other questions, or
@@ -74,7 +74,7 @@
 					class="inline-block text-teal-500"
 					><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
 				>
-			</p>
+			</span>
 		</div>
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-24">
 			{#each data as content, i}

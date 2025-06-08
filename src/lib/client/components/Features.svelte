@@ -56,12 +56,12 @@
 	<div class="section py-24">
 		<div class="grid grid-cols-1 gap-12 items-center z-10 relative">
 			<div class="mx-auto max-w-4xl text-center">
-				<h2 class="text-base/7 font-semibold text-teal-600 font-display">Features</h2>
-				<p
+				<span class="text-base/7 font-semibold text-teal-600 font-display">Features</span>
+				<h2
 					class="mt-2 font-display text-balance text-5xl font-semibold tracking-tight text-teal-900 sm:text-6xl"
 				>
 					Designed for Simplicity
-				</p>
+				</h2>
 			</div>
 			<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 p-2 md:p-0">
 				{#each features as feature, i}
