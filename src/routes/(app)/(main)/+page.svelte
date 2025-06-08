@@ -4,7 +4,6 @@
 	import FAQ from "$lib/client/components/FAQ.svelte";
 	import Loading from "$lib/client/components/Loading.svelte";
 	import Testimonials from "$lib/client/components/Testimonials.svelte";
-	import TrustPilotBanner from "$lib/client/components/TrustPilotBanner.svelte";
 	import Pricing from "$lib/client/components/Pricing.svelte";
 	import { Separator } from "@smui/list";
 </script>
@@ -12,7 +11,6 @@
 <Loading />
 
 <HeroBanner />
-<TrustPilotBanner />
 <Features />
 <Testimonials />
 <Separator />
