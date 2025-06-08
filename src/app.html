@@ -1,33 +1,87 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<link href="https://fonts.gstatic.com" rel="preconnect" />
-	<link href="%sveltekit.assets%/favicon.png" rel="icon" />
-	<link href="/smui.css" rel="stylesheet" />
-	<meta content="width=device-width" name="viewport" />
-	<meta
-		content="Effortlessly adjust the brightness of multiple displays."
-		name="description"
-	/>
+	<!-- Primary Meta Tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Effortlessly adjust the brightness of multiple displays.">
+
+	<!-- SEO & Social -->
+	<meta name="robots" content="index, follow, notranslate">
+	<link rel="canonical" href="https://glimmr.app">
+	<link rel="alternate" hreflang="en" href="https://glimmr.app">
+	<link rel="alternate" hreflang="x-default" href="https://glimmr.app">
+
+	<!-- Theme & Browser Configuration -->
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-config" content="/browserconfig.xml">
+
+	<!-- Fonts & Preconnect -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+
+	<!-- Default Favicon -->
+	<link rel="icon" href="%sveltekit.assets%/favicon.png">
+
+	<!-- Favicons and Apple Touch Icons -->
+	<link rel="shortcut icon" href="https://glimmr.app/packs/media/images/favicons/favicon.ico">
+	<link rel="apple-touch-icon" href="https://glimmr.app/packs/media/images/favicons/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://glimmr.app/packs/media/images/favicons/favicon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://glimmr.app/packs/media/images/favicons/favicon-120x120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://glimmr.app/packs/media/images/favicons/favicon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://glimmr.app/packs/media/images/favicons/favicon-180x180.png">
+	<link rel="apple-touch-icon" sizes="40x40" href="https://glimmr.app/packs/media/images/favicons/favicon-40x40.png">
+	<link rel="apple-touch-icon" sizes="58x58" href="https://glimmr.app/packs/media/images/favicons/favicon-58x58.png">
+	<link rel="apple-touch-icon" sizes="80x80" href="https://glimmr.app/packs/media/images/favicons/favicon-80x80.png">
+	<link rel="apple-touch-icon" sizes="87x87" href="https://glimmr.app/packs/media/images/favicons/favicon-87x87.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="https://glimmr.app/packs/media/images/favicons/favicon-167x167.png">
+
+	<!-- Open Graph and Twitter Meta Tags -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://glimmr.app">
+	<meta property="og:site_name" content="Glimmr">
+	<meta property="og:title" content="The title is here">
+	<meta property="og:description" content="A description of the page">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:app_id" content="???">
+	<meta property="fb:admins" content="???">
+	<meta property="og:image" content="https://glimmr.app/packs/media/image/sharing/1200x630.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta name="twitter:title" content="The title is here">
+	<meta name="twitter:description" content="A description of the page">
+	<meta name="twitter:image" content="https://glimmr.app/packs/media/image/sharing/4096x4096.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/smui.css">
+
+	<!-- Title -->
 	<title>Glimmr | Multi-Display Brightness Tool</title>
+
 	<!-- Google Tag Manager -->
-	<script>(function(w, d, s, l, i) {
-		w[l] = w[l] || [];
-		w[l].push({
-			"gtm.start":
-				new Date().getTime(), event: "gtm.js"
-		});
-		var f = d.getElementsByTagName(s)[0],
-			j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
-		j.async = true;
-		j.src =
-			"https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-		f.parentNode.insertBefore(j, f);
-	})(window, document, "script", "dataLayer", "GTM-M9XKH7GN");</script>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				"gtm.start": new Date().getTime(), event: "gtm.js"
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+			j.async = true;
+			j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, "script", "dataLayer", "GTM-M9XKH7GN");
+	</script>
 	<!-- End Google Tag Manager -->
+
+	<!-- SvelteKit Head Placeholder -->
 	%sveltekit.head%
 </head>
+
 <body data-sveltekit-preload-data="hover">
 <!-- Google Tag Manager (noscript) -->
 <noscript>
