@@ -13,7 +13,7 @@ ssh.connect({
 	.then(() => {
 		console.log("Uploading build...");
 		return ssh.putDirectory("build", "/var/www/html", {
-			concurrency: 1,
+			concurrency: 10,
 			tick: (localFile, remoteFile, error) => {
 				console.log(`Uploading file: ${localFile} -> ${remoteFile}`);
 				if (error) {
