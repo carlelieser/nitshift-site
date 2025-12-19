@@ -92,13 +92,15 @@
 						</li>
 					{/each}
 				</ul>
-				<div class="flex lg:hidden cursor-pointer">
+				<div class="flex lg:hidden cursor-pointer gap-2">
+					<PurchaseButton size={1} context="mobile-navbar" containerClass="flex" />
 					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
 					>menu
 					</IconButton>
 				</div>
-				<div class="hidden lg:flex">
-					<DownloadButton size={2} />
+				<div class="hidden lg:flex gap-2">
+					<DownloadButton size={2} showEmailCapture={false} />
+					<PurchaseButton size={2} context="navbar" />
 				</div>
 			</div>
 		</div>

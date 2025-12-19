@@ -34,11 +34,11 @@
 		bind:offsetWidth={width}
 		bind:ref={buttonRef}
 		endIcon={isOpen ? "mdi:chevron-up" : "mdi:chevron-down"}
-		label="Buy Glimmr Pro"
+		label="Unlock Pro Features"
 		on:click={handleOpenPriceMenu}
-		secondaryLabel="Lifetime license: Choose your price"
+		secondaryLabel="Choose your price: $1.99 - $5.99"
 		{size}
-		startIcon="mdi:shopping"
+		startIcon="mdi:star"
 	/>
 	<Portal>
 		<Menu

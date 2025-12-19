@@ -51,14 +51,13 @@
 								class="max-w-sm mx-auto lg:mx-0 lg:text-left text-center text-5xl md:text-6xl lg:text-7xl text-transparent font-display font-bold flex md:block justify-center"
 							>
 								<h1 class="bg-clip-text bg-teal-50 capitalize leading-tight">
-									Simplified Brightness Control
+									Skip Windows Settings Forever
 								</h1>
 							</div>
 						</Animate>
 						<Animate delay="0.1s">
 							<span class="text-2xl md:text-4xl font-display opacity-80 lg:text-left">
-								Easily adjust brightness for all your displays right from your
-								system tray.
+								Adjust all your monitors in one click from the system tray. No more hunting through Control Panel.
 							</span>
 						</Animate>
 					</div>

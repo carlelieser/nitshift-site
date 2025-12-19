@@ -110,9 +110,19 @@
 								{/each}
 							</ul>
 							{#if isPro}
+								<div class="mt-8 space-y-2 text-sm text-teal-300">
+									<div class="flex items-center gap-2">
+										{@render check(false)}
+										<span>30-day money-back guarantee</span>
+									</div>
+									<div class="flex items-center gap-2">
+										{@render check(false)}
+										<span>Lifetime license — no subscription</span>
+									</div>
+								</div>
 								<PurchaseButton
 									context="pricing"
-									class="w-full mt-12"
+									class="w-full mt-6"
 									size={2}
 									background="dark"
 								/>

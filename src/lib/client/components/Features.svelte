@@ -85,8 +85,8 @@
 										</h1>
 										{#if feature.pro}
 											<Link
-												to="/pricing"
-												class="bg-teal-500 !text-white px-3 py-1 rounded-full"
+												to="/pricing?feature={feature.title.toLowerCase().replace(' ', '-')}"
+												class="bg-teal-500 !text-white px-3 py-1 rounded-full hover:bg-teal-400 transition-colors"
 											>
 												<Text>PRO</Text>
 											</Link>
