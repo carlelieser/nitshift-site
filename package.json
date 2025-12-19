@@ -13,7 +13,10 @@
 		"lint": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "npm run smui-theme",
-		"smui-theme": "smui-theme compile static/smui.css -i src/theme"
+		"smui-theme": "smui-theme compile static/smui.css -i src/theme",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest --coverage"
 	},
 	"devDependencies": {
 		"@analytics/google-analytics": "^1.1.0",
@@ -31,11 +34,14 @@
 		"@sveltejs/adapter-node": "^5.2.11",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"@sveltejs/kit": "^2.4.0",
+		"@types/node": "^24.7.0",
+		"@vitest/ui": "^3.2.4",
 		"analytics": "^0.8.16",
 		"autoprefixer": "^10.4.14",
 		"dayjs": "^1.11.13",
 		"dotenv": "^16.4.5",
 		"fs-extra": "^11.2.0",
+		"happy-dom": "^19.0.2",
 		"isomorphic-dompurify": "^2.19.0",
 		"lodash": "^4.17.21",
 		"node-ssh": "^13.2.0",
@@ -52,7 +58,8 @@
 		"svelte-portal": "^2.2.1",
 		"tailwindcss": "^3.4.17",
 		"typescript": "^5.7.2",
-		"vite": "^6.0.0"
+		"vite": "^6.0.0",
+		"vitest": "^3.2.4"
 	},
 	"type": "module",
 	"dependencies": {

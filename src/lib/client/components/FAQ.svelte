@@ -44,7 +44,7 @@
 		},
 		{
 			question: "I'm having trouble activating my license. What should I do?",
-			answer: "If you're experiencing issues activating your license, please ensure that you're connected to the internet and that your firewall or antivirus software isn't blocking Glimmr's connection to the licensing server. You can also download a user-specific version of Glimmr from your portal. If you continue to encounter issues, please reach out to our support team at support@glimmr.app for further assistance."
+			answer: "If you're experiencing issues activating your license, please ensure that you're connected to the internet and that your firewall or antivirus software isn't blocking Glimmr's connection to the licensing server. If you continue to encounter issues, please reach out to our support team at support@glimmr.app for further assistance."
 		},
 		{
 			question: "I never received my license key. What should I do?",
