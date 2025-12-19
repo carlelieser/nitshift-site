@@ -5,7 +5,7 @@
 	import Loading from "$lib/client/components/Loading.svelte";
 	import Testimonials from "$lib/client/components/Testimonials.svelte";
 	import Pricing from "$lib/client/components/Pricing.svelte";
-	import { Separator } from "@smui/list";
+	import { Separator } from "$lib/components/ui/separator";
 </script>
 
 <Loading />

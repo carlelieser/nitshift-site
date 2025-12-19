@@ -61,12 +61,12 @@
 				>
 					Choose What Works Best for You
 				</h2>
-				<span
-					class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
+				<div
+					class="mx-auto mt-8 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
 				>
 					Glimmr offers a free version for essential brightness control, plus an optional
 					paid license for full functionality.
-				</span>
+				</div>
 			</div>
 			<div class="relative isolate">
 				<div

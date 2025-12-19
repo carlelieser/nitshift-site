@@ -6,7 +6,7 @@
 	import TrustedBy from "./TrustedBy.svelte";
 	import Intro from "./Intro.svelte";
 	import Link from "$lib/client/components/Link.svelte";
-	import { Text } from "@smui/chips";
+	import { Badge } from "$lib/components/ui/badge";
 
 	const features = [
 		{
@@ -84,12 +84,9 @@
 											{feature.title}
 										</h1>
 										{#if feature.pro}
-											<Link
-												to="/pricing?feature={feature.title.toLowerCase().replace(' ', '-')}"
-												class="bg-teal-500 !text-white px-3 py-1 rounded-full hover:bg-teal-400 transition-colors"
-											>
-												<Text>PRO</Text>
-											</Link>
+											<a href="/pricing?feature={feature.title.toLowerCase().replace(' ', '-')}">
+												<Badge class="bg-teal-500 text-white hover:bg-teal-400">PRO</Badge>
+											</a>
 										{/if}
 									</div>
 									<p class="text-xl opacity-80 leading-relaxed">

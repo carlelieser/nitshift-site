@@ -1,4 +1,5 @@
 <script>
+	import { Accordion } from "$lib/components/ui/accordion";
 	import QA from "./QA.svelte";
 	import Animate from "./Animate.svelte";
 	import Link from "$lib/client/components/Link.svelte";
@@ -66,22 +67,22 @@
 			>
 				Got Questions? We've Got Answers.
 			</h2>
-			<span
-				class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
+			<div
+				class="mx-auto mt-8 max-w-2xl text-pretty text-center text-lg text-gray-600 sm:text-xl/8"
 			>
 				Check out our frequently asked questions below. If you have any other questions, or
 				just wanna chat, feel free to reach out to us at <span
 					class="inline-block text-teal-500"
 					><Link to="mailto:support@glimmr.app">support@glimmr.app</Link></span
 				>
-			</span>
+			</div>
 		</div>
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-24">
+		<Accordion>
 			{#each data as content, i}
 				<Animate>
-					<QA question={content.question} answer={content.answer} />
+					<QA question={content.question} answer={content.answer} value="item-{i}" />
 				</Animate>
 			{/each}
-		</div>
+		</Accordion>
 	</div>
 </section>

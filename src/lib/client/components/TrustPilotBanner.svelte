@@ -1,6 +1,7 @@
 <script>
 	import { page } from "$app/stores";
-	import Button from "./Button.svelte";
+	import { Button } from "$lib/components/ui/button";
+	import Icon from "@iconify/svelte";
 </script>
 
 <section class="section-container">
@@ -26,13 +27,10 @@
 				width={200}
 			/>
 			<div class="font-display text-xl opacity-70">{$page.data.trustPilotInfo.rating}/5</div>
-			<Button
-				label="See Reviews"
-				on:click={() => {
-					window.open("https://www.trustpilot.com/review/glimmr.app", "_blank");
-				}}
-				startIcon="mdi:external-link"
-			/>
+			<Button onclick={() => window.open("https://www.trustpilot.com/review/glimmr.app", "_blank")}>
+				<Icon icon="mdi:external-link" />
+				See Reviews
+			</Button>
 		</div>
 	</div>
 </section>

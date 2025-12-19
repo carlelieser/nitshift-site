@@ -1,107 +1,81 @@
 <script lang="ts">
 	import DownloadButton from "./DownloadButton.svelte";
-	import Animate from "./Animate.svelte";
-	import IconButton from "@smui/icon-button";
-
-	import Drawer, { Content, Header, Scrim } from "@smui/drawer";
-	import List, { Graphic, Item, Separator, Text } from "@smui/list";
+	import { Button } from "$lib/components/ui/button";
+	import { Separator } from "$lib/components/ui/separator";
+	import { Sheet, SheetContent, SheetHeader } from "$lib/components/ui/sheet";
+	import {
+		NavigationMenuItem,
+		NavigationMenuLink,
+		NavigationMenuList,
+		NavigationMenuRoot
+	} from "$lib/components/ui/navigation-menu";
 
 	import { page } from "$app/stores";
 	import { menu } from "$lib/client/global";
-	import Link from "$lib/client/components/Link.svelte";
 	import Logo from "$lib/client/components/Logo.svelte";
 	import { downloadInstaller } from "$lib/client/utils";
 	import { goto, onNavigate } from "$app/navigation";
 	import PurchaseButton from "$lib/client/components/PurchaseButton.svelte";
-	import { onMount } from "svelte";
-
-	let scrollTop = $state(0);
 
 	let open = $state(false);
 
 	onNavigate(() => {
 		open = false;
 	});
-
-	onMount(() => {
-		document.getElementById("app")?.addEventListener("scroll", (e) => {
-			scrollTop = document.getElementById("app")?.scrollTop;
-		});
-	});
 </script>
 
-<Drawer bind:open class="z-[100]" variant="modal">
-	<Header class="flex items-center justify-center py-12">
-		<Logo />
-	</Header>
-	<Separator />
-	<Content class="flex flex-col">
-		<List class="flex-1">
-			<ul>
-				{#each menu as { name, link, icon }, i}
-					{@const active = $page.url.href.replace($page.url.origin, "") === link}
-					<li>
-						<Item href="javascript:void(0)" onclick={() => goto(link)} activated={active}>
-							<Graphic class="material-symbols-outlined">{icon}</Graphic>
-							<Text>{name}</Text>
-						</Item>
-					</li>
-				{/each}
-			</ul>
+<Sheet bind:open>
+	<SheetContent side="left">
+		<SheetHeader>
+			<div class="p-12 w-full flex items-center justify-center">
+				<Logo />
+			</div>
+		</SheetHeader>
+		<Separator />
+		<div class="p-4 flex flex-col gap-2">
+			{#each menu as { name, link, icon }}
+				<Button class="justify-start" variant="ghost" onclick={() => goto(link)}>
+					<span class="material-symbols-outlined">{icon}</span>
+					{name}
+				</Button>
+			{/each}
 			<Separator />
-			<Item href="javascript:void(0)" onclick={downloadInstaller}>
-				<Graphic class="material-symbols-outlined">download</Graphic>
-				<Text>Download</Text>
-			</Item>
-		</List>
-		<PurchaseButton containerClass="mt-auto p-2" context="drawer" menuClass="z-[100]" />
-	</Content>
-</Drawer>
+			<Button variant="ghost" onclick={downloadInstaller}>
+				<span class="material-symbols-outlined">download</span>
+				Download
+			</Button>
+		</div>
+		<div class="p-2 mt-auto w-full">
+			<PurchaseButton class="w-full" context="drawer" />
+		</div>
+	</SheetContent>
+</Sheet>
 
-<Scrim class="z-[80]" fixed={true} />
-
-<header
-	class="section-container flex items-center justify-center sticky top-0 z-50 bg-transparent !py-4 pointer-events-none"
->
-	<div class="transition mx-auto text-white pointer-events-auto">
-		<div
-			class="mx-auto {scrollTop === 0
-				? 'bg-teal-950 text-white'
-				: 'bg-white text-black shadow-2xl'} transition backdrop-blur-3xl p-4 px-8 rounded-3xl"
-		>
-			<div class="flex items-center justify-between flex-row gap-4 lg:gap-12 min-w-48">
-				<Animate>
-					<Logo />
-				</Animate>
-				<ul class="items-center gap-8 hidden lg:flex">
-					{#each menu as { name, link }, i}
-						{@const active = $page.url.href.replace($page.url.origin, "") === link}
-						<li>
-							<Animate delay={(i + 1) * 0.1 + "s"}>
-								<Link
-									to={link}
-									class={active
-									? scrollTop === 0
-										? "!text-teal-300"
-										: "!text-teal-500"
-									: ""}
-								>
-									{name}
-								</Link>
-							</Animate>
-						</li>
-					{/each}
-				</ul>
-				<div class="flex lg:hidden cursor-pointer gap-2">
-					<PurchaseButton size={1} context="mobile-navbar" containerClass="flex" />
-					<IconButton class="material-symbols-outlined" onclick={() => (open = true)}
-					>menu
-					</IconButton>
-				</div>
-				<div class="hidden lg:flex gap-2">
-					<DownloadButton size={2} showEmailCapture={false} />
-					<PurchaseButton size={2} context="navbar" />
-				</div>
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur px-3">
+	<div class="w-full max-w-lg gap-4 flex h-18 items-center justify-center mx-auto">
+		<Button variant="ghost" size="icon" onclick={() => (open = true)} class="lg:hidden">
+			<span class="material-symbols-outlined">menu</span>
+		</Button>
+		<Logo />
+		<NavigationMenuRoot class="hidden lg:flex mx-12">
+			<NavigationMenuList>
+				{#each menu as { name, link }}
+					{@const active = $page.url.href.replace($page.url.origin, "") === link}
+					<NavigationMenuItem>
+						<NavigationMenuLink href={link} {active}>
+							{name}
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+				{/each}
+			</NavigationMenuList>
+		</NavigationMenuRoot>
+		<div class="flex flex-1 items-center justify-end gap-2">
+			<div class="hidden lg:flex gap-2">
+				<DownloadButton showEmailCapture={false} />
+				<PurchaseButton context="navbar" />
+			</div>
+			<div class="lg:hidden">
+				<PurchaseButton context="mobile-navbar" />
 			</div>
 		</div>
 	</div>

@@ -1,64 +1,47 @@
 <script lang="ts">
-	import Button from "./Button.svelte";
-	import Menu from "@smui/menu";
-	import List, { Item } from "@smui/list";
+	import { Button } from "$lib/components/ui/button";
+	import Icon from "@iconify/svelte";
+	import {
+		DropdownMenu,
+		DropdownMenuContent,
+		DropdownMenuItem,
+		DropdownMenuTrigger
+	} from "$lib/components/ui/dropdown-menu";
 	import { page } from "$app/stores";
 	import { goto } from "$app/navigation";
-	import Portal from "svelte-portal";
-	import { onMount } from "svelte";
 	import { analytics } from "$lib/client/analytics";
 
-	let buttonRef: HTMLDivElement;
-	let menu: Menu;
-	let isOpen: boolean = false;
+	let { context = "default", class: className = "" } = $props();
 
-	export let size = 0;
-	export let width = 0;
-	export let containerClass = "";
-	export let menuClass = "";
-	export let context = "default";
+	let isOpen = $state(false);
 
 	const handleOpenPriceMenu = () => {
 		analytics.track("open_price_menu", { context });
-		isOpen = !isOpen;
 	};
 
-	onMount(() => {
-		menu.getMenuSurface().setIsHoisted(true);
-	});
+	const handlePriceClick = (price: number) => {
+		analytics.track("start_checkout", { price });
+		goto(`/checkout?price=${price}`);
+	};
 </script>
 
-<div class="flex flex-col {containerClass}">
-	<Button
-		{...$$props}
-		bind:offsetWidth={width}
-		bind:ref={buttonRef}
-		endIcon={isOpen ? "mdi:chevron-up" : "mdi:chevron-down"}
-		label="Unlock Pro Features"
-		on:click={handleOpenPriceMenu}
-		secondaryLabel="Choose your price: $1.99 - $5.99"
-		{size}
-		startIcon="mdi:star"
-	/>
-	<Portal>
-		<Menu
-			anchor={false}
-			anchorCorner="BOTTOM_LEFT"
-			anchorElement={buttonRef}
-			bind:open={isOpen}
-			bind:this={menu}
-			class="my-2 z-50 rounded-2xl {menuClass}"
-			style="min-width: {width}px;"
-		>
-			<List>
-				{#each $page.data.prices as price}
-					{@const handlePriceClick = () => {
-						analytics.track("start_checkout", { price });
-						goto(`/checkout?price=${price}`);
-					}}
-					<Item onSMUIAction={handlePriceClick} class="font-medium">${price}</Item>
-				{/each}
-			</List>
-		</Menu>
-	</Portal>
+<div>
+	<DropdownMenu bind:open={isOpen}>
+		<DropdownMenuTrigger asChild>
+			{#snippet child({ props })}
+				<Button {...props} class={className} onclick={handleOpenPriceMenu}>
+					<Icon icon="mdi:star" />
+					Unlock Pro Features
+					<Icon icon={isOpen ? "mdi:chevron-up" : "mdi:chevron-down"} />
+				</Button>
+			{/snippet}
+		</DropdownMenuTrigger>
+		<DropdownMenuContent>
+			{#each $page.data.prices as price}
+				<DropdownMenuItem onclick={() => handlePriceClick(price)}>
+					${price}
+				</DropdownMenuItem>
+			{/each}
+		</DropdownMenuContent>
+	</DropdownMenu>
 </div>
