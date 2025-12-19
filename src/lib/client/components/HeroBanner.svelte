@@ -68,7 +68,7 @@
 					>
 						<DownloadButton
 							background="dark"
-							enableStoreDownload={true}
+							enableStoreDownload={false}
 							primary={true}
 							size={2}
 						/>
