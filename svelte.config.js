@@ -1,7 +1,7 @@
 import adapter from "@sveltejs/adapter-cloudflare";
-import type { Config } from "@sveltejs/kit";
 
-const config: Config = {
+/** @type {import("@sveltejs/kit").Config} */
+const config = {
 	extensions: [".svelte", ".md"],
 	kit: {
 		adapter: adapter()
