@@ -1,11 +1,18 @@
 <script>
 	import "../app.css";
-	import { analytics } from "$lib/client/analytics";
 	import { ModeWatcher } from "mode-watcher";
+	import { browser } from "$app/environment";
+	import { onMount } from "svelte";
 
 	let { children } = $props();
 
-	analytics.page();
+	onMount(() => {
+		if (browser) {
+			import("$lib/client/analytics").then(({ analytics }) => {
+				analytics.page();
+			});
+		}
+	});
 </script>
 
 <ModeWatcher />
