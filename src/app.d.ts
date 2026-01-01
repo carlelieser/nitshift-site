@@ -2,7 +2,7 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		import { User, License } from "$lib/common/types";
+		import { User } from "$lib/common/types";
 
 		// interface Error {}
 		interface Locals {
@@ -13,7 +13,6 @@ declare global {
 		interface PageData {
 			userCount?: number;
 			user?: User;
-			license?: License;
 		}
 
 		// interface Platform {}

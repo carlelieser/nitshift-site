@@ -1,4 +1,3 @@
-import { PUBLIC_INSTALLER_NAME, PUBLIC_MICROSOFT_STORE_PRODUCT_ID } from "$env/static/public";
 import { analytics } from "$lib/client/analytics";
 
 const trackDownload = (platform: string, version: string) => {
@@ -16,13 +15,7 @@ const openLink = (href: string, download?: string) => {
 };
 
 export const downloadInstaller = () => {
-	const url = "/releases/latest/glimmr-setup.exe";
+	const url = "/releases/latest/nitshift-setup.exe";
 	trackDownload("windows", "latest");
-	openLink(url, PUBLIC_INSTALLER_NAME);
-};
-
-export const downloadMicrosoftStore = () => {
-	const url = `ms-windows-store://pdp/?productid=${PUBLIC_MICROSOFT_STORE_PRODUCT_ID}`;
-	trackDownload("windows", "ms-store");
-	openLink(url);
+	openLink(url, "nitshift-setup.exe");
 };

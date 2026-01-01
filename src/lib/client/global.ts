@@ -5,11 +5,6 @@ export const menu = [
 		icon: "star"
 	},
 	{
-		name: "Pricing",
-		link: "/pricing",
-		icon: "sell"
-	},
-	{
 		name: "Support",
 		link: "/support",
 		icon: "support"

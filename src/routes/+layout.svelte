@@ -1,17 +1,15 @@
 <script>
 	import "../app.css";
 	import { analytics } from "$lib/client/analytics";
+	import { ModeWatcher } from "mode-watcher";
+
+	let { children } = $props();
 
 	analytics.page();
 </script>
 
-<svelte:head>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200"
-		rel="stylesheet"
-	/>
-</svelte:head>
+<ModeWatcher />
 
-<div class="fade-in bg-white w-full h-full overflow-x-hidden" id="app">
-	<slot />
+<div class="bg-background size-full overflow-x-hidden scroll-smooth">
+	{@render children()}
 </div>

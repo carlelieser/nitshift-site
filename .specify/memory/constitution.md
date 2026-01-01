@@ -15,7 +15,7 @@
   Follow-up TODOs: None
 -->
 
-# Glimmr Site Constitution
+# Nitshift Site Constitution
 
 ## Core Principles
 
@@ -30,7 +30,7 @@ Code MUST prioritize readability, maintainability, and adherence to established 
 - **Code Style**: Follow project prettier/linter configurations without exceptions
 - **Documentation**: Complex logic MUST include explanatory comments; public APIs require JSDoc
 
-**Rationale**: The Glimmr site serves as both a product showcase and development platform. Poor code quality creates technical debt that slows feature development and increases bug risk. Consistent, well-documented code enables team scalability and reduces onboarding friction.
+**Rationale**: The Nitshift site serves as both a product showcase and development platform. Poor code quality creates technical debt that slows feature development and increases bug risk. Consistent, well-documented code enables team scalability and reduces onboarding friction.
 
 ### II. Testing Standards (NON-NEGOTIABLE)
 
@@ -43,7 +43,7 @@ All features MUST follow Test-Driven Development (TDD) principles. Tests are not
 - **Performance Tests**: Features with performance requirements MUST include benchmark tests
 - **No Implementation Without Tests**: Code review MUST reject implementation PRs lacking corresponding tests
 
-**Rationale**: The Glimmr site operates in a production environment with real users. Untested code risks regressions, data corruption, and poor user experience. TDD ensures features work as specified before deployment and provides regression protection. Tests also serve as executable documentation of system behavior.
+**Rationale**: The Nitshift site operates in a production environment with real users. Untested code risks regressions, data corruption, and poor user experience. TDD ensures features work as specified before deployment and provides regression protection. Tests also serve as executable documentation of system behavior.
 
 ### III. User Experience Consistency
 
@@ -56,7 +56,7 @@ User-facing features MUST maintain visual, interaction, and performance consiste
 - **Error Handling**: User-facing errors MUST provide actionable feedback; log technical details separately
 - **Progressive Enhancement**: Core functionality MUST work without JavaScript; enhanced features are additive
 
-**Rationale**: Glimmr's value proposition depends on a polished, professional user experience. Inconsistent UI patterns confuse users and damage brand credibility. Accessibility is both a legal requirement and moral imperative. Users expect instant feedback and clear error messages—silent failures erode trust.
+**Rationale**: Nitshift's value proposition depends on a polished, professional user experience. Inconsistent UI patterns confuse users and damage brand credibility. Accessibility is both a legal requirement and moral imperative. Users expect instant feedback and clear error messages—silent failures erode trust.
 
 ### IV. Performance Requirements
 
