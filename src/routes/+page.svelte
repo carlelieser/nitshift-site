@@ -75,7 +75,7 @@
 		<Logo />
 		<div class="flex items-center gap-2 sm:gap-4">
 			<DropdownMenu.Root>
-				<DropdownMenu.Trigger class={buttonVariants({ variant: "outline", size: "icon" })}>
+				<DropdownMenu.Trigger class={buttonVariants({ variant: "ghost", size: "icon" })}>
 					<Sun class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
 					<Moon class="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
 					<span class="sr-only">Toggle theme</span>
@@ -86,9 +86,8 @@
 					<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
-			<Button variant="ghost" href="https://github.com/carlelieser/nitshift" target="_blank" rel="noopener noreferrer">
+			<Button variant="ghost" size="icon" href="https://github.com/carlelieser/nitshift" target="_blank" rel="noopener noreferrer">
 				<Github class="size-4" />
-				<span class="hidden sm:inline">GitHub</span>
 			</Button>
 			<Button href="https://github.com/carlelieser/nitshift/releases" target="_blank" rel="noopener noreferrer">
 				<Download class="size-4" />
