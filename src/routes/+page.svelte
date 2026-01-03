@@ -6,6 +6,7 @@
 	import Logo from "$lib/client/components/Logo.svelte";
 	import { Sun, Moon, Monitor, Clock, Sliders, Zap, Download, Github, ChevronRight, Star, Layers, Calendar } from "@lucide/svelte";
 	import { resetMode, setMode } from "mode-watcher";
+	import ModeToggle from "../lib/components/mode-toggle.svelte";
 
 	const features = [
 		{
@@ -74,23 +75,12 @@
 	<div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 		<Logo />
 		<div class="flex items-center gap-2 sm:gap-4">
-			<DropdownMenu.Root>
-				<DropdownMenu.Trigger class={buttonVariants({ variant: "ghost", size: "icon" })}>
-					<Sun class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-					<Moon class="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-					<span class="sr-only">Toggle theme</span>
-				</DropdownMenu.Trigger>
-				<DropdownMenu.Content align="end">
-					<DropdownMenu.Item onclick={() => setMode("light")}>Light</DropdownMenu.Item>
-					<DropdownMenu.Item onclick={() => setMode("dark")}>Dark</DropdownMenu.Item>
-					<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
-				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+			<ModeToggle/>
 			<Button variant="ghost" size="icon" href="https://github.com/carlelieser/nitshift" target="_blank" rel="noopener noreferrer">
-				<Github class="size-4" />
+				<Github />
 			</Button>
 			<Button href="https://github.com/carlelieser/nitshift/releases" target="_blank" rel="noopener noreferrer">
-				<Download class="size-4" />
+				<Download />
 				Download
 			</Button>
 		</div>
@@ -112,12 +102,12 @@
 
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 			<Button size="lg" href="https://github.com/carlelieser/nitshift/releases" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto">
-				<Download class="size-4" />
+				<Download />
 				Download for Windows
 			</Button>
 			<Button variant="outline" size="lg" href="#features" class="w-full sm:w-auto">
 				Learn More
-				<ChevronRight class="size-4" />
+				<ChevronRight />
 			</Button>
 		</div>
 
@@ -311,11 +301,11 @@
 
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 			<Button size="lg" href="https://github.com/carlelieser/nitshift/releases" target="_blank" rel="noopener noreferrer">
-				<Download class="size-4" />
+				<Download />
 				Download for Windows
 			</Button>
 			<Button variant="outline" size="lg" href="https://github.com/carlelieser/nitshift" target="_blank" rel="noopener noreferrer">
-				<Github class="size-4" />
+				<Github />
 				View on GitHub
 			</Button>
 		</div>
