@@ -1,5 +1,6 @@
 <script>
 	import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem} from "$lib/components/ui/dropdown-menu";
+	import { buttonVariants } from "$lib/components/ui/button";
 	import { resetMode, setMode } from "mode-watcher";
 	import {SunIcon, MoonIcon} from "@lucide/svelte";
 </script>
